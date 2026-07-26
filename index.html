@@ -34,7 +34,7 @@ document.documentElement.setAttribute('data-theme',t);document.documentElement.c
   --accent:#1D4ED8;
   --border:color-mix(in oklab, var(--fg) 13%, transparent);
   --border-soft:color-mix(in oklab, var(--fg) 7%, transparent);
-  --accent-weak:color-mix(in oklab, var(--accent) 9%, transparent);
+  --accent-weak:color-mix(in oklab, var(--accent) 16%, transparent);
   --mono:ui-monospace,"SF Mono",SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
 }
 :root[data-theme="dark"]{
@@ -45,7 +45,7 @@ document.documentElement.setAttribute('data-theme',t);document.documentElement.c
   --fg-2:rgba(255,255,255,.65);
   --fg-3:rgba(255,255,255,.52);
   --accent:#7CA9FF;
-  --accent-weak:color-mix(in oklab, var(--accent) 12%, transparent);
+  --accent-weak:color-mix(in oklab, var(--accent) 26%, transparent);
 }
 /* JS 미실행 환경에서도 시스템 다크 선호 존중 */
 @media (prefers-color-scheme:dark){
@@ -57,7 +57,7 @@ document.documentElement.setAttribute('data-theme',t);document.documentElement.c
     --fg-2:rgba(255,255,255,.65);
     --fg-3:rgba(255,255,255,.52);
     --accent:#7CA9FF;
-    --accent-weak:color-mix(in oklab, var(--accent) 12%, transparent);
+    --accent-weak:color-mix(in oklab, var(--accent) 26%, transparent);
   }
 }
 
@@ -115,7 +115,7 @@ code{font-family:var(--mono);font-size:.88em;background:color-mix(in oklab, var(
 #theme:hover{color:var(--fg);border-color:var(--fg-3)}
 
 /* ── hero ───────────────────────────────────────────── */
-.hero{padding-block:clamp(5rem,4rem + 8vw,11rem) clamp(4rem,3rem + 5vw,7rem)}
+.hero{padding-block:clamp(3rem,2.25rem + 3.5vw,5.5rem) clamp(4rem,3rem + 5vw,7rem)}
 .eyebrow{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;color:var(--accent);text-transform:uppercase}
 h1{
   margin-top:1.25rem;
@@ -276,7 +276,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
   .stats{grid-template-columns:repeat(2,auto)}
   .about-grid{grid-template-columns:1fr}
   .case-grid{grid-template-columns:1fr}
-  .case-figure{text-align:left;order:-1}
+  .case-figure{text-align:left}
 }
 @media (max-width:640px){
   body{font-size:1rem}
@@ -340,7 +340,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
       <article class="case reveal">
         <p class="meta"><span>2026.04 —</span><span class="on">Live</span><span>Next.js</span><span>FastAPI</span><span>SQLite</span><span>RAG</span></p>
         <h3>KAU Notice Hub</h3>
-        <p class="case-lede">약 70개 사이트에 흩어진 교내 공지를 한곳에서 — 수집·검색·질의응답까지 혼자 만들어, 교내 구성원이 활발히 사용 중인 서비스.</p>
+        <p class="case-lede">약 70개 사이트에 흩어진 교내 공지를 한곳에 모았습니다. 수집부터 검색, 질의응답까지 혼자 만들었고 지금 교내 구성원이 쓰고 있습니다.</p>
 
         <div class="case-body">
           <p><span class="lead-in">문제</span>한국항공대의 공지는 학과·부서별로 약 70개 웹사이트에 흩어져 있고, 매년 2,000건 넘게 올라옵니다. 장학금·행사 공지를 놓치는 일이 잦아, 전부 모아서 한곳에서 찾을 수 있게 만들었습니다.</p>
@@ -348,7 +348,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
 
           <figure class="shot-wide shot-hero reveal" style="margin-top:2.25rem">
             <img src="img/notice-hub-main.webp" width="1400" height="812" loading="lazy" decoding="async" alt="KAU Notice Hub 서비스 화면 — 왼쪽은 대상자·중분류로 좁혀 보는 공지 탐색 목록(총 2,455건), 오른쪽은 진행 중인 공모전을 묻는 질문에 근거 공지를 바탕으로 답한 AI 챗봇 대화">
-            <figcaption>실제 서비스 화면 — 공지 탐색 · AI 챗봇</figcaption>
+            <figcaption>실제 서비스 화면 (공지 탐색 · AI 챗봇)</figcaption>
           </figure>
 
           <ol class="flow" aria-label="시스템 구성 흐름" style="margin-top:2.5rem">
@@ -363,14 +363,14 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
           <ul class="decisions">
             <li>키워드 기반 RAG의 한계를 확인하고 <b>LLM 키워드 선택 → 문서 필터링 → reranking</b> 구조로 재설계했습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/180" target="_blank" rel="noopener">글: RAG 고찰</a></li>
             <li>"좋아진 것 같다"로 끝내지 않기 위해 <b>RAGAS 평가 파이프라인</b>을 만들어 근거 충실성·관련성·정확성을 수치로 봅니다. <a class="ref ext" href="https://qktjwl123.tistory.com/181" target="_blank" rel="noopener">글: RAG 평가 도입</a></li>
-            <li>공지 데이터를 메모리에 전부 올리던 초기 구조에서 <b>OOM이 발생</b> — dmesg로 원인을 확인하고 SQLite 기반으로 바꾼 뒤 부하 테스트로 검증했습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/179" target="_blank" rel="noopener">글: 인프라 점검</a></li>
+            <li>공지 데이터를 메모리에 전부 올리던 초기 구조에서 <b>OOM이 발생</b>했습니다. dmesg로 원인을 확인하고 SQLite 기반으로 바꾼 뒤 부하 테스트로 검증했습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/179" target="_blank" rel="noopener">글: 인프라 점검</a></li>
             <li>공개 서비스의 비용·어뷰징 리스크에 대비해 <b>rate limit·요청 크기·출력 토큰 상한</b>을 걸고, Vercel Analytics로 사용 흐름을 보며 개선 방향을 정합니다. <a class="ref ext" href="https://qktjwl123.tistory.com/182" target="_blank" rel="noopener">글: 운영 리스크</a> <a class="ref ext" href="https://qktjwl123.tistory.com/186" target="_blank" rel="noopener">글: 모니터링</a></li>
           </ul>
-          <p><span class="lead-in">현재</span>교내 구성원이 활발히 사용하고 있습니다 — 최근 30일 방문자 782명, 페이지뷰 2,019회(Vercel Analytics, 2026.07). 유입 대부분이 교내 커뮤니티(에브리타임)를 통해 들어오며, AWS Lightsail 단일 서버에서 운영 중입니다. 위 결정들의 과정은 모두 블로그에 기록해 두었습니다.</p>
+          <p><span class="lead-in">현재</span>교내 구성원이 활발히 사용하고 있습니다. 최근 30일 방문자 782명, 페이지뷰 2,019회(Vercel Analytics, 2026.07). 유입 대부분이 교내 커뮤니티(에브리타임)를 통해 들어오며, AWS Lightsail 단일 서버에서 운영 중입니다. 위 결정들의 과정은 모두 블로그에 기록해 두었습니다.</p>
 
           <figure class="shot-wide reveal">
             <img src="img/notice-hub-analytics.webp" width="1400" height="902" loading="lazy" decoding="async" alt="Vercel Analytics 대시보드 — 최근 30일 방문자 782명, 페이지뷰 2,019회. 유입 경로 1위는 교내 커뮤니티 everytime.kr 439명">
-            <figcaption>Vercel Analytics — 최근 30일 · 유입 1위 everytime.kr</figcaption>
+            <figcaption>Vercel Analytics, 최근 30일 (유입 1위 everytime.kr)</figcaption>
           </figure>
 
           <dl class="kmetrics">
@@ -393,7 +393,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
         <div class="case-grid">
           <div>
             <h3>WeBand</h3>
-            <p class="case-lede">가입 없이 링크 하나로 팀 일정을 조율하는 웹 앱 — 출시 한 달 만에 사용자 600명.</p>
+            <p class="case-lede">가입 없이 링크 하나로 팀 일정을 조율하는 웹 앱입니다. 출시 한 달 만에 600명이 썼습니다.</p>
           </div>
           <div class="case-figure" aria-hidden="true">
             <span class="big-num">600</span>
@@ -406,7 +406,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
 
           <figure class="shot-url reveal">
             <img src="img/weband-url.webp" width="1130" height="80" loading="lazy" decoding="async" alt="브라우저 주소창 — we-band.vercel.app/lite/260726/홍길동.~AFAHA_AGBLAGBnAEB_AFCaAK 처럼 일정이 인코딩된 짧은 공유 주소">
-            <figcaption>실제 공유 주소 — 서버 없이 일정 전체가 URL에 담깁니다</figcaption>
+            <figcaption>서버 없이 일정 전체가 이 주소 안에 담깁니다</figcaption>
           </figure>
 
           <figure class="shots-fig reveal">
@@ -415,14 +415,14 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
               <img src="img/weband-input.webp" width="560" height="1213" loading="lazy" decoding="async" alt="주간 시간표에서 가능한 시간대를 구간으로 선택해 입력한 화면">
               <img src="img/weband-share.webp" width="560" height="1213" loading="lazy" decoding="async" alt="일정 저장 완료 안내 — 일정이 인코딩된 짧은 공유 URL이 표시된 화면">
             </div>
-            <figcaption>실제 서비스 화면 — 날짜 선택 · 구간 입력 · URL 공유</figcaption>
+            <figcaption>실제 서비스 화면 (날짜 선택 · 구간 입력 · URL 공유)</figcaption>
           </figure>
 
           <p><span class="lead-in">결과</span>출시 한 달 만에 사용자 600명, 이후 2025년 3~9월 누적 방문자 1,220명·페이지뷰 6,055회를 기록했습니다(Vercel Analytics). 참여자가 늘며 URL 방식의 한계가 보여, 고정 공유 링크를 쓰는 DB 기반 <b>WeBand-Together</b>로 확장했습니다. 프로젝트 전 과정을 디자이너·백엔드 개발자와 협업하며 기획·UX·프론트엔드 구현을 주도했습니다.</p>
 
           <figure class="shot-wide reveal">
             <img src="img/weband-analytics.webp" width="1200" height="1014" loading="lazy" decoding="async" alt="Vercel Analytics 대시보드 — 방문자 1,220명, 페이지뷰 6,055회, 2025년 3월부터 9월까지의 방문자 추이 그래프">
-            <figcaption>Vercel Analytics — 2025.03 – 09</figcaption>
+            <figcaption>Vercel Analytics, 2025.03 – 09</figcaption>
           </figure>
           <p class="case-links">
             <a class="ext" href="https://we-band.vercel.app/lite" target="_blank" rel="noopener">서비스 열어보기</a>
@@ -435,7 +435,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
       <div class="archive reveal">
         <p class="archive-head">More Projects</p>
         <ul class="rows" data-stagger>
-          <li><span class="row"><span class="y">2026</span><a class="t ext" href="https://github.com/Jinpop/RosterCrawler" target="_blank" rel="noopener">RosterCrawler</a><span class="d">교내 근로 업무(안전교육 관리) 자동화 — 좌표 기반 리포트 텍스트를 표로 복원, 저장 단위 개선으로 수집 성능 향상</span></span></li>
+          <li><span class="row"><span class="y">2026</span><a class="t ext" href="https://github.com/Jinpop/RosterCrawler" target="_blank" rel="noopener">RosterCrawler</a><span class="d">교내 근로 업무(안전교육 관리) 자동화. 좌표 기반 리포트 텍스트를 표로 복원했고, 저장 단위를 바꿔 수집 성능을 높였습니다</span></span></li>
           <li><span class="row"><span class="y">2026</span><a class="t ext" href="https://github.com/Jinpop/NoDupDownload" target="_blank" rel="noopener">NoDupDownload</a><span class="d">파일명·출처 URL로 중복 다운로드를 감지하는 Chrome 확장</span></span></li>
           <li><span class="row"><span class="y">2026</span><a class="t ext" href="https://github.com/Jinpop/Media-Model-Lab" target="_blank" rel="noopener">Media Model Lab</a><span class="d">OpenAI·Replicate 미디어 생성 모델을 한곳에서 실험·비교하는 플레이그라운드</span></span></li>
         </ul>
@@ -451,19 +451,19 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
       <article class="case reveal" style="padding-top:0">
         <p class="meta"><span>2026.07</span><span>Solo</span><span>Macro-F1</span><span>Multi-agent</span></p>
         <h3>Dacon — AI 코딩 에이전트 행동 예측</h3>
-        <p class="case-lede">에이전트의 세션 로그로 다음 행동 14클래스를 예측 — Baseline 0.43에서 0.7867까지, 예선 상위 10%. 실험 운영은 17개 역할로 나눈 AI 에이전트 하네스를 직접 설계해 맡겼습니다.</p>
+        <p class="case-lede">에이전트의 세션 로그로 다음 행동 14클래스를 예측하는 대회입니다. Baseline 0.43에서 0.7867까지 올려 예선 상위 10%를 기록했고, 실험 운영은 17개 역할로 나눈 AI 에이전트 하네스를 직접 설계해 맡겼습니다.</p>
         <div class="case-body">
           <p><span class="lead-in">문제 재정의</span>같은 요청이라도 파일을 읽었는지, 테스트가 통과했는지에 따라 에이전트의 다음 행동이 달라집니다. 단순 문장 분류가 아니라 <b>대화와 도구 사용으로 누적된 작업 상태를 추론하는 문제</b>로 정의하고, 현재 요청과 과거 행동을 잇는 관계형 피처를 설계했습니다.</p>
           <ul class="decisions">
-            <li>고전 ML(TF-IDF → HGB·LR·ComplementNB)과 Transformer 3종의 확률 블렌드 앙상블 — 개별 점수보다 <b>오류를 보완하는 조합</b>이 성능을 갈랐습니다.</li>
+            <li>고전 ML(TF-IDF → HGB·LR·ComplementNB)과 Transformer 3종을 확률 블렌드로 앙상블했습니다. 개별 점수보다 <b>오류를 보완하는 조합</b>이 성능을 갈랐습니다.</li>
             <li>history 복원 증강에서 <b>시점 정합성·중복 문제를 검증</b>하고, 신뢰 가능한 데이터만 2단계 학습(사전학습 → fine-tuning)에 사용했습니다.</li>
           </ul>
 
           <p><span class="lead-in">AI Agent 운영 하네스</span>실험 실행은 Claude 에이전트에 맡기고 저는 전략·승인·제출을 맡았습니다. 처음엔 하나의 에이전트에 전략 수립부터 학습·검증·기록까지 다 맡겼는데 단계 누락과 정보 혼선이 반복됐습니다. 원인을 모델의 능력이 아니라 <b>한 에이전트가 지는 책임과 컨텍스트가 너무 넓어진 작업 구조</b>로 보고 다시 설계했습니다.</p>
           <ul class="decisions">
-            <li><b>역할을 17개 서브에이전트로 분리</b> — 전략 수립 / 데이터·누수 감사 / 학습 설정 검증 / 승인된 작업 실행 / 제출물 검증 / 기록. 각 에이전트에는 프로젝트 전체가 아니라 <b>맡은 역할에 필요한 최소 정보만</b> 넘겼습니다.</li>
-            <li><b>자연어 보고 대신 산출물로 검증</b> — 실행에 실제로 적용된 설정을 남기는 <code>effective_config</code>, 코드·데이터 SHA 대조, 제출 ZIP 구조 자동 검사, 5행 end-to-end 추론 테스트.</li>
-            <li><b>검증 통과와 실행 권한을 분리</b> — 감사 통과는 '진행 자격'일 뿐이고, 실제 실행 권한은 사전 승인된 캠페인 범위 안에서만 나오도록 상태기계로 고정했습니다.</li>
+            <li><b>역할을 17개 서브에이전트로 분리</b>했습니다. 전략 수립, 데이터·누수 감사, 학습 설정 검증, 승인된 작업 실행, 제출물 검증, 기록으로 나눴고, 각 에이전트에는 프로젝트 전체가 아니라 <b>맡은 역할에 필요한 최소 정보만</b> 넘겼습니다.</li>
+            <li><b>자연어 보고 대신 산출물로 검증</b>했습니다. 실행에 실제로 적용된 설정을 남기는 <code>effective_config</code>, 코드·데이터 SHA 대조, 제출 ZIP 구조 자동 검사, 5행 end-to-end 추론 테스트를 붙였습니다.</li>
+            <li><b>검증 통과와 실행 권한을 분리</b>했습니다. 감사 통과는 '진행 자격'일 뿐이고, 실제 실행 권한은 사전 승인된 캠페인 범위 안에서만 나오도록 상태기계로 고정했습니다.</li>
             <li>사고가 날 때마다 규칙으로 편입하는 루프로 운영했고, 실제로 <b>학습 시작 전 결함을 2회 사전 차단</b>했습니다. 다른 모델(Codex)로 교차 감사한 건은 내부 검증을 4회 통과한 결함을 잡아내기도 했습니다.</li>
           </ul>
           <p>모든 실수가 사라지진 않았지만 <b>한 에이전트의 실수가 전체 과정을 그대로 통과하기 어려운 구조</b>가 됐고, 문제가 생겼을 때 어느 단계에서 어긋났는지 찾기 쉬워졌습니다. AI Agent의 성능은 모델만이 아니라 역할·컨텍스트·권한·검증 구조를 어떻게 설계하느냐에도 달려 있다는 걸 배웠습니다.</p>
@@ -496,22 +496,22 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
       <div class="about-grid">
         <div class="about-col reveal">
           <p class="prose" style="color:var(--fg-2)">만들고 배포하는 데서 멈추지 않고, 로그와 지표를 보며 서비스를 고쳐 나가는 일을 좋아합니다. AI를 도구로 쓰는 것을 넘어 그 행동을 데이터로 분석해 봤고, 여러 에이전트가 나눠 일하는 실험 구조를 직접 설계해 운영해 봤습니다. AI가 들어간 제품을 처음부터 끝까지 만들어 운영합니다.</p>
-          <p class="prose" style="color:var(--fg-2);margin-top:1.1rem">부딪힌 문제는 남깁니다. 2024년 3월부터 <a class="lk ext" href="https://qktjwl123.tistory.com/" target="_blank" rel="noopener">기술 블로그</a>에 153편을 썼고, 위 프로젝트의 설계 결정과 트러블슈팅도 대부분 그 안에 기록돼 있습니다.</p>
+          <p class="prose" style="color:var(--fg-2);margin-top:1.1rem">부딪힌 문제는 기록으로 남깁니다. 위 프로젝트의 설계 결정과 트러블슈팅은 대부분 <a class="lk ext" href="https://qktjwl123.tistory.com/" target="_blank" rel="noopener">기술 블로그</a>에 글로 남겼고, 2024년 3월부터 153편을 썼습니다.</p>
           <h3 style="margin-top:3rem">Skills</h3>
           <dl class="skills">
-            <div><dt>운영 서비스에서</dt><dd><b>Next.js · TypeScript · FastAPI · SQLite · Docker · AWS</b> — KAU Notice Hub의 스택. SQLite는 저사양 단일 서버에서 관리 부담 없이 쓰기 위한 선택이었습니다.</dd></div>
+            <div><dt>운영 서비스에서</dt><dd><b>Next.js · TypeScript · FastAPI · SQLite · Docker · AWS</b> — KAU Notice Hub를 만든 스택입니다. SQLite는 저사양 단일 서버에서 관리 부담 없이 쓰기 위한 선택이었습니다.</dd></div>
             <div><dt>AI</dt><dd><b>LLM 애플리케이션(RAG 설계 · RAGAS 평가) · 멀티 에이전트 오케스트레이션 · 모델 경량화(GPTQ 양자화)</b> — RAG는 Notice Hub 챗봇으로 운영 중이고, 에이전트 오케스트레이션은 Dacon 실험 운영에, 양자화는 LG Aimers 제출 모델에 적용했습니다.</dd></div>
-            <div><dt>언어</dt><dd><b>Python · TypeScript/JavaScript · C++</b> — 알고리즘 대회는 C++, 제품은 TypeScript·Python.</dd></div>
+            <div><dt>언어</dt><dd><b>Python · TypeScript/JavaScript · C++</b> — 알고리즘 대회에서는 C++를, 제품에서는 TypeScript와 Python을 씁니다.</dd></div>
             <div><dt>협업 · 도구</dt><dd><b>Git/GitHub · Figma · Notion · Jira · Slack · Claude · Codex</b> — 디자이너·백엔드 개발자와 WeBand를 함께 만들었습니다.</dd></div>
           </dl>
         </div>
         <div class="about-col reveal">
           <h3>협업 · 리더십</h3>
           <ul class="plain">
-            <li><b>교내 멘토링 7회</b> — 3중 멘토링 59팀 중 4등, 우수 멘토 선정</li>
-            <li><b>클라이밍 동아리 Hands On Top! 창립</b> — 70명 규모 운영, 교내 지원 프로그램 100여 팀 중 6팀 선정</li>
-            <li><b>자라섬 재즈 페스티벌 자원봉사</b> — 해외 아티스트 영어 통역·현장 운영</li>
-            <li><b>중국 톈진 국제학교 4년</b> — 영어 수업, 다문화 환경 협업</li>
+            <li><b>교내 멘토링 7회</b>. 3중 멘토링에서 59팀 중 4등으로 우수 멘토에 선정됐습니다</li>
+            <li><b>클라이밍 동아리 Hands On Top! 창립</b>. 70명 규모로 운영 중이고, 교내 지원 프로그램에서 100여 팀 중 6팀에 선정됐습니다</li>
+            <li><b>자라섬 재즈 페스티벌 자원봉사</b>. 해외 아티스트 영어 통역과 현장 운영을 맡았습니다</li>
+            <li><b>중국 톈진 국제학교 4년</b>. 영어로 수업을 듣고 다문화 환경에서 협업했습니다</li>
           </ul>
           <h3 style="margin-top:3rem">Awards</h3>
           <table class="awards">
