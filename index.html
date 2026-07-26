@@ -161,7 +161,12 @@ h3{font-size:clamp(1.35rem,1.2rem + .8vw,1.8rem);font-weight:700;letter-spacing:
 .case-body>p+p{margin-top:1.1rem}
 .decisions{max-width:58ch}
 .case-lede{max-width:52ch}
-.case-body .lead-in{font-weight:700;color:var(--fg)}
+.case-body .lead-in{
+  display:block;font-size:.8rem;font-weight:700;letter-spacing:.04em;
+  line-height:1.4;color:var(--accent);margin-bottom:.45rem;
+}
+.case-body>p:has(.lead-in){margin-top:2.1rem}
+.case-body>p:has(.lead-in):first-child{margin-top:0}
 .case-figure{margin-top:1rem;text-align:right}
 .big-num{
   font-family:var(--mono);font-variant-numeric:tabular-nums;
@@ -337,8 +342,8 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
         <p class="case-lede">약 70개 사이트에 흩어진 교내 공지를 한곳에서 — 수집·검색·질의응답까지 혼자 만들어, 교내 구성원이 활발히 사용 중인 서비스.</p>
 
         <div class="case-body">
-          <p><span class="lead-in">문제.</span> 한국항공대의 공지는 학과·부서별로 약 70개 웹사이트에 흩어져 있고, 매년 2,000건 넘게 올라옵니다. 장학금·행사 공지를 놓치는 일이 잦아, 전부 모아서 한곳에서 찾을 수 있게 만들었습니다.</p>
-          <p><span class="lead-in">구현.</span> Python 크롤러가 70개 사이트를 수집해 FastAPI·SQLite에 적재하고, Next.js에서 출처·카테고리로 탐색합니다. 질문하면 관련 공지를 근거로 답하는 RAG 챗봇을 붙였고, AWS Lightsail에 Docker로 배포해 운영하고 있습니다.</p>
+          <p><span class="lead-in">문제</span>한국항공대의 공지는 학과·부서별로 약 70개 웹사이트에 흩어져 있고, 매년 2,000건 넘게 올라옵니다. 장학금·행사 공지를 놓치는 일이 잦아, 전부 모아서 한곳에서 찾을 수 있게 만들었습니다.</p>
+          <p><span class="lead-in">구현</span>Python 크롤러가 70개 사이트를 수집해 FastAPI·SQLite에 적재하고, Next.js에서 출처·카테고리로 탐색합니다. 질문하면 관련 공지를 근거로 답하는 RAG 챗봇을 붙였고, AWS Lightsail에 Docker로 배포해 운영하고 있습니다.</p>
 
           <figure class="shot-wide shot-hero reveal" style="margin-top:2.25rem">
             <img src="img/notice-hub-main.webp" width="1400" height="812" loading="lazy" decoding="async" alt="KAU Notice Hub 서비스 화면 — 왼쪽은 대상자·중분류로 좁혀 보는 공지 탐색 목록(총 2,455건), 오른쪽은 진행 중인 공모전을 묻는 질문에 근거 공지를 바탕으로 답한 AI 챗봇 대화">
@@ -353,14 +358,14 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
             <li><span class="node"><b>RAGAS</b><span>answer eval</span></span></li>
           </ol>
 
-          <p style="margin-top:2rem"><span class="lead-in">설계 결정과 운영.</span> 만들고 끝이 아니라, 운영하며 생긴 문제를 계측으로 확인하고 고쳤습니다.</p>
+          <p><span class="lead-in">설계 결정과 운영</span>만들고 끝이 아니라, 운영하며 생긴 문제를 계측으로 확인하고 고쳤습니다.</p>
           <ul class="decisions">
             <li>키워드 기반 RAG의 한계를 확인하고 <b>LLM 키워드 선택 → 문서 필터링 → reranking</b> 구조로 재설계했습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/180" target="_blank" rel="noopener">글: RAG 고찰</a></li>
             <li>"좋아진 것 같다"로 끝내지 않기 위해 <b>RAGAS 평가 파이프라인</b>을 만들어 근거 충실성·관련성·정확성을 수치로 봅니다. <a class="ref ext" href="https://qktjwl123.tistory.com/181" target="_blank" rel="noopener">글: RAG 평가 도입</a></li>
             <li>공지 데이터를 메모리에 전부 올리던 초기 구조에서 <b>OOM이 발생</b> — dmesg로 원인을 확인하고 SQLite 기반으로 바꾼 뒤 부하 테스트로 검증했습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/179" target="_blank" rel="noopener">글: 인프라 점검</a></li>
             <li>공개 서비스의 비용·어뷰징 리스크에 대비해 <b>rate limit·요청 크기·출력 토큰 상한</b>을 걸고, Vercel Analytics로 사용 흐름을 보며 개선 방향을 정합니다. <a class="ref ext" href="https://qktjwl123.tistory.com/182" target="_blank" rel="noopener">글: 운영 리스크</a> <a class="ref ext" href="https://qktjwl123.tistory.com/186" target="_blank" rel="noopener">글: 모니터링</a></li>
           </ul>
-          <p style="margin-top:1.5rem"><span class="lead-in">현재.</span> 교내 구성원이 활발히 사용하고 있습니다 — 최근 30일 방문자 782명, 페이지뷰 2,019회(Vercel Analytics, 2026.07). 유입 대부분이 교내 커뮤니티(에브리타임)를 통해 들어오며, AWS Lightsail 단일 서버에서 운영 중입니다. 위 결정들의 과정은 모두 블로그에 기록해 두었습니다.</p>
+          <p><span class="lead-in">현재</span>교내 구성원이 활발히 사용하고 있습니다 — 최근 30일 방문자 782명, 페이지뷰 2,019회(Vercel Analytics, 2026.07). 유입 대부분이 교내 커뮤니티(에브리타임)를 통해 들어오며, AWS Lightsail 단일 서버에서 운영 중입니다. 위 결정들의 과정은 모두 블로그에 기록해 두었습니다.</p>
 
           <figure class="shot-wide reveal">
             <img src="img/notice-hub-analytics.webp" width="1400" height="902" loading="lazy" decoding="async" alt="Vercel Analytics 대시보드 — 최근 30일 방문자 782명, 페이지뷰 2,019회. 유입 경로 1위는 교내 커뮤니티 everytime.kr 439명">
@@ -395,8 +400,8 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
           </div>
         </div>
         <div class="case-body">
-          <p><span class="lead-in">문제.</span> 팀 일정 조율은 모두의 가능 시간을 모으는 반복 작업인데, 기존 도구는 가입과 서버를 요구합니다. 밴드 합주 일정을 잡던 경험에서 출발해, 링크만 공유하면 되는 도구를 만들었습니다.</p>
-          <p><span class="lead-in">핵심 결정.</span> 첫 버전 <b>WeBand-Light</b>는 백엔드 없이, <b>일정 상태 전체를 URL에 인코딩</b>했습니다. 슬롯 비트셋 인코딩과 구간 기반 압축을 모두 구현해 더 짧은 쪽을 자동 선택하는 하이브리드 구조로, 예시 기준 공유 URL을 30자에서 9자까지 줄였습니다. 슬롯을 하나씩 찍는 입력은 터치 친화적인 구간 선택으로 바꿨습니다.</p>
+          <p><span class="lead-in">문제</span>팀 일정 조율은 모두의 가능 시간을 모으는 반복 작업인데, 기존 도구는 가입과 서버를 요구합니다. 밴드 합주 일정을 잡던 경험에서 출발해, 링크만 공유하면 되는 도구를 만들었습니다.</p>
+          <p><span class="lead-in">핵심 결정</span>첫 버전 <b>WeBand-Light</b>는 백엔드 없이, <b>일정 상태 전체를 URL에 인코딩</b>했습니다. 슬롯 비트셋 인코딩과 구간 기반 압축을 모두 구현해 더 짧은 쪽을 자동 선택하는 하이브리드 구조로, 예시 기준 공유 URL을 30자에서 9자까지 줄였습니다. 슬롯을 하나씩 찍는 입력은 터치 친화적인 구간 선택으로 바꿨습니다.</p>
 
           <figure class="shot-url reveal">
             <img src="img/weband-url.webp" width="1130" height="80" loading="lazy" decoding="async" alt="브라우저 주소창 — we-band.vercel.app/lite/260726/홍길동.~AFAHA_AGBLAGBnAEB_AFCaAK 처럼 일정이 인코딩된 짧은 공유 주소">
@@ -412,7 +417,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
             <figcaption>실제 서비스 화면 — 날짜 선택 · 구간 입력 · URL 공유</figcaption>
           </figure>
 
-          <p style="margin-top:2.25rem"><span class="lead-in">결과.</span> 출시 한 달 만에 사용자 600명, 이후 2025년 3~9월 누적 방문자 1,220명·페이지뷰 6,055회를 기록했습니다(Vercel Analytics). 참여자가 늘며 URL 방식의 한계가 보여, 고정 공유 링크를 쓰는 DB 기반 <b>WeBand-Together</b>로 확장했습니다. 프로젝트 전 과정을 디자이너·백엔드 개발자와 협업하며 기획·UX·프론트엔드 구현을 주도했습니다.</p>
+          <p><span class="lead-in">결과</span>출시 한 달 만에 사용자 600명, 이후 2025년 3~9월 누적 방문자 1,220명·페이지뷰 6,055회를 기록했습니다(Vercel Analytics). 참여자가 늘며 URL 방식의 한계가 보여, 고정 공유 링크를 쓰는 DB 기반 <b>WeBand-Together</b>로 확장했습니다. 프로젝트 전 과정을 디자이너·백엔드 개발자와 협업하며 기획·UX·프론트엔드 구현을 주도했습니다.</p>
 
           <figure class="shot-wide reveal">
             <img src="img/weband-analytics.webp" width="1200" height="1014" loading="lazy" decoding="async" alt="Vercel Analytics 대시보드 — 방문자 1,220명, 페이지뷰 6,055회, 2025년 3월부터 9월까지의 방문자 추이 그래프">
@@ -447,13 +452,13 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
         <h3>Dacon — AI 코딩 에이전트 행동 예측</h3>
         <p class="case-lede">에이전트의 세션 로그로 다음 행동 14클래스를 예측 — Baseline 0.43에서 0.7867까지, 예선 상위 10%. 실험 운영은 17개 역할로 나눈 AI 에이전트 하네스를 직접 설계해 맡겼습니다.</p>
         <div class="case-body">
-          <p><span class="lead-in">문제 재정의.</span> 같은 요청이라도 파일을 읽었는지, 테스트가 통과했는지에 따라 에이전트의 다음 행동이 달라집니다. 단순 문장 분류가 아니라 <b>대화와 도구 사용으로 누적된 작업 상태를 추론하는 문제</b>로 정의하고, 현재 요청과 과거 행동을 잇는 관계형 피처를 설계했습니다.</p>
+          <p><span class="lead-in">문제 재정의</span>같은 요청이라도 파일을 읽었는지, 테스트가 통과했는지에 따라 에이전트의 다음 행동이 달라집니다. 단순 문장 분류가 아니라 <b>대화와 도구 사용으로 누적된 작업 상태를 추론하는 문제</b>로 정의하고, 현재 요청과 과거 행동을 잇는 관계형 피처를 설계했습니다.</p>
           <ul class="decisions">
             <li>고전 ML(TF-IDF → HGB·LR·ComplementNB)과 Transformer 3종의 확률 블렌드 앙상블 — 개별 점수보다 <b>오류를 보완하는 조합</b>이 성능을 갈랐습니다.</li>
             <li>history 복원 증강에서 <b>시점 정합성·중복 문제를 검증</b>하고, 신뢰 가능한 데이터만 2단계 학습(사전학습 → fine-tuning)에 사용했습니다.</li>
           </ul>
 
-          <p style="margin-top:2.5rem"><span class="lead-in">AI Agent 운영 하네스.</span> 실험 실행은 Claude 에이전트에 맡기고 저는 전략·승인·제출을 맡았습니다. 처음엔 하나의 에이전트에 전략 수립부터 학습·검증·기록까지 다 맡겼는데 단계 누락과 정보 혼선이 반복됐습니다. 원인을 모델의 능력이 아니라 <b>한 에이전트가 지는 책임과 컨텍스트가 너무 넓어진 작업 구조</b>로 보고 다시 설계했습니다.</p>
+          <p><span class="lead-in">AI Agent 운영 하네스</span>실험 실행은 Claude 에이전트에 맡기고 저는 전략·승인·제출을 맡았습니다. 처음엔 하나의 에이전트에 전략 수립부터 학습·검증·기록까지 다 맡겼는데 단계 누락과 정보 혼선이 반복됐습니다. 원인을 모델의 능력이 아니라 <b>한 에이전트가 지는 책임과 컨텍스트가 너무 넓어진 작업 구조</b>로 보고 다시 설계했습니다.</p>
           <ul class="decisions">
             <li><b>역할을 17개 서브에이전트로 분리</b> — 전략 수립 / 데이터·누수 감사 / 학습 설정 검증 / 승인된 작업 실행 / 제출물 검증 / 기록. 각 에이전트에는 프로젝트 전체가 아니라 <b>맡은 역할에 필요한 최소 정보만</b> 넘겼습니다.</li>
             <li><b>자연어 보고 대신 산출물로 검증</b> — 실행에 실제로 적용된 설정을 남기는 <code>effective_config</code>, 코드·데이터 SHA 대조, 제출 ZIP 구조 자동 검사, 5행 end-to-end 추론 테스트.</li>
