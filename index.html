@@ -6,7 +6,7 @@
 <script>
 (function(){var t=null;try{t=localStorage.getItem('theme');}catch(e){}
 if(t!=='light'&&t!=='dark'){try{t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}catch(e){t='light';}}
-document.documentElement.setAttribute('data-theme',t);document.documentElement.classList.add('js');})();
+document.documentElement.setAttribute('data-theme',t);})();
 </script>
 <title>박성진 — 풀스택·AI 개발자</title>
 <meta name="description" content="실사용자가 있는 서비스를 만들고 운영하는 풀스택·AI 개발자 박성진. WeBand 누적 사용자 600명, KAU Notice Hub RAG 서비스 운영, Dacon AI 해커톤 예선 상위 10%, TOPCIT 교내 1위.">
@@ -94,8 +94,7 @@ code{font-family:var(--mono);font-size:.88em;background:color-mix(in oklab, var(
 /* ── header ─────────────────────────────────────────── */
 .site-head{
   position:sticky;top:0;z-index:20;
-  background:color-mix(in oklab, var(--bg) 92%, transparent);
-  backdrop-filter:blur(10px);
+  background:var(--bg);
   border-bottom:1px solid var(--border-soft);
 }
 .head-in{display:flex;align-items:center;gap:1.5rem;height:3.75rem}
@@ -143,7 +142,6 @@ h1 .ul{
 .sec{padding-block:clamp(4rem,3rem + 5vw,7.5rem)}
 .sec + .sec{border-top:1px solid var(--border-soft)}
 .sec-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:clamp(2.25rem,2rem + 2vw,3.5rem)}
-.sec-num{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;color:var(--accent)}
 h2{font-size:clamp(1.6rem,1.3rem + 1.5vw,2.4rem);font-weight:700;letter-spacing:-0.02em;line-height:1.3}
 .sec-desc{margin:-1.5rem 0 3rem;color:var(--fg-3);font-size:.95rem;max-width:52ch}
 h3{font-size:clamp(1.35rem,1.2rem + .8vw,1.8rem);font-weight:700;letter-spacing:-0.02em;line-height:1.35}
@@ -261,13 +259,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
 .foot-links a:hover{color:var(--accent)}
 .colophon{margin-top:3rem;font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;color:var(--fg-3)}
 
-/* ── reveal (js 게이트: js 미실행 시 항상 표시) ── */
-.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1)}
-.js .reveal.on{opacity:1;transform:none}
-.js [data-stagger]>li{opacity:0;transform:translateY(14px);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1)}
-.js .reveal.on[data-stagger]>li,.js .reveal.on [data-stagger]>li{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){
-  .js .reveal,.js [data-stagger]>li{opacity:1;transform:none;transition:none}
   .lk,.ext::after,.rows .row{transition:none}
 }
 
@@ -334,10 +326,10 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
   <!-- ── 01 projects ── -->
   <section class="sec" id="projects">
     <div class="shell">
-      <div class="sec-head reveal"><span class="sec-num">01</span><h2>Projects</h2></div>
+      <div class="sec-head"><h2>Projects</h2></div>
 
       <!-- KAU Notice Hub -->
-      <article class="case reveal">
+      <article class="case">
         <p class="meta"><span>2026.04 —</span><span class="on">Live</span><span>Next.js</span><span>FastAPI</span><span>SQLite</span><span>RAG</span></p>
         <h3>KAU Notice Hub</h3>
         <p class="case-lede">약 70개 사이트에 흩어진 교내 공지를 한곳에 모았습니다. 수집부터 검색, 질의응답까지 혼자 만들었고 지금 교내 구성원이 쓰고 있습니다.</p>
@@ -346,7 +338,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
           <p><span class="lead-in">문제</span>한국항공대의 공지는 학과·부서별로 약 70개 웹사이트에 흩어져 있고, 매년 2,000건 넘게 올라옵니다. 장학금·행사 공지를 놓치는 일이 잦아, 전부 모아서 한곳에서 찾을 수 있게 만들었습니다.</p>
           <p><span class="lead-in">구현</span>Python 크롤러가 70개 사이트를 수집해 FastAPI·SQLite에 적재하고, Next.js에서 출처·카테고리로 탐색합니다. 질문하면 관련 공지를 근거로 답하는 RAG 챗봇을 붙였고, AWS Lightsail에 Docker로 배포해 운영하고 있습니다.</p>
 
-          <figure class="shot-wide shot-hero reveal" style="margin-top:2.25rem">
+          <figure class="shot-wide shot-hero" style="margin-top:2.25rem">
             <img src="img/notice-hub-main.webp" width="1400" height="812" loading="lazy" decoding="async" alt="KAU Notice Hub 서비스 화면 — 왼쪽은 대상자·중분류로 좁혀 보는 공지 탐색 목록(총 2,455건), 오른쪽은 진행 중인 공모전을 묻는 질문에 근거 공지를 바탕으로 답한 AI 챗봇 대화">
             <figcaption>실제 서비스 화면 (공지 탐색 · AI 챗봇)</figcaption>
           </figure>
@@ -368,7 +360,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
           </ul>
           <p><span class="lead-in">현재</span>교내 구성원이 활발히 사용하고 있습니다. 최근 30일 방문자 782명, 페이지뷰 2,019회(Vercel Analytics, 2026.07). 유입 대부분이 교내 커뮤니티(에브리타임)를 통해 들어오며, AWS Lightsail 단일 서버에서 운영 중입니다. 위 결정들의 과정은 모두 블로그에 기록해 두었습니다.</p>
 
-          <figure class="shot-wide reveal">
+          <figure class="shot-wide">
             <img src="img/notice-hub-analytics.webp" width="1400" height="902" loading="lazy" decoding="async" alt="Vercel Analytics 대시보드 — 최근 30일 방문자 782명, 페이지뷰 2,019회. 유입 경로 1위는 교내 커뮤니티 everytime.kr 439명">
             <figcaption>Vercel Analytics, 최근 30일 (유입 1위 everytime.kr)</figcaption>
           </figure>
@@ -388,7 +380,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
       </article>
 
       <!-- WeBand -->
-      <article class="case reveal">
+      <article class="case">
         <p class="meta"><span>2025.03 — 2026.07</span><span>React</span><span>TypeScript</span></p>
         <div class="case-grid">
           <div>
@@ -404,12 +396,12 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
           <p><span class="lead-in">문제</span>팀 일정 조율은 모두의 가능 시간을 모으는 반복 작업인데, 기존 도구는 가입과 서버를 요구합니다. 밴드 합주 일정을 잡던 경험에서 출발해, 링크만 공유하면 되는 도구를 만들었습니다.</p>
           <p><span class="lead-in">핵심 결정</span>첫 버전 <b>WeBand-Light</b>는 백엔드 없이, <b>일정 상태 전체를 URL에 인코딩</b>했습니다. 슬롯 비트셋 인코딩과 구간 기반 압축을 모두 구현해 더 짧은 쪽을 자동 선택하는 하이브리드 구조로, 예시 기준 공유 URL을 30자에서 9자까지 줄였습니다. 슬롯을 하나씩 찍는 입력은 터치 친화적인 구간 선택으로 바꿨습니다.</p>
 
-          <figure class="shot-url reveal">
+          <figure class="shot-url">
             <img src="img/weband-url.webp" width="1130" height="80" loading="lazy" decoding="async" alt="브라우저 주소창 — we-band.vercel.app/lite/260726/홍길동.~AFAHA_AGBLAGBnAEB_AFCaAK 처럼 일정이 인코딩된 짧은 공유 주소">
             <figcaption>서버 없이 일정 전체가 이 주소 안에 담깁니다</figcaption>
           </figure>
 
-          <figure class="shots-fig reveal">
+          <figure class="shots-fig">
             <div class="shots">
               <img src="img/weband-start.webp" width="560" height="1213" loading="lazy" decoding="async" alt="WeBand Light 시작 화면 — 약속을 잡을 기준 날짜를 선택하는 화면">
               <img src="img/weband-input.webp" width="560" height="1213" loading="lazy" decoding="async" alt="주간 시간표에서 가능한 시간대를 구간으로 선택해 입력한 화면">
@@ -420,7 +412,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
 
           <p><span class="lead-in">결과</span>출시 한 달 만에 사용자 600명, 이후 2025년 3~9월 누적 방문자 1,220명·페이지뷰 6,055회를 기록했습니다(Vercel Analytics). 참여자가 늘며 URL 방식의 한계가 보여, 고정 공유 링크를 쓰는 DB 기반 <b>WeBand-Together</b>로 확장했습니다. 프로젝트 전 과정을 디자이너·백엔드 개발자와 협업하며 기획·UX·프론트엔드 구현을 주도했습니다.</p>
 
-          <figure class="shot-wide reveal">
+          <figure class="shot-wide">
             <img src="img/weband-analytics.webp" width="1200" height="1014" loading="lazy" decoding="async" alt="Vercel Analytics 대시보드 — 방문자 1,220명, 페이지뷰 6,055회, 2025년 3월부터 9월까지의 방문자 추이 그래프">
             <figcaption>Vercel Analytics, 2025.03 – 09</figcaption>
           </figure>
@@ -432,9 +424,9 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
       </article>
 
       <!-- archive -->
-      <div class="archive reveal">
+      <div class="archive">
         <p class="archive-head">More Projects</p>
-        <ul class="rows" data-stagger>
+        <ul class="rows">
           <li><span class="row"><span class="y">2026</span><a class="t ext" href="https://github.com/Jinpop/RosterCrawler" target="_blank" rel="noopener">RosterCrawler</a><span class="d">교내 근로 업무(안전교육 관리) 자동화. 좌표 기반 리포트 텍스트를 표로 복원했고, 저장 단위를 바꿔 수집 성능을 높였습니다</span></span></li>
           <li><span class="row"><span class="y">2026</span><a class="t ext" href="https://github.com/Jinpop/NoDupDownload" target="_blank" rel="noopener">NoDupDownload</a><span class="d">파일명·출처 URL로 중복 다운로드를 감지하는 Chrome 확장</span></span></li>
           <li><span class="row"><span class="y">2026</span><a class="t ext" href="https://github.com/Jinpop/Media-Model-Lab" target="_blank" rel="noopener">Media Model Lab</a><span class="d">OpenAI·Replicate 미디어 생성 모델을 한곳에서 실험·비교하는 플레이그라운드</span></span></li>
@@ -446,9 +438,9 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
   <!-- ── 02 ai ── -->
   <section class="sec" id="ai">
     <div class="shell">
-      <div class="sec-head reveal"><span class="sec-num">02</span><h2>AI &amp; Competitions</h2></div>
+      <div class="sec-head"><h2>AI &amp; Competitions</h2></div>
 
-      <article class="case reveal" style="padding-top:0">
+      <article class="case" style="padding-top:0">
         <p class="meta"><span>2026.07</span><span>Solo</span><span>Macro-F1</span><span>Multi-agent</span></p>
         <h3>Dacon — AI 코딩 에이전트 행동 예측</h3>
         <p class="case-lede">에이전트의 세션 로그로 다음 행동 14클래스를 예측하는 대회입니다. Baseline 0.43에서 0.7867까지 올려 예선 상위 10%를 기록했고, 실험 운영은 17개 역할로 나눈 AI 에이전트 하네스를 직접 설계해 맡겼습니다.</p>
@@ -481,7 +473,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
         </div>
       </article>
 
-      <div class="archive reveal">
+      <div class="archive">
         <p class="archive-head">Also</p>
         <ul class="rows">
           <li><span class="row"><span class="y">2026</span><a class="t ext" href="https://github.com/Jinpop/LGAimer-8th-LLM-Quantization" target="_blank" rel="noopener">LG Aimers 8기 — LLM 경량화 해커톤</a><span class="d">1,537명 참가 · 4인 팀 팀장 · EXAONE-4.0-1.2B GPTQ W4A16 양자화를 직접 수행해 팀 최종 모델로 제출, 628팀 중 185위(상위 30%)</span></span></li>
@@ -492,9 +484,9 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
   <!-- ── 03 about ── -->
   <section class="sec" id="about">
     <div class="shell">
-      <div class="sec-head reveal"><span class="sec-num">03</span><h2>About</h2></div>
+      <div class="sec-head"><h2>About</h2></div>
       <div class="about-grid">
-        <div class="about-col reveal">
+        <div class="about-col">
           <p class="prose" style="color:var(--fg-2)">만들고 배포하는 데서 멈추지 않고, 로그와 지표를 보며 서비스를 고쳐 나가는 일을 좋아합니다. AI를 도구로 쓰는 것을 넘어 그 행동을 데이터로 분석해 봤고, 여러 에이전트가 나눠 일하는 실험 구조를 직접 설계해 운영해 봤습니다. AI가 들어간 제품을 처음부터 끝까지 만들어 운영합니다.</p>
           <p class="prose" style="color:var(--fg-2);margin-top:1.1rem">부딪힌 문제는 기록으로 남깁니다. 위 프로젝트의 설계 결정과 트러블슈팅은 대부분 <a class="lk ext" href="https://qktjwl123.tistory.com/" target="_blank" rel="noopener">기술 블로그</a>에 글로 남겼고, 2024년 3월부터 153편을 썼습니다.</p>
           <h3 style="margin-top:3rem">Skills</h3>
@@ -505,7 +497,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
             <div><dt>협업 · 도구</dt><dd><b>Git/GitHub · Figma · Notion · Jira · Slack · Claude · Codex</b> — 디자이너·백엔드 개발자와 WeBand를 함께 만들었습니다.</dd></div>
           </dl>
         </div>
-        <div class="about-col reveal">
+        <div class="about-col">
           <h3>협업 · 리더십</h3>
           <ul class="plain">
             <li><b>교내 멘토링 7회</b>. 3중 멘토링에서 59팀 중 4등으로 우수 멘토에 선정됐습니다</li>
@@ -558,21 +550,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
     syncMeta();
   });
 
-  /* stagger delays (그룹 단위 리셋) */
-  document.querySelectorAll('[data-stagger]').forEach(function(g){
-    g.querySelectorAll('li').forEach(function(el,i){el.style.transitionDelay=(i*0.07)+'s';});
-  });
 
-  /* reveal */
-  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(!reduce&&'IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(es){
-      es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});
-    },{threshold:.08,rootMargin:'0px 0px -40px 0px'});
-    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
-  }else{
-    document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('on');});
-  }
 
   /* scrollspy — 뷰포트 중앙 띠 */
   var links=document.querySelectorAll('.site-head nav a');
