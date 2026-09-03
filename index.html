@@ -9,10 +9,10 @@ if(t!=='light'&&t!=='dark'){try{t=matchMedia('(prefers-color-scheme: dark)').mat
 document.documentElement.setAttribute('data-theme',t);})();
 </script>
 <title>박성진 — 풀스택·AI 개발자</title>
-<meta name="description" content="실사용자가 있는 서비스를 만들고 운영하는 풀스택·AI 개발자 박성진. WeBand 누적 사용자 600명, KAU Notice Hub RAG 서비스 운영, Dacon AI 해커톤 예선 상위 10%, TOPCIT 교내 1위.">
+<meta name="description" content="실사용자가 있는 서비스를 만들고 운영하는 풀스택·AI 개발자 박성진. WeBand 누적 사용자 600명, KAU Notice Hub RAG 서비스 운영, LG Aimers 9기 1,082팀 중 49위, Dacon AI 해커톤 예선 상위 10%.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="박성진 — 풀스택·AI 개발자">
-<meta property="og:description" content="실사용자 600명 서비스 운영 · RAG 서비스 운영 중 · Dacon AI 해커톤 상위 10% · TOPCIT 교내 1위">
+<meta property="og:description" content="실사용자 600명 서비스 운영 · RAG 서비스 운영 중 · LG Aimers 9기 상위 4.5% · Dacon AI 해커톤 상위 10%">
 <meta property="og:url" content="https://jinpop.github.io/">
 <meta property="og:image" content="https://jinpop.github.io/og.png">
 <meta property="og:locale" content="ko_KR">
@@ -313,7 +313,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
     <ul class="stats" role="list">
       <li><b class="num">600<em>명</em></b><span class="lab">WeBand 출시 첫 달 사용자<br>누적 1,220명, Vercel Analytics</span></li>
       <li><b class="num">월 <em>780+</em></b><span class="lab">교내 공지 서비스 방문자<br>단독 개발·운영 중</span></li>
-      <li><b class="num">상위 <em>10%</em></b><span class="lab">Dacon AI Agent 행동 예측<br>해커톤 예선</span></li>
+      <li><b class="num">상위 <em>4.5%</em></b><span class="lab">LG Aimers 9기<br>1,082팀 중 49위</span></li>
       <li><b class="num">교내 <em>1위</em></b><span class="lab">TOPCIT 2026<br>Level 4</span></li>
     </ul>
     <p class="hero-links">
@@ -440,6 +440,36 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
       <div class="sec-head"><h2>AI &amp; Competitions</h2></div>
 
       <article class="case" style="padding-top:0">
+        <p class="meta"><span>2026.08</span><span>Team of 3</span><span>Brier Skill Score</span><span>KBO TrackMan</span></p>
+        <h3>LG Aimers 9기 — 야구 투구 제구 성공 확률 예측</h3>
+        <p class="case-lede">투수가 던진 공이 의도한 코스로 갈 확률을 예측하는 대회입니다. 1,082팀 중 49위(상위 4.53%)로 마쳤습니다.</p>
+        <div class="case-body">
+          <p><span class="lead-in">지표를 먼저 해석했습니다</span>Brier Score는 누가 더 잘 맞히는지(순위)가 아니라 <b>예측 확률이 실제 빈도와 얼마나 맞는지(보정)</b>를 채점합니다. 실제로 모델들의 판별력(AUC)은 0.53 수준이었고, 점수 차이의 대부분이 보정에서 나온다는 것을 초기에 측정으로 확인했습니다. 그래서 "더 강한 모델 찾기"가 아니라 <b>"여러 모델을 어떻게 결합하고 확률을 어떻게 보정할 것인가"</b>에 4주를 썼습니다.</p>
+
+          <p><span class="lead-in">접근</span></p>
+          <ul class="decisions">
+            <li>라벨이 <code>성공 + 반대방향 + 한복판 ≈ 0.90</code>으로 분해된다는 관찰에서 출발해, <b>실패 유형별로 부스터를 따로 학습하고 그 출력을 스태커가 다시 결합</b>하는 구조를 설계했습니다(CatBoost, 63피처).</li>
+            <li>팀에서 함께 운용한 LightGBM·신경망·EBM 등을 더해 총 5개 모델을 로짓 공간에서 가중 결합하고, 다항식 보정과 상황별 오프셋 보정을 얹었습니다.</li>
+            <li>평가 대상이 2025 시즌이라 <b>모든 누적 통계가 해당 시즌 이전만 참조하도록</b> 만들었습니다. 랜덤 K-Fold 대신 "2023년까지 학습 → 2024년 검증"이라는 시간 분할 하나를 비교 기준으로 고정했습니다.</li>
+            <li>하루 5회 제출 제한이라 <b>제출 하나를 측정 1회로 취급</b>했습니다. 리더보드 점수에서 보정 상수의 최적값을 역산하되, 추정에 계통 오차가 있는 것을 확인한 뒤로는 오차가 2배여도 손해가 안 나는 보수적 지점에 섰습니다. 실패한 제출도 직전과의 차이를 계산해 원인을 특정하는 식으로 정보를 회수했습니다.</li>
+          </ul>
+
+          <p><span class="lead-in">담당</span>3인 팀에서 <b>모델 구조 설계와 학습·앙상블·검증·제출 전략</b>을 맡았습니다. 야구 도메인 지식이 있는 팀원이 피처 발굴을 담당해, 도메인에서 나온 가설을 제가 모델 구조와 검증 설계로 옮기는 분업이었습니다. 팀원이 제안한 "투수의 최근 한복판 투구 비율"이 기존 피처와 통계적으로 겹치지 않는다는 것을 직교성 분석으로 확인해 채택했고, 그 하나로 리더보드 +2.47점을 얻었습니다.</p>
+
+          <p>마지막 날 아침 3시간·5회 제출로 +6.82점을 올렸는데, 그중 2회는 실패한 제출이었고 <b>그 실패에서 역산한 정보로 나머지 3회를 모두 성공</b>시켰습니다. 배포 모델은 학습 코드로 재학습했을 때 트리 잎값까지 동일하게 재현되는 것을 확인했습니다.</p>
+
+          <dl class="kmetrics">
+            <div><dt>1,082팀 중</dt><dd>49위</dd></div>
+            <div><dt>백분위</dt><dd>상위 4.53%</dd></div>
+            <div><dt>실험 / 제출</dt><dd>130 / 140</dd></div>
+          </dl>
+          <p class="case-links">
+            <a class="ext" href="https://dacon.io/competitions/official/236743/leaderboard" target="_blank" rel="noopener">리더보드</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="case">
         <p class="meta"><span>2026.07</span><span>Solo</span><span>Macro-F1</span><span>Multi-agent</span></p>
         <h3>Dacon — AI 코딩 에이전트 행동 예측</h3>
         <p class="case-lede">에이전트의 세션 로그로 다음 행동 14클래스를 예측하는 대회입니다. Baseline 0.43에서 0.7867까지 올려 예선 상위 10%를 기록했고, 실험 운영은 17개 역할로 나눈 AI 에이전트 하네스를 직접 설계해 맡겼습니다.</p>
