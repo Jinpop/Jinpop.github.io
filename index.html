@@ -474,20 +474,14 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
         <h3>Dacon — AI 코딩 에이전트 행동 예측</h3>
         <p class="case-lede">에이전트의 세션 로그로 다음 행동 14클래스를 예측하는 대회입니다. Baseline 0.43에서 0.7867까지 올려 예선 상위 10%를 기록했고, 실험 운영은 17개 역할로 나눈 AI 에이전트 하네스를 직접 설계해 맡겼습니다.</p>
         <div class="case-body">
-          <p><span class="lead-in">문제 재정의</span>같은 요청이라도 파일을 읽었는지, 테스트가 통과했는지에 따라 에이전트의 다음 행동이 달라집니다. 단순 문장 분류가 아니라 <b>대화와 도구 사용으로 누적된 작업 상태를 추론하는 문제</b>로 정의하고, 현재 요청과 과거 행동을 잇는 관계형 피처를 설계했습니다.</p>
-          <ul class="decisions">
-            <li>고전 ML(TF-IDF → HGB·LR·ComplementNB)과 Transformer 3종을 확률 블렌드로 앙상블했습니다. 개별 점수보다 <b>오류를 보완하는 조합</b>이 성능을 갈랐습니다.</li>
-            <li>history 복원 증강에서 <b>시점 정합성·중복 문제를 검증</b>하고, 신뢰 가능한 데이터만 2단계 학습(사전학습 → fine-tuning)에 사용했습니다.</li>
-          </ul>
+          <p><span class="lead-in">문제 재정의</span>같은 요청이라도 파일을 읽었는지, 테스트가 통과했는지에 따라 다음 행동이 달라집니다. 단순 문장 분류가 아니라 <b>대화와 도구 사용으로 누적된 작업 상태를 추론하는 문제</b>로 정의하고, 현재 요청과 과거 행동을 잇는 관계형 피처를 설계했습니다. 고전 ML과 Transformer 3종을 확률 블렌드로 앙상블했는데, 개별 점수보다 <b>오류를 보완하는 조합</b>이 성능을 갈랐습니다.</p>
 
-          <p><span class="lead-in">AI Agent 운영 하네스</span>실험 실행은 Claude 에이전트에 맡기고 저는 전략·승인·제출을 맡았습니다. 처음엔 하나의 에이전트에 전략 수립부터 학습·검증·기록까지 다 맡겼는데 단계 누락과 정보 혼선이 반복됐습니다. 원인을 모델의 능력이 아니라 <b>한 에이전트가 지는 책임과 컨텍스트가 너무 넓어진 작업 구조</b>로 보고 다시 설계했습니다.</p>
+          <p><span class="lead-in">AI Agent 운영 하네스</span>실험 실행은 Claude 에이전트에 맡기고 저는 전략·승인·제출을 맡았습니다. 하나의 에이전트에 전부 맡기자 단계 누락과 정보 혼선이 반복돼, 원인을 모델의 능력이 아니라 <b>한 에이전트가 지는 책임과 컨텍스트가 너무 넓어진 작업 구조</b>로 보고 다시 설계했습니다.</p>
           <ul class="decisions">
-            <li><b>역할을 17개 서브에이전트로 분리</b>했습니다. 전략 수립, 데이터·누수 감사, 학습 설정 검증, 승인된 작업 실행, 제출물 검증, 기록으로 나눴고, 각 에이전트에는 프로젝트 전체가 아니라 <b>맡은 역할에 필요한 최소 정보만</b> 넘겼습니다.</li>
-            <li><b>자연어 보고 대신 산출물로 검증</b>했습니다. 실행에 실제로 적용된 설정을 남기는 <code>effective_config</code>, 코드·데이터 SHA 대조, 제출 ZIP 구조 자동 검사, 5행 end-to-end 추론 테스트를 붙였습니다.</li>
-            <li><b>검증 통과와 실행 권한을 분리</b>했습니다. 감사 통과는 '진행 자격'일 뿐이고, 실제 실행 권한은 사전 승인된 캠페인 범위 안에서만 나오도록 상태기계로 고정했습니다.</li>
-            <li>사고가 날 때마다 규칙으로 편입하는 루프로 운영했고, 실제로 <b>학습 시작 전 결함을 2회 사전 차단</b>했습니다. 다른 모델(Codex)로 교차 감사한 건은 내부 검증을 4회 통과한 결함을 잡아내기도 했습니다.</li>
+            <li><b>역할을 17개 서브에이전트로 분리</b>하고(전략 수립 / 데이터·누수 감사 / 학습 설정 검증 / 실행 / 제출물 검증 / 기록), 각 에이전트에는 <b>맡은 역할에 필요한 최소 정보만</b> 넘겼습니다.</li>
+            <li><b>자연어 보고 대신 산출물로 검증</b>했습니다. 실제 적용된 설정을 남기는 <code>effective_config</code>, 코드·데이터 SHA 대조, 제출물 자동 검사를 붙였고 실제로 학습 시작 전 결함을 2회 사전 차단했습니다.</li>
           </ul>
-          <p>모든 실수가 사라지진 않았지만 <b>한 에이전트의 실수가 전체 과정을 그대로 통과하기 어려운 구조</b>가 됐고, 문제가 생겼을 때 어느 단계에서 어긋났는지 찾기 쉬워졌습니다. AI Agent의 성능은 모델만이 아니라 역할·컨텍스트·권한·검증 구조를 어떻게 설계하느냐에도 달려 있다는 걸 배웠습니다.</p>
+          <p>한 에이전트의 실수가 전체 과정을 그대로 통과하기 어려운 구조가 됐습니다. AI Agent의 성능은 모델만이 아니라 역할·컨텍스트·권한·검증 구조를 어떻게 설계하느냐에도 달려 있다는 것을 배웠습니다.</p>
           <dl class="kmetrics">
             <div><dt>Baseline</dt><dd>0.43</dd></div>
             <div><dt>최종 Macro-F1</dt><dd>0.7867</dd></div>
@@ -502,12 +496,28 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
         </div>
       </article>
 
-      <div class="archive">
-        <p class="archive-head">Also</p>
-        <ul class="rows">
-          <li><span class="row"><span class="y">2026</span><a class="t ext" href="https://github.com/Jinpop/LGAimer-8th-LLM-Quantization" target="_blank" rel="noopener">LG Aimers 8기 — LLM 경량화 해커톤</a><span class="d">1,537명 참가 · 4인 팀 팀장 · EXAONE-4.0-1.2B GPTQ W4A16 양자화를 직접 수행해 팀 최종 모델로 제출, 628팀 중 185위(상위 30%)</span></span></li>
-        </ul>
-      </div>
+      <article class="case">
+        <p class="meta"><span>2026.01 — 02</span><span>Team of 4</span><span>Lead</span><span>GPTQ W4A16</span></p>
+        <h3>LG Aimers 8기 — LLM 경량화</h3>
+        <p class="case-lede">EXAONE-4.0-1.2B를 4bit로 양자화해 성능과 속도를 함께 겨루는 대회입니다. 1,537명이 참가했고 628팀 중 185위로 마쳤습니다.</p>
+        <div class="case-body">
+          <p><span class="lead-in">과제</span>점수가 <code>성능 50% + 속도 50%</code>로 매겨져서, 얼마나 줄이느냐가 아니라 <b>어디까지 줄여도 성능이 버티는가</b>를 찾는 문제였습니다. GPTQ 계열(llmcompressor)로 가중치 4bit·활성 16bit 양자화를 적용하되, 어텐션과 MLP의 projection 레이어만 대상으로 하고 임베딩과 출력층은 제외했습니다. pack-quantized로 저장해 제출 용량도 줄였습니다.</p>
+
+          <p><span class="lead-in">캘리브레이션 분포를 바꿔가며 비교했습니다</span>GPTQ는 스케일을 추정할 때 쓰는 표본의 분포가 결과를 좌우합니다. 그래서 <b>캘리브레이션 데이터 구성을 다섯 가지로 바꿔가며 비교</b>했습니다. 기본 혼합, 수학 문제(GSM8K) 추가, 한국어 지식 비중 강화, 다국어 벤치마크 추가, 표본 수 2배 — 채점 데이터 분포에 가까운 구성을 찾는 것이 목표였습니다. LoRA로 미세조정한 뒤 병합해 양자화하는 경로도 만들었지만, 남은 기간 안에 검증까지 끝내지는 못했습니다.</p>
+
+          <p><span class="lead-in">여기서 처음 겪은 것</span>같은 제출물인데도 <b>점수가 0.1점 이상 흔들리는 것</b>을 관측했습니다. LLM 출력의 불확정성과 채점 서버 부하가 원인이었습니다. 모델을 개선하는 일과 별개로 <b>측정 자체를 믿을 수 있는지 먼저 따져야 한다</b>는 것을 이 대회에서 처음 겪었습니다.</p>
+
+          <dl class="kmetrics">
+            <div><dt>628팀 중</dt><dd>185위</dd></div>
+            <div><dt>참가</dt><dd>1,537명</dd></div>
+            <div><dt>역할</dt><dd>팀장</dd></div>
+          </dl>
+          <p class="case-links">
+            <a class="ext" href="https://github.com/Jinpop/LGAimer-8th-LLM-Quantization" target="_blank" rel="noopener">GitHub</a>
+            <a class="ext" href="https://dacon.io/competitions/official/236673/leaderboard" target="_blank" rel="noopener">리더보드</a>
+          </p>
+        </div>
+      </article>
     </div>
   </section>
   <!-- ── 03 about ── -->
