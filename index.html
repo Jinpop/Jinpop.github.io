@@ -385,7 +385,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
 
           <figure class="shot-wide shot-hero" style="margin-top:2.25rem">
             <img src="img/notice-hub-main.webp" width="1400" height="812" loading="lazy" decoding="async" alt="KAU Notice Hub 서비스 화면 — 왼쪽은 대상자·중분류로 좁혀 보는 공지 탐색 목록(총 2,455건), 오른쪽은 진행 중인 공모전을 묻는 질문에 근거 공지를 바탕으로 답한 AI 챗봇 대화">
-            <figcaption>실제 서비스 화면 (공지 탐색 · AI 챗봇)</figcaption>
+            <figcaption>실제 서비스 화면 (공지 탐색 · GrepRag 챗봇)</figcaption>
           </figure>
 
           <ol class="flow" aria-label="시스템 구성 흐름" style="margin-top:2.5rem">
@@ -403,15 +403,15 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
             <li>공지 데이터를 메모리에 전부 올리던 초기 구조에서 <b>OOM이 발생</b>했습니다. dmesg로 원인을 확인하고 SQLite 기반으로 바꾼 뒤 부하 테스트로 검증했습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/179" target="_blank" rel="noopener">글: 인프라 점검</a></li>
             <li>공개 서비스의 비용·어뷰징 리스크에 대비해 <b>rate limit·요청 크기·출력 토큰 상한</b>을 걸고, Vercel Analytics로 사용 흐름을 보며 개선 방향을 정합니다. <a class="ref ext" href="https://qktjwl123.tistory.com/182" target="_blank" rel="noopener">글: 운영 리스크</a> <a class="ref ext" href="https://qktjwl123.tistory.com/186" target="_blank" rel="noopener">글: 모니터링</a></li>
           </ul>
-          <p><span class="lead-in">현재</span>교내 구성원이 활발히 사용하고 있습니다. 출시 첫 달 방문자가 1,000명을 넘었습니다(Vercel Analytics). 유입 대부분이 교내 커뮤니티(에브리타임)를 통해 들어오며, AWS Lightsail 단일 서버에서 운영 중입니다. 위 결정들의 과정은 모두 블로그에 기록해 두었습니다.</p>
+          <p><span class="lead-in">현재</span>교내 구성원이 활발히 사용하고 있습니다. 월 방문자가 1,000명을 넘습니다(Vercel Analytics). 유입 대부분이 교내 커뮤니티(에브리타임)를 통해 들어오며, AWS Lightsail 단일 서버에서 운영 중입니다. 위 결정들의 과정은 모두 블로그에 기록해 두었습니다.</p>
 
           <figure class="shot-wide">
             <img src="img/notice-hub-analytics.webp" width="1400" height="902" loading="lazy" decoding="async" alt="Vercel Analytics 대시보드 — 최근 30일 방문자 782명, 페이지뷰 2,019회. 유입 경로 1위는 교내 커뮤니티 everytime.kr 439명">
-            <figcaption>Vercel Analytics, 최근 30일 (유입 1위 everytime.kr)</figcaption>
+            <figcaption>Vercel Analytics — 2026.07 시점 최근 30일 (유입 1위 everytime.kr)</figcaption>
           </figure>
 
           <dl class="kmetrics">
-            <div><dt>첫 달 방문자</dt><dd>1,000+</dd></div>
+            <div><dt>월 방문자</dt><dd>1,000+</dd></div>
             <div><dt>수집 사이트</dt><dd>70</dd></div>
             <div><dt>수집 공지</dt><dd>2,400+</dd></div>
             <div><dt>담당</dt><dd>End-to-End</dd></div>
@@ -459,7 +459,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
 
           <figure class="shot-wide">
             <img src="img/weband-analytics.webp" width="1200" height="1014" loading="lazy" decoding="async" alt="Vercel Analytics 대시보드 — 방문자 1,220명, 페이지뷰 6,055회, 2025년 3월부터 9월까지의 방문자 추이 그래프">
-            <figcaption>Vercel Analytics, 2025.03 – 09</figcaption>
+            <figcaption>Vercel Analytics, 2025.03 — 09</figcaption>
           </figure>
           <p class="case-links">
             <a class="ext" href="https://we-band.vercel.app/lite" target="_blank" rel="noopener">서비스 열어보기</a>
@@ -500,13 +500,13 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
         <p class="case-lede">KBO 트랙맨 기반 학습 데이터(약 137만 행)와 2025 시즌 평가 데이터(약 24.6만 행)를 제공받아, 투수가 던진 공이 의도한 코스로 갈 확률을 예측하는 대회입니다. 2,403명·1,082팀이 참가했고 49위(상위 4.53%)로 마쳤습니다.</p>
         <div class="case-cols">
         <aside class="case-side" aria-label="LG Aimers 9기 리더보드 비교">
-        <div class="cmp"><p class="cmp-title">리더보드 점수 <span>1위 = 100</span></p><ul class="cmp-rows">
+        <div class="cmp"><p class="cmp-title">리더보드 점수 <span>막대 길이는 1위 기준</span></p><ul class="cmp-rows">
           <li class="cmp-row" title="운영진 기준 코드 점수 549.51"><span class="cmp-lab">베이스라인</span><span class="cmp-bar"><span class="cmp-fill" style="--v:44.9"></span><span class="cmp-val">549.5</span></span></li>
           <li class="cmp-row" title="마감 전날 스냅샷 1,053팀 평균"><span class="cmp-lab">전체 평균</span><span class="cmp-bar"><span class="cmp-fill" style="--v:75.1"></span><span class="cmp-val">919.9</span></span></li>
           <li class="cmp-row me" title="49위 / 1,082팀"><span class="cmp-lab">나</span><span class="cmp-bar"><span class="cmp-fill" style="--v:95.3"></span><span class="cmp-val">1,167.7</span></span></li>
           <li class="cmp-row" title="최종 1위"><span class="cmp-lab">1위</span><span class="cmp-bar"><span class="cmp-fill" style="--v:100"></span><span class="cmp-val">1,225.2</span></span></li>
         </ul></div>
-        <div class="cmp"><p class="cmp-title">제출 횟수 <span>상한 140</span></p><ul class="cmp-rows">
+        <div class="cmp"><p class="cmp-title">제출 횟수 <span>상한 140회</span></p><ul class="cmp-rows">
           <li class="cmp-row" title="마감 전날 스냅샷 1,053팀 평균 36.2회"><span class="cmp-lab">전체 평균</span><span class="cmp-bar"><span class="cmp-fill" style="--v:25.7"></span><span class="cmp-val">36회</span></span></li>
           <li class="cmp-row me" title="4주 · 하루 5회 제한"><span class="cmp-lab">나</span><span class="cmp-bar"><span class="cmp-fill" style="--v:98.6"></span><span class="cmp-val">138회</span></span></li>
         </ul></div>
@@ -543,10 +543,10 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
       <article class="case">
         <p class="meta"><span>2026.07</span><span>Solo</span><span>Macro-F1</span><span>Multi-agent</span></p>
         <h3>Dacon — AI 코딩 에이전트 행동 예측</h3>
-        <p class="case-lede">에이전트의 세션 로그로 다음 행동 14클래스를 예측하는 대회입니다. Baseline 0.43에서 0.7867까지 올려 868명·269팀 중 59위(상위 약 20%)로 마쳤고, 실험 운영은 17개 역할로 나눈 AI 에이전트 하네스를 직접 설계해 맡겼습니다.</p>
+        <p class="case-lede">에이전트의 세션 로그로 다음 행동 14클래스를 예측하는 대회입니다. 베이스라인 0.43에서 0.7867까지 올려 868명·269팀 중 59위(상위 약 20%)로 마쳤고, 실험 운영은 17개 역할로 나눈 AI 에이전트 하네스를 직접 설계해 맡겼습니다.</p>
         <div class="case-cols">
         <aside class="case-side" aria-label="Dacon 에이전트 행동 예측 리더보드 비교">
-        <div class="cmp"><p class="cmp-title">Macro-F1 <span>1위 = 100</span></p><ul class="cmp-rows">
+        <div class="cmp"><p class="cmp-title">Macro-F1 <span>막대 길이는 1위 기준</span></p><ul class="cmp-rows">
           <li class="cmp-row" title="초기 베이스라인 약 0.43"><span class="cmp-lab">베이스라인</span><span class="cmp-bar"><span class="cmp-fill" style="--v:53.8"></span><span class="cmp-val">0.43</span></span></li>
           <li class="cmp-row me" title="59위 / 269팀"><span class="cmp-lab">나</span><span class="cmp-bar"><span class="cmp-fill" style="--v:98.5"></span><span class="cmp-val">0.7867</span></span></li>
           <li class="cmp-row" title="최종 1위"><span class="cmp-lab">1위</span><span class="cmp-bar"><span class="cmp-fill" style="--v:100"></span><span class="cmp-val">0.7988</span></span></li>
@@ -568,7 +568,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
           </ul>
           <p>한 에이전트의 실수가 전체 과정을 그대로 통과하기 어려운 구조가 됐습니다. AI Agent의 성능은 모델만이 아니라 역할·컨텍스트·권한·검증 구조를 어떻게 설계하느냐에도 달려 있다는 것을 배웠습니다.</p>
           <dl class="kmetrics">
-            <div><dt>Baseline</dt><dd>0.43</dd></div>
+            <div><dt>베이스라인</dt><dd>0.43</dd></div>
             <div><dt>최종 Macro-F1</dt><dd>0.7867</dd></div>
             <div><dt>269팀 중</dt><dd>59위</dd></div>
             <div><dt>참가</dt><dd>868명</dd></div>
