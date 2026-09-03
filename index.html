@@ -586,17 +586,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
         <h3>LG Aimers 8기 — LLM Quantization 해커톤</h3>
         <p class="case-lede">EXAONE-4.0-1.2B를 4bit로 양자화해 성능과 속도를 함께 겨루는 대회입니다. 1,537명이 참가했고 628팀 중 185위로 마쳤습니다.</p>
         <div class="case-body">
-          <p><span class="lead-in">과제</span>점수가 <code>성능 50% + 속도 50%</code>로 매겨져서, 얼마나 줄이느냐가 아니라 <b>어디까지 줄여도 성능이 버티는가</b>를 찾는 문제였습니다. GPTQ 계열(llmcompressor)로 가중치 4bit·활성 16bit 양자화를 적용하되, 어텐션과 MLP의 projection 레이어만 대상으로 하고 임베딩과 출력층은 제외했습니다. pack-quantized로 저장해 제출 용량도 줄였습니다.</p>
-
-          <p><span class="lead-in">캘리브레이션 분포를 바꿔가며 비교했습니다</span>GPTQ는 스케일을 추정할 때 쓰는 표본의 분포가 결과를 좌우합니다. 그래서 <b>캘리브레이션 데이터 구성을 다섯 가지로 바꿔가며 비교</b>했습니다. 기본 혼합, 수학 문제(GSM8K) 추가, 한국어 지식 비중 강화, 다국어 벤치마크 추가, 표본 수 2배 — 채점 데이터 분포에 가까운 구성을 찾는 것이 목표였습니다. LoRA로 미세조정한 뒤 병합해 양자화하는 경로도 만들었지만, 남은 기간 안에 검증까지 끝내지는 못했습니다.</p>
-
-          <p><span class="lead-in">여기서 처음 겪은 것</span>같은 제출물인데도 <b>점수가 0.1점 이상 흔들리는 것</b>을 관측했습니다. LLM 출력의 불확정성과 채점 서버 부하가 원인이었습니다. 모델을 개선하는 일과 별개로 <b>측정 자체를 믿을 수 있는지 먼저 따져야 한다</b>는 것을 이 대회에서 처음 겪었습니다.</p>
-
-          <dl class="kmetrics">
-            <div><dt>628팀 중</dt><dd>185위</dd></div>
-            <div><dt>참가</dt><dd>1,537명</dd></div>
-            <div><dt>역할</dt><dd>팀장</dd></div>
-          </dl>
+          <p>점수가 <code>성능 50% + 속도 50%</code>로 매겨져서 "어디까지 줄여도 성능이 버티는가"를 찾는 문제였습니다. GPTQ(llmcompressor)로 W4A16 양자화를 적용하고, 결과를 좌우하는 <b>캘리브레이션 데이터 구성을 다섯 가지로 바꿔가며 비교</b>했습니다. 같은 제출물인데도 점수가 0.1점 이상 흔들리는 것을 관측했고, 모델 개선과 별개로 <b>측정 자체를 믿을 수 있는지 먼저 따져야 한다</b>는 것을 이 대회에서 처음 겪었습니다.</p>
           <p class="case-links">
             <a class="ext" href="https://github.com/Jinpop/LGAimer-8th-LLM-Quantization" target="_blank" rel="noopener">GitHub</a>
             <a class="ext" href="https://dacon.io/competitions/official/236673/leaderboard" target="_blank" rel="noopener">리더보드</a>
