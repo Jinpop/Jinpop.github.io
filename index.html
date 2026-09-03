@@ -126,6 +126,7 @@ h1 .ul{
 }
 .lede{margin-top:1.75rem;max-width:34rem;font-size:1.125rem;color:var(--fg-2)}
 .lede b{color:var(--fg);font-weight:600}
+.nb{white-space:nowrap}
 
 .stats{margin-top:clamp(2.5rem,2rem + 3vw,4.5rem);list-style:none;display:grid;grid-template-columns:repeat(4,auto);justify-content:start;column-gap:clamp(2rem,5vw,4.5rem);row-gap:1.75rem}
 .stats .num{
@@ -331,13 +332,14 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
 }
 </style>
 </head>
-<body id="top">
+<body>
 <a class="skip" href="#main">본문 바로가기</a>
 
 <header class="site-head">
   <div class="shell head-in">
     <a class="brand mono" href="#top" aria-label="맨 위로">PARK SUNGJIN</a>
     <nav aria-label="주요 섹션">
+      <a href="#top">홈</a>
       <a href="#projects">프로젝트</a>
       <a href="#ai">AI·대회</a>
       <a href="#about">소개</a>
@@ -349,10 +351,10 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
 <main id="main">
 
   <!-- ── hero ── -->
-  <section class="hero shell" aria-label="소개">
+  <section class="hero shell" id="top" aria-label="소개">
     <p class="eyebrow">Park Sungjin — Full-stack · AI</p>
     <h1>사용자 문제를<br><span class="ul">제품으로</span> 해결합니다</h1>
-    <p class="lede">AI를 활용해 <b>실사용자가 있는 서비스를 만들고 운영하며</b>, <b>여러 에이전트가 나눠 일하는 구조</b>까지 설계하는 풀스택 개발자 박성진입니다. 한국항공대학교 소프트웨어공학, 2026년 졸업 예정.</p>
+    <p class="lede">AI를 활용해 <b>실사용자가 있는 서비스를 만들고 운영하며</b>, <b>여러 에이전트가 나눠 일하는 구조</b>까지 설계하는 풀스택 개발자 박성진입니다. <span class="nb">한국항공대학교 소프트웨어공학</span>, 2026년 졸업 예정.</p>
     <ul class="stats" role="list">
       <li><b class="num">월 <em>1,000+</em></b><span class="lab">교내 공지 서비스 방문자<br>단독 개발·운영 중</span></li>
       <li><b class="num">상위 <em>4.5%</em></b><span class="lab">LG Aimers 9기<br>1,082팀 중 49위</span></li>
