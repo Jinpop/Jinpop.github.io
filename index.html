@@ -226,8 +226,8 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
 
 /* case two-column: text left, comparison bars right */
 .case-cols{display:grid;grid-template-columns:minmax(0,65ch) minmax(15rem,1fr);gap:2rem clamp(2rem,4vw,4rem);align-items:start;margin-top:2rem}
-.case-cols > .case-body{margin-top:0}
-.case-side{position:sticky;top:5rem;display:grid;gap:1.6rem}
+.case-cols > .case-body{margin-top:0;order:0}
+.case-side{order:1;position:sticky;top:5rem;display:grid;gap:1.6rem}
 .cmp-title{font-size:.8rem;font-weight:700;color:var(--fg-2);margin-bottom:.6rem;display:flex;justify-content:space-between;gap:.75rem}
 .cmp-title span{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;font-weight:400;color:var(--fg-3);text-transform:uppercase}
 .cmp-rows{list-style:none;display:grid;row-gap:.55rem}
