@@ -12,7 +12,7 @@ document.documentElement.setAttribute('data-theme',t);})();
 <meta name="description" content="실사용자가 있는 서비스를 만들고 운영하는 풀스택·AI 개발자 박성진. 교내 공지 통합 서비스 KAU Notice Hub 운영(월 방문 1,000+), LG Aimers 9기 1,082팀 중 49위, TOPCIT 교내 1위.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="박성진 — 풀스택·AI 개발자">
-<meta property="og:description" content="교내 공지 서비스 월 방문 1,000+ 운영 · LG Aimers 9기 상위 약 4.5% · TOPCIT 교내 1위">
+<meta property="og:description" content="교내 공지 서비스 월 방문 1,000+ 운영 · LG Aimers 9기 상위 약 4.5% · TOPCIT 교내 1위">
 <meta property="og:url" content="https://jinpop.github.io/">
 <meta property="og:image" content="https://jinpop.github.io/og.png">
 <meta property="og:locale" content="ko_KR">
@@ -346,7 +346,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
     <nav aria-label="주요 섹션">
       <a href="#top">홈</a>
       <a href="#projects">프로젝트</a>
-      <a href="#ai">AI·대회</a>
+      <a href="#ai">AI⁠·⁠대회</a>
       <a href="#about">소개</a>
     </nav>
     <button id="theme" aria-label="다크 모드 전환">◐</button>
@@ -357,11 +357,11 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
 
   <!-- ── hero ── -->
   <section class="hero shell" id="top" aria-label="소개">
-    <p class="eyebrow">Park Sungjin — Full-stack · AI</p>
+    <p class="eyebrow">Park Sungjin — Full-stack · AI</p>
     <h1>사용자 문제를<br><span class="ul">제품으로</span> 해결합니다</h1>
     <p class="lede">AI를 활용해 <b>실사용자가 있는 서비스를 만들고 운영하며</b>, <b>여러 에이전트가 나눠 일하는 구조</b>까지 설계하는 풀스택 개발자 박성진입니다. <span class="nb">한국항공대학교 소프트웨어공학</span>, 2027년 2월 졸업 예정.</p>
     <ul class="stats" role="list">
-      <li><b class="num">월 <em>1,000+</em></b><span class="lab">교내 공지 서비스 방문자<br>단독 개발·운영 중</span></li>
+      <li><b class="num">월 <em>1,000+</em></b><span class="lab">교내 공지 서비스 방문자<br>단독 개발⁠·⁠운영 중</span></li>
       <li><b class="num">상위 <em>약 4.5%</em></b><span class="lab">LG Aimers 9기<br>1,082팀 중 49위</span></li>
       <li><b class="num">교내 <em>1위</em></b><span class="lab">TOPCIT 2026<br>Level 4</span></li>
       <li><b class="num"><em>2위</em></b><span class="lab">KAUPC 2025<br>알고리즘 경진대회</span></li>
@@ -385,17 +385,17 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
         <p class="case-lede">약 70개 사이트에 흩어진 교내 공지를 한곳에 모았습니다. 수집부터 검색, <b>GrepRag</b> 기반 질의응답까지 혼자 만들었고 지금 교내 구성원이 쓰고 있습니다.</p>
 
         <div class="case-body">
-          <p><span class="lead-in">문제</span>한국항공대의 공지는 학과·부서별로 약 70개 웹사이트에 흩어져 있고, 매년 2,000건 넘게 올라옵니다. 장학금·행사 공지를 놓치는 일이 잦아, 전부 모아서 한곳에서 찾을 수 있게 만들었습니다.</p>
-          <p><span class="lead-in">구현</span>Python 크롤러가 70개 사이트를 수집해 FastAPI·SQLite에 적재하고, Next.js에서 출처·카테고리로 탐색합니다. 질문하면 관련 공지를 근거로 답하는 챗봇은 <b>GrepRag</b>로 만들었습니다. 벡터 임베딩 대신 LLM이 고른 키워드로 공지 본문을 직접 검색(grep)해 후보를 걸러내고 재정렬하는 방식입니다. AWS Lightsail에 Docker로 배포해 운영하고 있습니다.</p>
+          <p><span class="lead-in">문제</span>한국항공대의 공지는 학과⁠·⁠부서별로 약 70개 웹사이트에 흩어져 있고, 매년 2,000건 넘게 올라옵니다. 장학금⁠·⁠행사 공지를 놓치는 일이 잦아, 전부 모아서 한곳에서 찾을 수 있게 만들었습니다.</p>
+          <p><span class="lead-in">구현</span>Python 크롤러가 70개 사이트를 수집해 FastAPI⁠·⁠SQLite에 적재하고, Next.js에서 출처⁠·⁠카테고리로 탐색합니다. 질문하면 관련 공지를 근거로 답하는 챗봇은 <b>GrepRag</b>로 만들었습니다. 벡터 임베딩 대신 LLM이 고른 키워드로 공지 본문을 직접 검색(grep)해 후보를 걸러내고 재정렬하는 방식입니다. AWS Lightsail에 Docker로 배포해 운영하고 있습니다.</p>
 
           <figure class="shot-wide shot-hero" style="margin-top:2.25rem">
             <img src="img/notice-hub-main.webp" width="1400" height="812" loading="lazy" decoding="async" alt="KAU Notice Hub 서비스 화면 — 왼쪽은 대상자·중분류로 좁혀 보는 공지 탐색 목록(총 2,455건), 오른쪽은 진행 중인 공모전을 묻는 질문에 근거 공지를 바탕으로 답한 AI 챗봇 대화">
-            <figcaption>실제 서비스 화면 (공지 탐색 · GrepRag 챗봇)</figcaption>
+            <figcaption>실제 서비스 화면 (공지 탐색 · GrepRag 챗봇)</figcaption>
           </figure>
 
           <ol class="flow" aria-label="시스템 구성 흐름" style="margin-top:2.5rem">
             <li><span class="node"><b>70개 교내 사이트</b><span>Python crawler</span></span></li>
-            <li><span class="node"><b>FastAPI · SQLite</b><span>ingest · search API</span></span></li>
+            <li><span class="node"><b>FastAPI · SQLite</b><span>ingest · search API</span></span></li>
             <li><span class="node"><b>Next.js</b><span>browse UI</span></span></li>
             <li><span class="node"><b>GrepRag 챗봇</b><span>keyword grep → rerank</span></span></li>
             <li><span class="node"><b>RAGAS</b><span>answer eval</span></span></li>
@@ -404,9 +404,9 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
           <p><span class="lead-in">설계 결정과 운영</span>만들고 끝이 아니라, 운영하며 생긴 문제를 계측으로 확인하고 고쳤습니다.</p>
           <ul class="decisions">
             <li>단순 키워드 매칭의 한계를 확인하고 <b>LLM 키워드 선택 → grep 필터링 → reranking</b>의 GrepRag 구조로 재설계했습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/180" target="_blank" rel="noopener">글: RAG 고찰</a></li>
-            <li>"좋아진 것 같다"로 끝내지 않기 위해 <b>RAGAS 평가 파이프라인</b>을 만들어 근거 충실성·관련성·정확성을 수치로 봅니다. <a class="ref ext" href="https://qktjwl123.tistory.com/181" target="_blank" rel="noopener">글: RAG 평가 도입</a></li>
+            <li>"좋아진 것 같다"로 끝내지 않기 위해 <b>RAGAS 평가 파이프라인</b>을 만들어 근거 충실성⁠·⁠관련성⁠·⁠정확성을 수치로 봅니다. <a class="ref ext" href="https://qktjwl123.tistory.com/181" target="_blank" rel="noopener">글: RAG 평가 도입</a></li>
             <li>공지 데이터를 메모리에 전부 올리던 초기 구조에서 <b>OOM이 발생</b>했습니다. dmesg로 원인을 확인하고 SQLite 기반으로 바꾼 뒤 부하 테스트로 검증했습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/179" target="_blank" rel="noopener">글: 인프라 점검</a></li>
-            <li>공개 서비스의 비용·어뷰징 리스크에 대비해 <b>rate limit·요청 크기·출력 토큰 상한</b>을 걸고, Vercel Analytics로 사용 흐름을 보며 개선 방향을 정합니다. <a class="ref ext" href="https://qktjwl123.tistory.com/182" target="_blank" rel="noopener">글: 운영 리스크</a> <a class="ref ext" href="https://qktjwl123.tistory.com/186" target="_blank" rel="noopener">글: 모니터링</a></li>
+            <li>공개 서비스의 비용⁠·⁠어뷰징 리스크에 대비해 <b>rate limit⁠·⁠요청 크기⁠·⁠출력 토큰 상한</b>을 걸고, Vercel Analytics로 사용 흐름을 보며 개선 방향을 정합니다. <a class="ref ext" href="https://qktjwl123.tistory.com/182" target="_blank" rel="noopener">글: 운영 리스크</a> <a class="ref ext" href="https://qktjwl123.tistory.com/186" target="_blank" rel="noopener">글: 모니터링</a></li>
           </ul>
           <p><span class="lead-in">현재</span>교내 구성원이 활발히 사용하고 있습니다. 월 방문자가 1,000명을 넘습니다(Vercel Analytics). 유입 대부분이 교내 커뮤니티(에브리타임)를 통해 들어오며, AWS Lightsail 단일 서버에서 운영 중입니다. 위 결정들의 과정은 모두 블로그에 기록해 두었습니다.</p>
 
@@ -431,7 +431,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
 
       <!-- WeBand -->
       <article class="case">
-        <p class="meta"><span>2025.03 — 2026.07</span><span>React</span><span>TypeScript</span></p>
+        <p class="meta"><span>2025.03 — 2026.07</span><span>Team of 3</span><span>Frontend</span><span>React</span><span>TypeScript</span></p>
         <div class="case-grid">
           <div>
             <h3>WeBand</h3>
@@ -439,7 +439,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
           </div>
           <div class="case-figure" aria-hidden="true">
             <span class="big-num">600</span>
-            <span class="big-num-lab">USERS · FIRST MONTH</span>
+            <span class="big-num-lab">USERS · FIRST MONTH</span>
           </div>
         </div>
         <div class="case-body">
@@ -457,10 +457,10 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
               <img src="img/weband-input.webp" width="560" height="1213" loading="lazy" decoding="async" alt="주간 시간표에서 가능한 시간대를 구간으로 선택해 입력한 화면">
               <img src="img/weband-share.webp" width="560" height="1213" loading="lazy" decoding="async" alt="일정 저장 완료 안내 — 일정이 인코딩된 짧은 공유 URL이 표시된 화면">
             </div>
-            <figcaption>실제 서비스 화면 (날짜 선택 · 구간 입력 · URL 공유)</figcaption>
+            <figcaption>실제 서비스 화면 (날짜 선택 · 구간 입력 · URL 공유)</figcaption>
           </figure>
 
-          <p><span class="lead-in">결과</span>출시 한 달 만에 사용자 600명, 이후 2025년 3~9월 누적 방문자 1,220명·페이지뷰 6,055회를 기록했습니다(Vercel Analytics). 참여자가 늘며 URL 방식의 한계가 보여, 고정 공유 링크를 쓰는 DB 기반 <b>WeBand-Together</b>로 확장했습니다. 프로젝트 전 과정을 디자이너·백엔드 개발자와 협업하며 기획·UX·프론트엔드 구현을 주도했습니다.</p>
+          <p><span class="lead-in">결과</span>출시 한 달 만에 사용자 600명, 이후 2025년 3~9월 누적 방문자 1,220명⁠·⁠페이지뷰 6,055회를 기록했습니다(Vercel Analytics). 참여자가 늘며 URL 방식의 한계가 보여, 고정 공유 링크를 쓰는 DB 기반 <b>WeBand-Together</b>로 확장했습니다. 디자이너⁠·⁠백엔드 개발자와 3인으로 만들었고, 저는 기획⁠·⁠UX에 참여하며 프론트엔드를 전담했습니다.</p>
 
           <figure class="shot-wide">
             <img src="img/weband-analytics.webp" width="1200" height="1014" loading="lazy" decoding="async" alt="Vercel Analytics 대시보드 — 방문자 1,220명, 페이지뷰 6,055회, 2025년 3월부터 9월까지의 방문자 추이 그래프">
@@ -478,7 +478,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
         <p class="archive-head">More Projects</p>
         <ul class="rows">
           <li><span class="row"><span class="y">2026</span><a class="t ext" href="https://github.com/Jinpop/RosterCrawler" target="_blank" rel="noopener">RosterCrawler</a><span class="d">교내 근로 업무(안전교육 관리) 자동화. 좌표 기반 리포트 텍스트를 표로 복원했고, 저장 단위를 바꿔 수집 성능을 높였습니다</span></span></li>
-          <li><span class="row"><span class="y">2026</span><a class="t ext" href="https://github.com/Jinpop/NoDupDownload" target="_blank" rel="noopener">NoDupDownload</a><span class="d">파일명·출처 URL로 중복 다운로드를 감지하는 Chrome 확장</span></span></li>
+          <li><span class="row"><span class="y">2026</span><a class="t ext" href="https://github.com/Jinpop/NoDupDownload" target="_blank" rel="noopener">NoDupDownload</a><span class="d">파일명⁠·⁠출처 URL로 중복 다운로드를 감지하는 Chrome 확장</span></span></li>
         </ul>
       </div>
     </div>
@@ -489,11 +489,11 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
     <div class="shell">
       <div class="sec-head"><h2>AI &amp; Competitions</h2></div>
 
-      <figure class="traj" aria-label="2026년 참가한 AI 대회 세 곳의 순위 백분위. LG Aimers 9기 상위 약 4.5%, Dacon 에이전트 행동 예측 269팀 중 59위(상위 약 20%), LG Aimers 8기 상위 약 30%.">
+      <figure class="traj" aria-label="2026년 참가한 AI 대회 세 곳의 순위 백분위. LG Aimers 9기 상위 약 4.5%, Dacon 에이전트 행동 예측 269팀 중 59위(상위 약 20%), LG Aimers 8기 상위 약 30%.">
         <ol class="traj-rows">
-          <li class="traj-row"><span class="traj-name">LG Aimers 9기 · 야구 제구 예측 해커톤<span class="traj-when">2026.08</span></span><span class="traj-track"><span class="traj-dot" style="--p:4.53" title="1,082팀 중 49위"></span><span class="traj-val" style="--p:4.53">상위 약 4.5%</span></span></li>
-          <li class="traj-row"><span class="traj-name">Dacon · AI 코딩 에이전트 행동 예측<span class="traj-when">2026.07</span></span><span class="traj-track"><span class="traj-dot" style="--p:21.9" title="269팀 중 59위 (개인 참가)"></span><span class="traj-val" style="--p:21.9">상위 약 20%</span></span></li>
-          <li class="traj-row"><span class="traj-name">LG Aimers 8기 · LLM Quantization 해커톤<span class="traj-when">2026.01 — 02</span></span><span class="traj-track"><span class="traj-dot" style="--p:29.5" title="628팀 중 185위"></span><span class="traj-val" style="--p:29.5">상위 약 30%</span></span></li>
+          <li class="traj-row"><span class="traj-name">LG Aimers 9기 · 야구 제구 예측 해커톤<span class="traj-when">2026.08</span></span><span class="traj-track"><span class="traj-dot" style="--p:4.53" title="1,082팀 중 49위"></span><span class="traj-val" style="--p:4.53">상위 약 4.5%</span></span></li>
+          <li class="traj-row"><span class="traj-name">Dacon · AI 코딩 에이전트 행동 예측<span class="traj-when">2026.07</span></span><span class="traj-track"><span class="traj-dot" style="--p:21.9" title="269팀 중 59위 (개인 참가)"></span><span class="traj-val" style="--p:21.9">상위 약 20%</span></span></li>
+          <li class="traj-row"><span class="traj-name">LG Aimers 8기 · LLM Quantization 해커톤<span class="traj-when">2026.01 — 02</span></span><span class="traj-track"><span class="traj-dot" style="--p:29.5" title="628팀 중 185위"></span><span class="traj-val" style="--p:29.5">상위 약 30%</span></span></li>
         </ol>
         <div class="traj-axis"><span></span><span><span>100%</span><span>75</span><span>50</span><span>25</span><span>1위</span></span></div>
         <figcaption>2026년에 참가한 AI 대회 세 곳의 순위 백분위입니다. 오른쪽에 가까울수록 상위이고, 위가 최신입니다.</figcaption>
@@ -502,7 +502,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
       <article class="case">
         <p class="meta"><span>2026.08</span><span>Team of 3</span><span>Brier Skill Score</span><span>KBO TrackMan</span></p>
         <h3>LG Aimers 9기 — 야구 투구 제구 성공 확률 예측</h3>
-        <p class="case-lede">LG AI연구원이 운영하는 AI 교육·해커톤 프로그램의 9기 대회입니다. KBO 트랙맨 기반 학습 데이터(약 137만 행)와 2025 시즌 평가 <span class="nb">데이터(약 24.6만 행)를</span> 제공받아, 투수가 던진 공이 의도한 코스로 갈 확률을 예측했습니다. <span class="nb">2,403명·1,082팀</span>이 참가한 온라인 해커톤을 49위<span class="nb">(상위 약 4.5%)로</span> 통과했습니다.</p>
+        <p class="case-lede">LG AI연구원이 운영하는 AI 교육⁠·⁠해커톤 프로그램의 9기 대회입니다. KBO 트랙맨 기반 학습 데이터(약 137만 행)와 2025 시즌 평가 <span class="nb">데이터(약 24.6만 행)를</span> 제공받아, 투수가 던진 공이 의도한 코스로 갈 확률을 예측했습니다. <span class="nb">2,403명⁠·⁠1,082팀</span>이 참가한 온라인 해커톤을 49위<span class="nb">(상위 약 4.5%)로</span> 통과했습니다.</p>
       <figure class="cmp-strip" aria-label="LG Aimers 9기 리더보드 비교. 베이스라인 549.5, 전체 평균 919.9, 나 1,167.7, 1위 1,225.2. 제출 횟수는 전체 평균 36회, 나 138회.">
         <div class="cmp-set">
         <div class="cmp" style="--n:4">
@@ -528,18 +528,18 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
           <p><span class="lead-in">접근</span></p>
           <ul class="decisions">
             <li>라벨이 <code>성공 + 반대방향 + 한복판 ≈ 0.90</code>으로 분해된다는 관찰에서 출발해, <b>실패 유형별로 부스터를 따로 학습하고 그 출력을 스태커가 다시 결합</b>하는 구조를 설계했습니다(CatBoost, 63피처).</li>
-            <li>팀에서 함께 운용한 LightGBM·신경망·EBM 등을 더해 총 5개 모델을 로짓 공간에서 가중 결합하고, 다항식 보정과 상황별 오프셋 보정을 얹었습니다.</li>
+            <li>팀에서 함께 운용한 LightGBM⁠·⁠신경망⁠·⁠EBM 등을 더해 총 5개 모델을 로짓 공간에서 가중 결합하고, 다항식 보정과 상황별 오프셋 보정을 얹었습니다.</li>
             <li>평가 대상이 2025 시즌이라 <b>모든 누적 통계가 해당 시즌 이전만 참조하도록</b> 만들었습니다. 랜덤 K-Fold 대신 "2023년까지 학습 → 2024년 검증"이라는 시간 분할 하나를 비교 기준으로 고정했습니다.</li>
             <li>하루 5회 제출 제한이라 <b>제출 하나를 측정 1회로 취급</b>했습니다. 리더보드 점수에서 보정 상수의 최적값을 역산하되, 추정에 계통 오차가 있는 것을 확인한 뒤로는 오차가 2배여도 손해가 안 나는 보수적 지점에 섰습니다. 실패한 제출도 직전과의 차이를 계산해 원인을 특정하는 식으로 정보를 회수했습니다.</li>
           </ul>
 
-          <p><span class="lead-in">담당</span>3인 팀에서 <b>모델 구조 설계와 학습·앙상블·검증·제출 전략</b>을 맡았습니다. 야구 도메인 지식이 있는 팀원이 피처 발굴을 담당해, 도메인에서 나온 가설을 제가 모델 구조와 검증 설계로 옮기는 분업이었습니다. 팀원이 도메인 관점에서 낸 피처 후보는 기존 피처와 통계적으로 겹치는지 직교성 분석으로 걸러 채택했습니다.</p>
+          <p><span class="lead-in">담당</span>3인 팀에서 <b>모델 구조 설계와 학습⁠·⁠앙상블⁠·⁠검증⁠·⁠제출 전략</b>을 맡았습니다. 야구 도메인 지식이 있는 팀원이 피처 발굴을 담당해, 도메인에서 나온 가설을 제가 모델 구조와 검증 설계로 옮기는 분업이었습니다. 팀원이 도메인 관점에서 낸 피처 후보는 기존 피처와 통계적으로 겹치는지 직교성 분석으로 걸러 채택했습니다.</p>
 
           <p>4주 동안의 제출 138회는 근거와 결과를 전부 원장으로 남겼고, 채택 기준은 결과를 보기 전에 미리 등록해 두는 규율로 운영했습니다. 배포 모델은 학습 코드로 재학습했을 때 <b>트리 잎값까지 동일하게 재현</b>되는 것을 확인했습니다.</p>
 
           <dl class="kmetrics">
             <div><dt>1,082팀 중</dt><dd>49위</dd></div>
-            <div><dt>백분위</dt><dd>상위 약 4.5%</dd></div>
+            <div><dt>백분위</dt><dd>상위 약 4.5%</dd></div>
             <div><dt>참가</dt><dd>2,403명</dd></div>
             <div><dt>제출</dt><dd>138회</dd></div>
           </dl>
@@ -552,7 +552,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
       <article class="case">
         <p class="meta"><span>2026.07</span><span>Solo</span><span>Macro-F1</span><span>Multi-agent</span></p>
         <h3>Dacon — AI 코딩 에이전트 행동 예측</h3>
-        <p class="case-lede">에이전트의 세션 로그로 다음 행동 14클래스를 예측하는 대회입니다. 베이스라인 0.43에서 0.7867까지 올려 868명·269팀 중 59위<span class="nb">(상위 약 20%)로</span> 마쳤고, 실험 운영은 17개 역할로 나눈 AI 에이전트 하네스를 직접 설계해 맡겼습니다.</p>
+        <p class="case-lede">에이전트의 세션 로그로 다음 행동 14클래스를 예측하는 대회입니다. 베이스라인 0.43에서 0.7867까지 올려 <span class="nb">868명⁠·⁠269팀</span> 중 59위<span class="nb">(상위 약 20%)로</span> 마쳤고, 실험 운영은 17개 역할로 나눈 AI 에이전트 하네스를 직접 설계해 맡겼습니다.</p>
       <figure class="cmp-strip" aria-label="Dacon 에이전트 행동 예측 리더보드 비교. Macro-F1은 베이스라인 0.43, 나 0.7867, 1위 0.7988. 제출 횟수는 상위 88팀 평균 67회, 1위 105회, 나 110회.">
         <div class="cmp-set">
         <div class="cmp" style="--n:3">
@@ -575,12 +575,12 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
         <div class="case-body">
           <p><span class="lead-in">문제 재정의</span>같은 요청이라도 파일을 읽었는지, 테스트가 통과했는지에 따라 다음 행동이 달라집니다. 단순 문장 분류가 아니라 <b>대화와 도구 사용으로 누적된 작업 상태를 추론하는 문제</b>로 정의하고, 현재 요청과 과거 행동을 잇는 관계형 피처를 설계했습니다. 고전 ML과 Transformer 3종을 확률 블렌드로 앙상블했는데, 개별 점수보다 <b>오류를 보완하는 조합</b>이 성능을 갈랐습니다.</p>
 
-          <p><span class="lead-in">AI Agent 운영 하네스</span>실험 실행은 Claude 에이전트에 맡기고 저는 전략·승인·제출을 맡았습니다. 하나의 에이전트에 전부 맡기자 단계 누락과 정보 혼선이 반복돼, 원인을 모델의 능력이 아니라 <b>한 에이전트가 지는 책임과 컨텍스트가 너무 넓어진 작업 구조</b>로 보고 다시 설계했습니다.</p>
+          <p><span class="lead-in">AI Agent 운영 하네스</span>실험 실행은 Claude 에이전트에 맡기고 저는 전략⁠·⁠승인⁠·⁠제출을 맡았습니다. 하나의 에이전트에 전부 맡기자 단계 누락과 정보 혼선이 반복돼, 원인을 모델의 능력이 아니라 <b>한 에이전트가 지는 책임과 컨텍스트가 너무 넓어진 작업 구조</b>로 보고 다시 설계했습니다.</p>
           <ul class="decisions">
-            <li><b>역할을 17개 서브에이전트로 분리</b>하고(전략 수립 / 데이터·누수 감사 / 학습 설정 검증 / 실행 / 제출물 검증 / 기록), 각 에이전트에는 <b>맡은 역할에 필요한 최소 정보만</b> 넘겼습니다.</li>
-            <li><b>자연어 보고 대신 산출물로 검증</b>했습니다. 실제 적용된 설정을 남기는 <code>effective_config</code>, <span class="nb">코드·데이터</span> SHA 대조, 제출물 자동 검사를 붙였고 실제로 학습 시작 전 결함을 2회 사전 차단했습니다.</li>
+            <li><b>역할을 17개 서브에이전트로 분리</b>하고(전략 수립 / 데이터⁠·⁠누수 감사 / 학습 설정 검증 / 실행 / 제출물 검증 / 기록), 각 에이전트에는 <b>맡은 역할에 필요한 최소 정보만</b> 넘겼습니다.</li>
+            <li><b>자연어 보고 대신 산출물로 검증</b>했습니다. 실제 적용된 설정을 남기는 <code>effective_config</code>, <span class="nb">코드⁠·⁠데이터</span> SHA 대조, 제출물 자동 검사를 붙였고 실제로 학습 시작 전 결함을 2회 사전 차단했습니다.</li>
           </ul>
-          <p>한 에이전트의 실수가 전체 과정을 그대로 통과하기 어려운 구조가 됐습니다. AI Agent의 성능은 모델만이 아니라 역할·컨텍스트·권한·검증 구조를 어떻게 설계하느냐에도 달려 있다는 것을 배웠습니다.</p>
+          <p>한 에이전트의 실수가 전체 과정을 그대로 통과하기 어려운 구조가 됐습니다. AI Agent의 성능은 모델만이 아니라 역할⁠·⁠컨텍스트⁠·⁠권한⁠·⁠검증 구조를 어떻게 설계하느냐에도 달려 있다는 것을 배웠습니다.</p>
           <dl class="kmetrics">
             <div><dt>베이스라인</dt><dd>0.43</dd></div>
             <div><dt>최종 Macro-F1</dt><dd>0.7867</dd></div>
@@ -599,7 +599,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
       <article class="case">
         <p class="meta"><span>2026.01 — 02</span><span>Team of 4</span><span>Lead</span><span>GPTQ W4A16</span></p>
         <h3>LG Aimers 8기 — LLM Quantization 해커톤</h3>
-        <p class="case-lede">EXAONE-4.0-1.2B를 4bit로 양자화해 성능과 속도를 함께 겨루는 대회입니다. 1,537명이 참가했고 628팀 중 185위로 마쳤습니다.</p>
+        <p class="case-lede">EXAONE-4.0-1.2B를 4bit로 양자화해 성능과 속도를 함께 겨루는 대회입니다. 직접 팀을 모아 4인으로 참가해 리드를 맡았습니다. 1,537명이 참가했고 628팀 중 185위로 마쳤습니다.</p>
         <div class="case-body">
           <p>점수가 <code>성능 50% + 속도 50%</code>로 매겨져서 "어디까지 줄여도 성능이 버티는가"를 찾는 문제였습니다. GPTQ(llmcompressor)로 W4A16 양자화를 적용하고, 결과를 좌우하는 <b>캘리브레이션 데이터 구성을 다섯 가지로 바꿔가며 비교</b>했습니다. 같은 제출물인데도 점수가 0.1점 이상 흔들리는 것을 관측했고, 모델 개선과 별개로 <b>측정 자체를 믿을 수 있는지 먼저 따져야 한다</b>는 것을 이 대회에서 처음 겪었습니다.</p>
           <p class="case-links">
@@ -617,24 +617,24 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
       <div class="about-grid">
         <div class="about-col">
           <p class="prose" style="color:var(--fg-2)">만들고 배포하는 데서 멈추지 않고, 로그와 지표를 보며 서비스를 고쳐 나가는 일을 좋아합니다. AI를 도구로 쓰는 것을 넘어 그 행동을 데이터로 분석해 봤고, 여러 에이전트가 나눠 일하는 실험 구조를 직접 설계해 운영해 봤습니다. AI가 들어간 제품을 처음부터 끝까지 만들어 운영합니다.</p>
-          <p class="prose" style="color:var(--fg-2);margin-top:1.1rem">부딪힌 문제는 기록으로 남깁니다. 위 프로젝트의 설계 결정과 트러블슈팅은 대부분 <a class="lk ext" href="https://qktjwl123.tistory.com/" target="_blank" rel="noopener">기술 블로그</a>에 글로 남겼고, 2024년 3월부터 비공개 글을 포함해 200편 이상 썼습니다.</p>
+          <p class="prose" style="color:var(--fg-2);margin-top:1.1rem">부딪힌 문제는 기록으로 남깁니다. 위 프로젝트의 설계 결정과 트러블슈팅은 대부분 <a class="lk ext" href="https://qktjwl123.tistory.com/" target="_blank" rel="noopener">기술 블로그</a>에 글로 남겼고, 2024년 3월부터 비공개 글을 포함해 200편 이상 썼습니다.</p>
           <h3 style="margin-top:3rem">Skills</h3>
           <dl class="skills">
-            <div><dt>운영 서비스에서</dt><dd><b>Next.js · TypeScript · FastAPI · SQLite · Docker · AWS</b> — KAU Notice Hub를 만든 스택입니다. SQLite는 저사양 단일 서버에서 관리 부담 없이 쓰기 위한 선택이었습니다.</dd></div>
-            <div><dt>AI</dt><dd><b>LLM 애플리케이션(GrepRag 설계 · RAGAS 평가) · 멀티 에이전트 오케스트레이션 · 모델 경량화(GPTQ 양자화)</b> — GrepRag는 Notice Hub 챗봇으로 운영 중이고, 에이전트 오케스트레이션은 Dacon 실험 운영에, 양자화는 LG Aimers 제출 모델에 적용했습니다.</dd></div>
-            <div><dt>언어</dt><dd><b>Python · TypeScript/JavaScript · C++</b> — 알고리즘 대회에서는 C++를, 제품에서는 TypeScript와 Python을 씁니다.</dd></div>
-            <div><dt>협업 · 도구</dt><dd><b>Git/GitHub · Figma · Notion · Jira · Slack · Claude · Codex</b> — 디자이너·백엔드 개발자와 WeBand를 함께 만들었습니다.</dd></div>
+            <div><dt>운영 서비스에서</dt><dd><b>Next.js · TypeScript · FastAPI · SQLite · Docker · AWS</b> — KAU Notice Hub를 만든 스택입니다. SQLite는 저사양 단일 서버에서 관리 부담 없이 쓰기 위한 선택이었습니다.</dd></div>
+            <div><dt>AI</dt><dd><b>LLM 애플리케이션(GrepRag 설계 · RAGAS 평가) · 멀티 에이전트 오케스트레이션 · 모델 경량화(GPTQ 양자화)</b> — GrepRag는 Notice Hub 챗봇으로 운영 중이고, 에이전트 오케스트레이션은 Dacon 실험 운영에, 양자화는 LG Aimers 제출 모델에 적용했습니다.</dd></div>
+            <div><dt>언어</dt><dd><b>Python · TypeScript/JavaScript · C++</b> — 알고리즘 대회에서는 C++를, 제품에서는 TypeScript와 Python을 씁니다.</dd></div>
+            <div><dt>협업 · 도구</dt><dd><b>Git/GitHub · Figma · Notion · Jira · Slack · Claude · Codex</b> — 디자이너⁠·⁠백엔드 개발자와 WeBand를 함께 만들었습니다.</dd></div>
           </dl>
         </div>
         <div class="about-col">
-          <h3>협업 · 리더십</h3>
+          <h3>협업 · 리더십</h3>
           <ul class="plain">
             <li><b>교내 멘토링 8회</b>. 후배들의 개발 학습과 프로젝트를 돕고 있습니다</li>
             <li><b>클라이밍 동아리 Hands On Top! 창립</b>. 70명 규모로 운영 중이고, 교내 지원 프로그램에서 100여 팀 중 6팀에 선정됐습니다</li>
             <li><b>자라섬 재즈 페스티벌 자원봉사</b>. 해외 아티스트 영어 통역과 현장 운영을 맡았습니다</li>
             <li><b>중국 톈진 국제학교 4년</b>. 영어로 수업을 듣고 다문화 환경에서 협업했습니다</li>
           </ul>
-          <h3 style="margin-top:3rem">Awards</h3>
+          <h3 style="margin-top:3rem">Awards &amp; Certifications</h3>
           <table class="awards">
             <tbody>
               <tr class="top"><td class="y">2026.06</td><td>제25회 TOPCIT 정기평가 Level 4</td><td class="r">교내 1위</td></tr>
@@ -662,7 +662,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
       <a class="ext" href="https://github.com/Jinpop" target="_blank" rel="noopener">GitHub</a>
       <a class="ext" href="https://qktjwl123.tistory.com/" target="_blank" rel="noopener">Tech Blog</a>
     </p>
-    <p class="colophon">© 2026 PARK SUNGJIN · BUILT WITH PLAIN HTML/CSS · NO FRAMEWORK, NO TRACKER</p>
+    <p class="colophon">© 2026 PARK SUNGJIN · BUILT WITH PLAIN HTML/CSS · NO FRAMEWORK, NO TRACKER</p>
   </div>
 </footer>
 
