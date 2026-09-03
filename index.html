@@ -215,9 +215,9 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
   linear-gradient(var(--border-soft),var(--border-soft)) 25% 0/1px 100% no-repeat,
   linear-gradient(var(--border-soft),var(--border-soft)) 50% 0/1px 100% no-repeat,
   linear-gradient(var(--border-soft),var(--border-soft)) 75% 0/1px 100% no-repeat}
-.traj-dot{position:absolute;left:calc(var(--p) * 1%);top:50%;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 2px var(--bg);z-index:1}
+.traj-dot{position:absolute;right:calc(var(--p) * 1%);top:50%;width:10px;height:10px;margin:-5px -5px 0 0;border-radius:50%;background:var(--accent);box-shadow:0 0 0 2px var(--bg);z-index:1}
 .traj-dot::after{content:"";position:absolute;inset:-9px}
-.traj-val{position:absolute;left:calc(var(--p) * 1% + 12px);top:50%;transform:translateY(-50%);font-size:.85rem;font-weight:700;white-space:nowrap}
+.traj-val{position:absolute;right:calc(var(--p) * 1% + 12px);top:50%;transform:translateY(-50%);font-size:.85rem;font-weight:700;white-space:nowrap}
 .traj-axis{margin-top:.4rem}
 .traj-axis > span:last-child{display:flex;justify-content:space-between}
 .traj-axis > span:last-child > span{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:var(--fg-3)}
@@ -461,14 +461,14 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
     <div class="shell">
       <div class="sec-head"><h2>AI &amp; Competitions</h2></div>
 
-      <figure class="traj" aria-label="2026년 참가한 AI 대회 세 곳의 순위 백분위. LG Aimers 8기 상위 30%, Dacon 에이전트 행동 예측 269팀 중 59위(상위 22%), LG Aimers 9기 상위 4.5%.">
+      <figure class="traj" aria-label="2026년 참가한 AI 대회 세 곳의 순위 백분위. LG Aimers 9기 상위 4.5%, Dacon 에이전트 행동 예측 269팀 중 59위(상위 약 20%), LG Aimers 8기 상위 30%.">
         <ol class="traj-rows">
-          <li class="traj-row"><span class="traj-name">LG Aimers 8기<span class="traj-when">2026.01 — 02</span></span><span class="traj-track"><span class="traj-dot" style="--p:29.5" title="628팀 중 185위"></span><span class="traj-val" style="--p:29.5">상위 30%</span></span></li>
-          <li class="traj-row"><span class="traj-name">Dacon 에이전트 행동 예측<span class="traj-when">2026.07</span></span><span class="traj-track"><span class="traj-dot" style="--p:21.9" title="269팀 중 59위 (개인 참가)"></span><span class="traj-val" style="--p:21.9">상위 22%</span></span></li>
           <li class="traj-row"><span class="traj-name">LG Aimers 9기<span class="traj-when">2026.08</span></span><span class="traj-track"><span class="traj-dot" style="--p:4.53" title="1,082팀 중 49위"></span><span class="traj-val" style="--p:4.53">상위 4.5%</span></span></li>
+          <li class="traj-row"><span class="traj-name">Dacon 에이전트 행동 예측<span class="traj-when">2026.07</span></span><span class="traj-track"><span class="traj-dot" style="--p:21.9" title="269팀 중 59위 (개인 참가)"></span><span class="traj-val" style="--p:21.9">상위 약 20%</span></span></li>
+          <li class="traj-row"><span class="traj-name">LG Aimers 8기<span class="traj-when">2026.01 — 02</span></span><span class="traj-track"><span class="traj-dot" style="--p:29.5" title="628팀 중 185위"></span><span class="traj-val" style="--p:29.5">상위 30%</span></span></li>
         </ol>
-        <div class="traj-axis"><span></span><span><span>0</span><span>25</span><span>50</span><span>75</span><span>100%</span></span></div>
-        <figcaption>2026년에 참가한 AI 대회 세 곳의 순위 백분위입니다. 왼쪽에 가까울수록 상위입니다.</figcaption>
+        <div class="traj-axis"><span></span><span><span>100%</span><span>75</span><span>50</span><span>25</span><span>1위</span></span></div>
+        <figcaption>2026년에 참가한 AI 대회 세 곳의 순위 백분위입니다. 오른쪽에 가까울수록 상위이고, 위가 최신입니다.</figcaption>
       </figure>
 
       <article class="case" style="padding-top:0">
@@ -505,7 +505,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
       <article class="case">
         <p class="meta"><span>2026.07</span><span>Solo</span><span>Macro-F1</span><span>Multi-agent</span></p>
         <h3>Dacon — AI 코딩 에이전트 행동 예측</h3>
-        <p class="case-lede">에이전트의 세션 로그로 다음 행동 14클래스를 예측하는 대회입니다. Baseline 0.43에서 0.7867까지 올려 868명·269팀 중 59위(상위 22%)로 마쳤고, 실험 운영은 17개 역할로 나눈 AI 에이전트 하네스를 직접 설계해 맡겼습니다.</p>
+        <p class="case-lede">에이전트의 세션 로그로 다음 행동 14클래스를 예측하는 대회입니다. Baseline 0.43에서 0.7867까지 올려 868명·269팀 중 59위(상위 약 20%)로 마쳤고, 실험 운영은 17개 역할로 나눈 AI 에이전트 하네스를 직접 설계해 맡겼습니다.</p>
         <div class="case-body">
           <p><span class="lead-in">문제 재정의</span>같은 요청이라도 파일을 읽었는지, 테스트가 통과했는지에 따라 다음 행동이 달라집니다. 단순 문장 분류가 아니라 <b>대화와 도구 사용으로 누적된 작업 상태를 추론하는 문제</b>로 정의하고, 현재 요청과 과거 행동을 잇는 관계형 피처를 설계했습니다. 고전 ML과 Transformer 3종을 확률 블렌드로 앙상블했는데, 개별 점수보다 <b>오류를 보완하는 조합</b>이 성능을 갈랐습니다.</p>
 
