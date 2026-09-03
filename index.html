@@ -375,13 +375,13 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
 
       <!-- KAU Notice Hub -->
       <article class="case">
-        <p class="meta"><span>2026.04 —</span><span class="on">Live</span><span>Next.js</span><span>FastAPI</span><span>SQLite</span><span>RAG</span></p>
+        <p class="meta"><span>2026.04 —</span><span class="on">Live</span><span>Next.js</span><span>FastAPI</span><span>SQLite</span><span>GrepRag</span></p>
         <h3>KAU Notice Hub</h3>
-        <p class="case-lede">약 70개 사이트에 흩어진 교내 공지를 한곳에 모았습니다. 수집부터 검색, 질의응답까지 혼자 만들었고 지금 교내 구성원이 쓰고 있습니다.</p>
+        <p class="case-lede">약 70개 사이트에 흩어진 교내 공지를 한곳에 모았습니다. 수집부터 검색, <b>GrepRag</b> 기반 질의응답까지 혼자 만들었고 지금 교내 구성원이 쓰고 있습니다.</p>
 
         <div class="case-body">
           <p><span class="lead-in">문제</span>한국항공대의 공지는 학과·부서별로 약 70개 웹사이트에 흩어져 있고, 매년 2,000건 넘게 올라옵니다. 장학금·행사 공지를 놓치는 일이 잦아, 전부 모아서 한곳에서 찾을 수 있게 만들었습니다.</p>
-          <p><span class="lead-in">구현</span>Python 크롤러가 70개 사이트를 수집해 FastAPI·SQLite에 적재하고, Next.js에서 출처·카테고리로 탐색합니다. 질문하면 관련 공지를 근거로 답하는 RAG 챗봇을 붙였고, AWS Lightsail에 Docker로 배포해 운영하고 있습니다.</p>
+          <p><span class="lead-in">구현</span>Python 크롤러가 70개 사이트를 수집해 FastAPI·SQLite에 적재하고, Next.js에서 출처·카테고리로 탐색합니다. 질문하면 관련 공지를 근거로 답하는 챗봇은 <b>GrepRag</b>로 만들었습니다. 벡터 임베딩 대신 LLM이 고른 키워드로 공지 본문을 직접 검색(grep)해 후보를 걸러내고 재정렬하는 방식입니다. AWS Lightsail에 Docker로 배포해 운영하고 있습니다.</p>
 
           <figure class="shot-wide shot-hero" style="margin-top:2.25rem">
             <img src="img/notice-hub-main.webp" width="1400" height="812" loading="lazy" decoding="async" alt="KAU Notice Hub 서비스 화면 — 왼쪽은 대상자·중분류로 좁혀 보는 공지 탐색 목록(총 2,455건), 오른쪽은 진행 중인 공모전을 묻는 질문에 근거 공지를 바탕으로 답한 AI 챗봇 대화">
@@ -392,13 +392,13 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
             <li><span class="node"><b>70개 교내 사이트</b><span>Python crawler</span></span></li>
             <li><span class="node"><b>FastAPI · SQLite</b><span>ingest · search API</span></span></li>
             <li><span class="node"><b>Next.js</b><span>browse UI</span></span></li>
-            <li><span class="node"><b>RAG 챗봇</b><span>keyword select → rerank</span></span></li>
+            <li><span class="node"><b>GrepRag 챗봇</b><span>keyword grep → rerank</span></span></li>
             <li><span class="node"><b>RAGAS</b><span>answer eval</span></span></li>
           </ol>
 
           <p><span class="lead-in">설계 결정과 운영</span>만들고 끝이 아니라, 운영하며 생긴 문제를 계측으로 확인하고 고쳤습니다.</p>
           <ul class="decisions">
-            <li>키워드 기반 RAG의 한계를 확인하고 <b>LLM 키워드 선택 → 문서 필터링 → reranking</b> 구조로 재설계했습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/180" target="_blank" rel="noopener">글: RAG 고찰</a></li>
+            <li>단순 키워드 매칭의 한계를 확인하고 <b>LLM 키워드 선택 → grep 필터링 → reranking</b>의 GrepRag 구조로 재설계했습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/180" target="_blank" rel="noopener">글: RAG 고찰</a></li>
             <li>"좋아진 것 같다"로 끝내지 않기 위해 <b>RAGAS 평가 파이프라인</b>을 만들어 근거 충실성·관련성·정확성을 수치로 봅니다. <a class="ref ext" href="https://qktjwl123.tistory.com/181" target="_blank" rel="noopener">글: RAG 평가 도입</a></li>
             <li>공지 데이터를 메모리에 전부 올리던 초기 구조에서 <b>OOM이 발생</b>했습니다. dmesg로 원인을 확인하고 SQLite 기반으로 바꾼 뒤 부하 테스트로 검증했습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/179" target="_blank" rel="noopener">글: 인프라 점검</a></li>
             <li>공개 서비스의 비용·어뷰징 리스크에 대비해 <b>rate limit·요청 크기·출력 토큰 상한</b>을 걸고, Vercel Analytics로 사용 흐름을 보며 개선 방향을 정합니다. <a class="ref ext" href="https://qktjwl123.tistory.com/182" target="_blank" rel="noopener">글: 운영 리스크</a> <a class="ref ext" href="https://qktjwl123.tistory.com/186" target="_blank" rel="noopener">글: 모니터링</a></li>
@@ -608,7 +608,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
           <h3 style="margin-top:3rem">Skills</h3>
           <dl class="skills">
             <div><dt>운영 서비스에서</dt><dd><b>Next.js · TypeScript · FastAPI · SQLite · Docker · AWS</b> — KAU Notice Hub를 만든 스택입니다. SQLite는 저사양 단일 서버에서 관리 부담 없이 쓰기 위한 선택이었습니다.</dd></div>
-            <div><dt>AI</dt><dd><b>LLM 애플리케이션(RAG 설계 · RAGAS 평가) · 멀티 에이전트 오케스트레이션 · 모델 경량화(GPTQ 양자화)</b> — RAG는 Notice Hub 챗봇으로 운영 중이고, 에이전트 오케스트레이션은 Dacon 실험 운영에, 양자화는 LG Aimers 제출 모델에 적용했습니다.</dd></div>
+            <div><dt>AI</dt><dd><b>LLM 애플리케이션(GrepRag 설계 · RAGAS 평가) · 멀티 에이전트 오케스트레이션 · 모델 경량화(GPTQ 양자화)</b> — GrepRag는 Notice Hub 챗봇으로 운영 중이고, 에이전트 오케스트레이션은 Dacon 실험 운영에, 양자화는 LG Aimers 제출 모델에 적용했습니다.</dd></div>
             <div><dt>언어</dt><dd><b>Python · TypeScript/JavaScript · C++</b> — 알고리즘 대회에서는 C++를, 제품에서는 TypeScript와 Python을 씁니다.</dd></div>
             <div><dt>협업 · 도구</dt><dd><b>Git/GitHub · Figma · Notion · Jira · Slack · Claude · Codex</b> — 디자이너·백엔드 개발자와 WeBand를 함께 만들었습니다.</dd></div>
           </dl>
