@@ -9,10 +9,10 @@ if(t!=='light'&&t!=='dark'){try{t=matchMedia('(prefers-color-scheme: dark)').mat
 document.documentElement.setAttribute('data-theme',t);})();
 </script>
 <title>박성진 — 풀스택·AI 개발자</title>
-<meta name="description" content="실사용자가 있는 서비스를 만들고 운영하는 풀스택·AI 개발자 박성진. WeBand 누적 사용자 600명, KAU Notice Hub RAG 서비스 운영, LG Aimers 9기 1,082팀 중 49위, Dacon AI 해커톤 예선 상위 10%.">
+<meta name="description" content="실사용자가 있는 서비스를 만들고 운영하는 풀스택·AI 개발자 박성진. WeBand 누적 사용자 600명, KAU Notice Hub RAG 서비스 운영, LG Aimers 9기 1,082팀 중 49위, TOPCIT 교내 1위.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="박성진 — 풀스택·AI 개발자">
-<meta property="og:description" content="실사용자 600명 서비스 운영 · RAG 서비스 운영 중 · LG Aimers 9기 상위 4.5% · Dacon AI 해커톤 상위 10%">
+<meta property="og:description" content="실사용자 600명 서비스 운영 · RAG 서비스 운영 중 · LG Aimers 9기 상위 4.5% · TOPCIT 교내 1위">
 <meta property="og:url" content="https://jinpop.github.io/">
 <meta property="og:image" content="https://jinpop.github.io/og.png">
 <meta property="og:locale" content="ko_KR">
@@ -461,10 +461,10 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
     <div class="shell">
       <div class="sec-head"><h2>AI &amp; Competitions</h2></div>
 
-      <figure class="traj" aria-label="2026년 참가한 AI 대회 세 곳의 순위 백분위. LG Aimers 8기 상위 30%, Dacon 에이전트 행동 예측 예선 상위 10%, LG Aimers 9기 상위 4.5%.">
+      <figure class="traj" aria-label="2026년 참가한 AI 대회 세 곳의 순위 백분위. LG Aimers 8기 상위 30%, Dacon 에이전트 행동 예측 269팀 중 59위(상위 22%), LG Aimers 9기 상위 4.5%.">
         <ol class="traj-rows">
           <li class="traj-row"><span class="traj-name">LG Aimers 8기<span class="traj-when">2026.01 — 02</span></span><span class="traj-track"><span class="traj-dot" style="--p:29.5" title="628팀 중 185위"></span><span class="traj-val" style="--p:29.5">상위 30%</span></span></li>
-          <li class="traj-row"><span class="traj-name">Dacon 에이전트 행동 예측<span class="traj-when">2026.07</span></span><span class="traj-track"><span class="traj-dot" style="--p:10" title="예선 상위 10%"></span><span class="traj-val" style="--p:10">상위 10%</span></span></li>
+          <li class="traj-row"><span class="traj-name">Dacon 에이전트 행동 예측<span class="traj-when">2026.07</span></span><span class="traj-track"><span class="traj-dot" style="--p:21.9" title="269팀 중 59위 (개인 참가)"></span><span class="traj-val" style="--p:21.9">상위 22%</span></span></li>
           <li class="traj-row"><span class="traj-name">LG Aimers 9기<span class="traj-when">2026.08</span></span><span class="traj-track"><span class="traj-dot" style="--p:4.53" title="1,082팀 중 49위"></span><span class="traj-val" style="--p:4.53">상위 4.5%</span></span></li>
         </ol>
         <div class="traj-axis"><span></span><span><span>0</span><span>25</span><span>50</span><span>75</span><span>100%</span></span></div>
@@ -505,7 +505,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
       <article class="case">
         <p class="meta"><span>2026.07</span><span>Solo</span><span>Macro-F1</span><span>Multi-agent</span></p>
         <h3>Dacon — AI 코딩 에이전트 행동 예측</h3>
-        <p class="case-lede">에이전트의 세션 로그로 다음 행동 14클래스를 예측하는 대회입니다. Baseline 0.43에서 0.7867까지 올려 예선 상위 10%를 기록했고, 실험 운영은 17개 역할로 나눈 AI 에이전트 하네스를 직접 설계해 맡겼습니다.</p>
+        <p class="case-lede">에이전트의 세션 로그로 다음 행동 14클래스를 예측하는 대회입니다. Baseline 0.43에서 0.7867까지 올려 868명·269팀 중 59위(상위 22%)로 마쳤고, 실험 운영은 17개 역할로 나눈 AI 에이전트 하네스를 직접 설계해 맡겼습니다.</p>
         <div class="case-body">
           <p><span class="lead-in">문제 재정의</span>같은 요청이라도 파일을 읽었는지, 테스트가 통과했는지에 따라 다음 행동이 달라집니다. 단순 문장 분류가 아니라 <b>대화와 도구 사용으로 누적된 작업 상태를 추론하는 문제</b>로 정의하고, 현재 요청과 과거 행동을 잇는 관계형 피처를 설계했습니다. 고전 ML과 Transformer 3종을 확률 블렌드로 앙상블했는데, 개별 점수보다 <b>오류를 보완하는 조합</b>이 성능을 갈랐습니다.</p>
 
@@ -518,7 +518,8 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
           <dl class="kmetrics">
             <div><dt>Baseline</dt><dd>0.43</dd></div>
             <div><dt>최종 Macro-F1</dt><dd>0.7867</dd></div>
-            <div><dt>예선</dt><dd>상위 10%</dd></div>
+            <div><dt>269팀 중</dt><dd>59위</dd></div>
+            <div><dt>참가</dt><dd>868명</dd></div>
           </dl>
           <p class="case-links">
             <a class="ext" href="https://qktjwl123.tistory.com/206" target="_blank" rel="noopener">회고</a>
