@@ -149,6 +149,7 @@ h3{font-size:clamp(1.35rem,1.2rem + .8vw,1.8rem);font-weight:700;letter-spacing:
 
 /* ── case study ─────────────────────────────────────── */
 .case{padding-block:clamp(2.5rem,2rem + 2.5vw,4rem)}
+.shell > .case:first-of-type{padding-top:0}
 .case + .case{border-top:1px solid var(--border-soft)}
 .meta{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-3);display:flex;flex-wrap:wrap;gap:.35rem 0}
 .meta .on{color:var(--accent)}
@@ -224,26 +225,22 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
 .traj-axis > span:last-child > span{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:var(--fg-3)}
 .traj figcaption{margin-top:.9rem}
 
-/* case two-column: text left, comparison bars right */
-.case-cols{display:grid;grid-template-columns:minmax(0,65ch) minmax(15rem,1fr);gap:2rem clamp(2rem,4vw,4rem);align-items:start;margin-top:2rem}
-.case-cols > .case-body{margin-top:0;order:0}
-.case-side{order:1;position:sticky;top:5rem;display:grid;gap:1.6rem}
-.cmp-title{font-size:.8rem;font-weight:700;color:var(--fg-2);margin-bottom:.6rem;display:flex;justify-content:space-between;gap:.75rem}
+/* comparison columns — vertical bars above the case body */
+.cmp-strip{display:flex;flex-wrap:wrap;align-items:flex-start;gap:1.3rem clamp(1.5rem,3vw,2.75rem);margin:2rem 0 0;padding:1.6rem 0 1.2rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft)}
+.cmp{flex:var(--n,2) 1 0;min-width:0;--head:1.5rem}
+.cmp + .cmp{border-left:1px solid var(--border-soft);padding-left:clamp(1.25rem,2.5vw,2.25rem)}
+.cmp-title{font-size:.8rem;font-weight:700;color:var(--fg-2);margin:0 0 1.2rem;display:flex;justify-content:space-between;align-items:baseline;gap:.75rem}
 .cmp-title span{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;font-weight:400;color:var(--fg-3);text-transform:uppercase}
-.cmp-rows{list-style:none;display:grid;row-gap:.55rem}
-.cmp-row{display:grid;grid-template-columns:6rem 1fr;align-items:center;column-gap:.6rem;font-size:.8rem}
-.cmp-lab{color:var(--fg-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.cmp-row.me .cmp-lab{color:var(--fg);font-weight:700}
-.cmp-bar{display:flex;align-items:center;gap:.5rem;min-width:0}
-.cmp-fill{height:14px;width:calc(var(--v) * (100% - 4.2rem) / 100);border-radius:0 4px 4px 0;background:color-mix(in oklab, var(--fg) 18%, transparent);flex:none}
-.cmp-row.me .cmp-fill{background:var(--accent)}
-.cmp-val{font-variant-numeric:tabular-nums;color:var(--fg-2);white-space:nowrap}
-.cmp-row.me .cmp-val{color:var(--fg);font-weight:700}
-.cmp-note{font-size:.72rem;color:var(--fg-3);line-height:1.5}
-@media (max-width:1023px){
-  .case-cols{grid-template-columns:1fr}
-  .case-side{position:static;order:-1;max-width:34rem}
-}
+.cmp-cols{list-style:none;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);column-gap:clamp(.5rem,1.5vw,1.25rem)}
+.cmp-col{display:grid;grid-template-rows:auto auto;justify-items:center;min-width:0}
+.cmp-track{position:relative;display:block;width:100%;height:clamp(122px,13vw,162px);padding-top:var(--head);box-sizing:border-box;border-bottom:1px solid var(--border)}
+.cmp-fill{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:40px;height:calc(var(--v) * (100% - var(--head)) / 100);border-radius:3px 3px 0 0;background:color-mix(in oklab, var(--fg) 16%, transparent)}
+.cmp-col.me .cmp-fill{background:var(--accent)}
+.cmp-val{position:absolute;left:0;right:0;bottom:calc(var(--v) * (100% - var(--head)) / 100 + .3rem);text-align:center;font-size:.78rem;line-height:1.2;font-variant-numeric:tabular-nums;color:var(--fg-2);white-space:nowrap}
+.cmp-col.me .cmp-val{color:var(--fg);font-weight:700}
+.cmp-lab{width:100%;margin-top:.55rem;font-size:.75rem;line-height:1.35;text-align:center;color:var(--fg-3);word-break:keep-all;overflow-wrap:break-word}
+.cmp-col.me .cmp-lab{color:var(--fg);font-weight:700}
+.cmp-note{order:9;flex:0 0 100%;width:100%;max-width:none;margin:.5rem 0 0;font-size:.72rem;color:var(--fg-3);line-height:1.5}
 
 /* metrics strip */
 .kmetrics{margin-top:2rem;display:flex;flex-wrap:wrap;gap:1.25rem clamp(2rem,4vw,3.5rem)}
@@ -315,6 +312,12 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
 @media (max-width:640px){
   body{font-size:1rem}
   .traj-row,.traj-axis{grid-template-columns:1fr;row-gap:.3rem}
+  .cmp-strip{gap:1.6rem}
+  .cmp{flex:1 0 100%}
+  .cmp + .cmp{border-left:0;padding-left:0;border-top:1px solid var(--border-soft);padding-top:1.3rem}
+  .cmp-track{height:108px}
+  .cmp-lab{font-size:.72rem}
+  .cmp-val{font-size:.74rem}
   .traj-axis > span:first-child{display:none}
   .shots{overflow-x:auto;padding-bottom:.75rem}
   .shots img{flex:0 0 60%}
@@ -354,7 +357,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
   <section class="hero shell" id="top" aria-label="소개">
     <p class="eyebrow">Park Sungjin — Full-stack · AI</p>
     <h1>사용자 문제를<br><span class="ul">제품으로</span> 해결합니다</h1>
-    <p class="lede">AI를 활용해 <b>실사용자가 있는 서비스를 만들고 운영하며</b>, <b>여러 에이전트가 나눠 일하는 구조</b>까지 설계하는 풀스택 개발자 박성진입니다. <span class="nb">한국항공대학교 소프트웨어공학</span>, 2026년 졸업 예정.</p>
+    <p class="lede">AI를 활용해 <b>실사용자가 있는 서비스를 만들고 운영하며</b>, <b>여러 에이전트가 나눠 일하는 구조</b>까지 설계하는 풀스택 개발자 박성진입니다. <span class="nb">한국항공대학교 소프트웨어공학</span>, 2027년 2월 졸업 예정.</p>
     <ul class="stats" role="list">
       <li><b class="num">월 <em>1,000+</em></b><span class="lab">교내 공지 서비스 방문자<br>단독 개발·운영 중</span></li>
       <li><b class="num">상위 <em>약 4.5%</em></b><span class="lab">LG Aimers 9기<br>1,082팀 중 49위</span></li>
@@ -494,24 +497,27 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
         <figcaption>2026년에 참가한 AI 대회 세 곳의 순위 백분위입니다. 오른쪽에 가까울수록 상위이고, 위가 최신입니다.</figcaption>
       </figure>
 
-      <article class="case" style="padding-top:0">
+      <article class="case">
         <p class="meta"><span>2026.08</span><span>Team of 3</span><span>Brier Skill Score</span><span>KBO TrackMan</span></p>
         <h3>LG Aimers 9기 — 야구 투구 제구 성공 확률 예측</h3>
         <p class="case-lede">KBO 트랙맨 기반 학습 데이터(약 137만 행)와 2025 시즌 평가 데이터(약 24.6만 행)를 제공받아, 투수가 던진 공이 의도한 코스로 갈 확률을 예측하는 대회입니다. 2,403명·1,082팀이 참가했고 49위(상위 약 4.5%)로 마쳤습니다.</p>
-        <div class="case-cols">
-        <aside class="case-side" aria-label="LG Aimers 9기 리더보드 비교">
-        <div class="cmp"><p class="cmp-title">리더보드 점수 <span>막대 길이는 1위 기준</span></p><ul class="cmp-rows">
-          <li class="cmp-row" title="운영진 기준 코드 점수 549.51"><span class="cmp-lab">베이스라인</span><span class="cmp-bar"><span class="cmp-fill" style="--v:44.9"></span><span class="cmp-val">549.5</span></span></li>
-          <li class="cmp-row" title="마감 전날 스냅샷 1,053팀 평균"><span class="cmp-lab">전체 평균</span><span class="cmp-bar"><span class="cmp-fill" style="--v:75.1"></span><span class="cmp-val">919.9</span></span></li>
-          <li class="cmp-row me" title="49위 / 1,082팀"><span class="cmp-lab">나</span><span class="cmp-bar"><span class="cmp-fill" style="--v:95.3"></span><span class="cmp-val">1,167.7</span></span></li>
-          <li class="cmp-row" title="최종 1위"><span class="cmp-lab">1위</span><span class="cmp-bar"><span class="cmp-fill" style="--v:100"></span><span class="cmp-val">1,225.2</span></span></li>
+      <figure class="cmp-strip" aria-label="LG Aimers 9기 리더보드 비교. 베이스라인 549.5, 전체 평균 919.9, 나 1,167.7, 1위 1,225.2. 제출 횟수는 전체 평균 36회, 나 138회.">
+        <div class="cmp" style="--n:4">
+        <p class="cmp-title">리더보드 점수 <span>1위 = 100</span></p>
+        <ul class="cmp-cols">
+        <li class="cmp-col" style="--v:44.9" title="운영진 기준 코드 점수 549.51"><span class="cmp-track"><span class="cmp-val">549.5</span><span class="cmp-fill"></span></span><span class="cmp-lab">베이스라인</span></li>
+        <li class="cmp-col" style="--v:75.1" title="마감 전날 스냅샷 1,053팀 평균"><span class="cmp-track"><span class="cmp-val">919.9</span><span class="cmp-fill"></span></span><span class="cmp-lab">전체 평균</span></li>
+        <li class="cmp-col me" style="--v:95.3" title="49위 / 1,082팀"><span class="cmp-track"><span class="cmp-val">1,167.7</span><span class="cmp-fill"></span></span><span class="cmp-lab">나</span></li>
+        <li class="cmp-col" style="--v:100" title="최종 1위"><span class="cmp-track"><span class="cmp-val">1,225.2</span><span class="cmp-fill"></span></span><span class="cmp-lab">1위</span></li>
         </ul></div>
-        <div class="cmp"><p class="cmp-title">제출 횟수 <span>상한 140회</span></p><ul class="cmp-rows">
-          <li class="cmp-row" title="마감 전날 스냅샷 1,053팀 평균 36.2회"><span class="cmp-lab">전체 평균</span><span class="cmp-bar"><span class="cmp-fill" style="--v:25.7"></span><span class="cmp-val">36회</span></span></li>
-          <li class="cmp-row me" title="4주 · 하루 5회 제한"><span class="cmp-lab">나</span><span class="cmp-bar"><span class="cmp-fill" style="--v:98.6"></span><span class="cmp-val">138회</span></span></li>
+        <div class="cmp" style="--n:2">
+        <p class="cmp-title">제출 횟수 <span>상한 140</span></p>
+        <ul class="cmp-cols">
+        <li class="cmp-col" style="--v:25.7" title="마감 전날 스냅샷 1,053팀 평균 36.2회"><span class="cmp-track"><span class="cmp-val">36회</span><span class="cmp-fill"></span></span><span class="cmp-lab">전체 평균</span></li>
+        <li class="cmp-col me" style="--v:98.6" title="4주 · 하루 5회 제한"><span class="cmp-track"><span class="cmp-val">138회</span><span class="cmp-fill"></span></span><span class="cmp-lab">나</span></li>
         </ul></div>
-        <p class="cmp-note">평균은 마감 전날 리더보드 스냅샷(1,053팀) 기준</p>
-        </aside>
+        <figcaption class="cmp-note">평균은 마감 전날 리더보드 스냅샷(1,053팀) 기준</figcaption>
+      </figure>
         <div class="case-body">
           <p><span class="lead-in">지표를 먼저 해석했습니다</span>Brier Score는 누가 더 잘 맞히는지(순위)가 아니라 <b>예측 확률이 실제 빈도와 얼마나 맞는지(보정)</b>를 채점합니다. 실제로 모델들의 판별력(AUC)은 0.53 수준이었고, 점수 차이의 대부분이 보정에서 나온다는 것을 초기에 측정으로 확인했습니다. 그래서 "더 강한 모델 찾기"가 아니라 <b>"여러 모델을 어떻게 결합하고 확률을 어떻게 보정할 것인가"</b>에 4주를 썼습니다.</p>
 
@@ -537,27 +543,29 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
             <a class="ext" href="https://dacon.io/competitions/official/236743/leaderboard" target="_blank" rel="noopener">리더보드</a>
           </p>
         </div>
-        </div>
       </article>
 
       <article class="case">
         <p class="meta"><span>2026.07</span><span>Solo</span><span>Macro-F1</span><span>Multi-agent</span></p>
         <h3>Dacon — AI 코딩 에이전트 행동 예측</h3>
         <p class="case-lede">에이전트의 세션 로그로 다음 행동 14클래스를 예측하는 대회입니다. 베이스라인 0.43에서 0.7867까지 올려 868명·269팀 중 59위(상위 약 20%)로 마쳤고, 실험 운영은 17개 역할로 나눈 AI 에이전트 하네스를 직접 설계해 맡겼습니다.</p>
-        <div class="case-cols">
-        <aside class="case-side" aria-label="Dacon 에이전트 행동 예측 리더보드 비교">
-        <div class="cmp"><p class="cmp-title">Macro-F1 <span>막대 길이는 1위 기준</span></p><ul class="cmp-rows">
-          <li class="cmp-row" title="초기 베이스라인 약 0.43"><span class="cmp-lab">베이스라인</span><span class="cmp-bar"><span class="cmp-fill" style="--v:53.8"></span><span class="cmp-val">0.43</span></span></li>
-          <li class="cmp-row me" title="59위 / 269팀"><span class="cmp-lab">나</span><span class="cmp-bar"><span class="cmp-fill" style="--v:98.5"></span><span class="cmp-val">0.7867</span></span></li>
-          <li class="cmp-row" title="최종 1위"><span class="cmp-lab">1위</span><span class="cmp-bar"><span class="cmp-fill" style="--v:100"></span><span class="cmp-val">0.7988</span></span></li>
+      <figure class="cmp-strip" aria-label="Dacon 에이전트 행동 예측 리더보드 비교. Macro-F1은 베이스라인 0.43, 나 0.7867, 1위 0.7988. 제출 횟수는 상위 88팀 평균 67회, 1위 105회, 나 110회.">
+        <div class="cmp" style="--n:3">
+        <p class="cmp-title">Macro-F1 <span>1위 = 100</span></p>
+        <ul class="cmp-cols">
+        <li class="cmp-col" style="--v:53.8" title="초기 베이스라인 약 0.43"><span class="cmp-track"><span class="cmp-val">0.43</span><span class="cmp-fill"></span></span><span class="cmp-lab">베이스라인</span></li>
+        <li class="cmp-col me" style="--v:98.5" title="59위 / 269팀"><span class="cmp-track"><span class="cmp-val">0.7867</span><span class="cmp-fill"></span></span><span class="cmp-lab">나</span></li>
+        <li class="cmp-col" style="--v:100" title="최종 1위"><span class="cmp-track"><span class="cmp-val">0.7988</span><span class="cmp-fill"></span></span><span class="cmp-lab">1위</span></li>
         </ul></div>
-        <div class="cmp"><p class="cmp-title">제출 횟수 <span>상위 88팀</span></p><ul class="cmp-rows">
-          <li class="cmp-row" title="리더보드 1~88위 평균 66.6회"><span class="cmp-lab">상위 88팀 평균</span><span class="cmp-bar"><span class="cmp-fill" style="--v:60.9"></span><span class="cmp-val">67회</span></span></li>
-          <li class="cmp-row" title="최종 1위 팀"><span class="cmp-lab">1위</span><span class="cmp-bar"><span class="cmp-fill" style="--v:95.5"></span><span class="cmp-val">105회</span></span></li>
-          <li class="cmp-row me" title="개인 참가 · 하루 10회 제한"><span class="cmp-lab">나</span><span class="cmp-bar"><span class="cmp-fill" style="--v:100"></span><span class="cmp-val">110회</span></span></li>
+        <div class="cmp" style="--n:3">
+        <p class="cmp-title">제출 횟수 <span>상위 88팀</span></p>
+        <ul class="cmp-cols">
+        <li class="cmp-col" style="--v:60.9" title="리더보드 1~88위 평균 66.6회"><span class="cmp-track"><span class="cmp-val">67회</span><span class="cmp-fill"></span></span><span class="cmp-lab">상위 88팀 평균</span></li>
+        <li class="cmp-col" style="--v:95.5" title="최종 1위 팀"><span class="cmp-track"><span class="cmp-val">105회</span><span class="cmp-fill"></span></span><span class="cmp-lab">1위</span></li>
+        <li class="cmp-col me" style="--v:100" title="개인 참가 · 하루 10회 제한"><span class="cmp-track"><span class="cmp-val">110회</span><span class="cmp-fill"></span></span><span class="cmp-lab">나</span></li>
         </ul></div>
-        <p class="cmp-note">전체 269팀 중 리더보드에 공개된 상위 88팀 기준</p>
-        </aside>
+        <figcaption class="cmp-note">전체 269팀 중 리더보드에 공개된 상위 88팀 기준</figcaption>
+      </figure>
         <div class="case-body">
           <p><span class="lead-in">문제 재정의</span>같은 요청이라도 파일을 읽었는지, 테스트가 통과했는지에 따라 다음 행동이 달라집니다. 단순 문장 분류가 아니라 <b>대화와 도구 사용으로 누적된 작업 상태를 추론하는 문제</b>로 정의하고, 현재 요청과 과거 행동을 잇는 관계형 피처를 설계했습니다. 고전 ML과 Transformer 3종을 확률 블렌드로 앙상블했는데, 개별 점수보다 <b>오류를 보완하는 조합</b>이 성능을 갈랐습니다.</p>
 
@@ -579,7 +587,6 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
             <a class="ext" href="https://github.com/Jinpop/ai-agent-action-prediction-hackathon" target="_blank" rel="noopener">GitHub</a>
             <a class="ext" href="https://dacon.io/competitions/official/236694/leaderboard" target="_blank" rel="noopener">리더보드</a>
           </p>
-        </div>
         </div>
       </article>
 
