@@ -9,10 +9,10 @@ if(t!=='light'&&t!=='dark'){try{t=matchMedia('(prefers-color-scheme: dark)').mat
 document.documentElement.setAttribute('data-theme',t);})();
 </script>
 <title>박성진 — 풀스택·AI 개발자</title>
-<meta name="description" content="실사용자가 있는 서비스를 만들고 운영하는 풀스택·AI 개발자 박성진. WeBand 누적 사용자 600명, KAU Notice Hub RAG 서비스 운영, LG Aimers 9기 1,082팀 중 49위, TOPCIT 교내 1위.">
+<meta name="description" content="실사용자가 있는 서비스를 만들고 운영하는 풀스택·AI 개발자 박성진. 교내 공지 통합 서비스 KAU Notice Hub 운영(월 방문 1,000+), LG Aimers 9기 1,082팀 중 49위, TOPCIT 교내 1위.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="박성진 — 풀스택·AI 개발자">
-<meta property="og:description" content="실사용자 600명 서비스 운영 · RAG 서비스 운영 중 · LG Aimers 9기 상위 4.5% · TOPCIT 교내 1위">
+<meta property="og:description" content="교내 공지 서비스 월 방문 1,000+ 운영 · LG Aimers 9기 상위 4.5% · TOPCIT 교내 1위">
 <meta property="og:url" content="https://jinpop.github.io/">
 <meta property="og:image" content="https://jinpop.github.io/og.png">
 <meta property="og:locale" content="ko_KR">
@@ -223,6 +223,27 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
 .traj-axis > span:last-child > span{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:var(--fg-3)}
 .traj figcaption{margin-top:.9rem}
 
+/* case two-column: text left, comparison bars right */
+.case-cols{display:grid;grid-template-columns:minmax(0,65ch) minmax(15rem,1fr);gap:2rem clamp(2rem,4vw,4rem);align-items:start;margin-top:2rem}
+.case-cols > .case-body{margin-top:0}
+.case-side{position:sticky;top:5rem;display:grid;gap:1.6rem}
+.cmp-title{font-size:.8rem;font-weight:700;color:var(--fg-2);margin-bottom:.6rem;display:flex;justify-content:space-between;gap:.75rem}
+.cmp-title span{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;font-weight:400;color:var(--fg-3);text-transform:uppercase}
+.cmp-rows{list-style:none;display:grid;row-gap:.55rem}
+.cmp-row{display:grid;grid-template-columns:6rem 1fr;align-items:center;column-gap:.6rem;font-size:.8rem}
+.cmp-lab{color:var(--fg-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cmp-row.me .cmp-lab{color:var(--fg);font-weight:700}
+.cmp-bar{display:flex;align-items:center;gap:.5rem;min-width:0}
+.cmp-fill{height:14px;width:calc(var(--v) * (100% - 4.2rem) / 100);border-radius:0 4px 4px 0;background:color-mix(in oklab, var(--fg) 18%, transparent);flex:none}
+.cmp-row.me .cmp-fill{background:var(--accent)}
+.cmp-val{font-variant-numeric:tabular-nums;color:var(--fg-2);white-space:nowrap}
+.cmp-row.me .cmp-val{color:var(--fg);font-weight:700}
+.cmp-note{font-size:.72rem;color:var(--fg-3);line-height:1.5}
+@media (max-width:1023px){
+  .case-cols{grid-template-columns:1fr}
+  .case-side{position:static;order:-1;max-width:34rem}
+}
+
 /* metrics strip */
 .kmetrics{margin-top:2rem;display:flex;flex-wrap:wrap;gap:1.25rem clamp(2rem,4vw,3.5rem)}
 .kmetrics div{display:flex;flex-direction:column}
@@ -333,10 +354,10 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
     <h1>사용자 문제를<br><span class="ul">제품으로</span> 해결합니다</h1>
     <p class="lede">AI를 활용해 <b>실사용자가 있는 서비스를 만들고 운영하며</b>, <b>여러 에이전트가 나눠 일하는 구조</b>까지 설계하는 풀스택 개발자 박성진입니다. 한국항공대학교 소프트웨어공학, 2026년 졸업 예정.</p>
     <ul class="stats" role="list">
-      <li><b class="num">600<em>명</em></b><span class="lab">WeBand 출시 첫 달 사용자<br>누적 1,220명, Vercel Analytics</span></li>
-      <li><b class="num">월 <em>780+</em></b><span class="lab">교내 공지 서비스 방문자<br>단독 개발·운영 중</span></li>
+      <li><b class="num">월 <em>1,000+</em></b><span class="lab">교내 공지 서비스 방문자<br>단독 개발·운영 중</span></li>
       <li><b class="num">상위 <em>4.5%</em></b><span class="lab">LG Aimers 9기<br>1,082팀 중 49위</span></li>
       <li><b class="num">교내 <em>1위</em></b><span class="lab">TOPCIT 2026<br>Level 4</span></li>
+      <li><b class="num"><em>2위</em></b><span class="lab">KAUPC 2025<br>알고리즘 경진대회</span></li>
     </ul>
     <p class="hero-links">
       <a class="ext" href="https://github.com/Jinpop" target="_blank" rel="noopener">GitHub</a>
@@ -380,7 +401,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
             <li>공지 데이터를 메모리에 전부 올리던 초기 구조에서 <b>OOM이 발생</b>했습니다. dmesg로 원인을 확인하고 SQLite 기반으로 바꾼 뒤 부하 테스트로 검증했습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/179" target="_blank" rel="noopener">글: 인프라 점검</a></li>
             <li>공개 서비스의 비용·어뷰징 리스크에 대비해 <b>rate limit·요청 크기·출력 토큰 상한</b>을 걸고, Vercel Analytics로 사용 흐름을 보며 개선 방향을 정합니다. <a class="ref ext" href="https://qktjwl123.tistory.com/182" target="_blank" rel="noopener">글: 운영 리스크</a> <a class="ref ext" href="https://qktjwl123.tistory.com/186" target="_blank" rel="noopener">글: 모니터링</a></li>
           </ul>
-          <p><span class="lead-in">현재</span>교내 구성원이 활발히 사용하고 있습니다. 최근 30일 방문자 782명, 페이지뷰 2,019회(Vercel Analytics, 2026.07). 유입 대부분이 교내 커뮤니티(에브리타임)를 통해 들어오며, AWS Lightsail 단일 서버에서 운영 중입니다. 위 결정들의 과정은 모두 블로그에 기록해 두었습니다.</p>
+          <p><span class="lead-in">현재</span>교내 구성원이 활발히 사용하고 있습니다. 출시 첫 달 방문자가 1,000명을 넘었습니다(Vercel Analytics). 유입 대부분이 교내 커뮤니티(에브리타임)를 통해 들어오며, AWS Lightsail 단일 서버에서 운영 중입니다. 위 결정들의 과정은 모두 블로그에 기록해 두었습니다.</p>
 
           <figure class="shot-wide">
             <img src="img/notice-hub-analytics.webp" width="1400" height="902" loading="lazy" decoding="async" alt="Vercel Analytics 대시보드 — 최근 30일 방문자 782명, 페이지뷰 2,019회. 유입 경로 1위는 교내 커뮤니티 everytime.kr 439명">
@@ -388,7 +409,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
           </figure>
 
           <dl class="kmetrics">
-            <div><dt>최근 30일 방문자</dt><dd>782</dd></div>
+            <div><dt>첫 달 방문자</dt><dd>1,000+</dd></div>
             <div><dt>수집 사이트</dt><dd>70</dd></div>
             <div><dt>수집 공지</dt><dd>2,400+</dd></div>
             <div><dt>담당</dt><dd>End-to-End</dd></div>
@@ -463,9 +484,9 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
 
       <figure class="traj" aria-label="2026년 참가한 AI 대회 세 곳의 순위 백분위. LG Aimers 9기 상위 4.5%, Dacon 에이전트 행동 예측 269팀 중 59위(상위 약 20%), LG Aimers 8기 상위 30%.">
         <ol class="traj-rows">
-          <li class="traj-row"><span class="traj-name">LG Aimers 9기<span class="traj-when">2026.08</span></span><span class="traj-track"><span class="traj-dot" style="--p:4.53" title="1,082팀 중 49위"></span><span class="traj-val" style="--p:4.53">상위 4.5%</span></span></li>
-          <li class="traj-row"><span class="traj-name">Dacon 에이전트 행동 예측<span class="traj-when">2026.07</span></span><span class="traj-track"><span class="traj-dot" style="--p:21.9" title="269팀 중 59위 (개인 참가)"></span><span class="traj-val" style="--p:21.9">상위 약 20%</span></span></li>
-          <li class="traj-row"><span class="traj-name">LG Aimers 8기<span class="traj-when">2026.01 — 02</span></span><span class="traj-track"><span class="traj-dot" style="--p:29.5" title="628팀 중 185위"></span><span class="traj-val" style="--p:29.5">상위 30%</span></span></li>
+          <li class="traj-row"><span class="traj-name">LG Aimers 9기 · 야구 제구 예측 해커톤<span class="traj-when">2026.08</span></span><span class="traj-track"><span class="traj-dot" style="--p:4.53" title="1,082팀 중 49위"></span><span class="traj-val" style="--p:4.53">상위 4.5%</span></span></li>
+          <li class="traj-row"><span class="traj-name">Dacon · AI 코딩 에이전트 행동 예측<span class="traj-when">2026.07</span></span><span class="traj-track"><span class="traj-dot" style="--p:21.9" title="269팀 중 59위 (개인 참가)"></span><span class="traj-val" style="--p:21.9">상위 약 20%</span></span></li>
+          <li class="traj-row"><span class="traj-name">LG Aimers 8기 · LLM Quantization 해커톤<span class="traj-when">2026.01 — 02</span></span><span class="traj-track"><span class="traj-dot" style="--p:29.5" title="628팀 중 185위"></span><span class="traj-val" style="--p:29.5">상위 30%</span></span></li>
         </ol>
         <div class="traj-axis"><span></span><span><span>100%</span><span>75</span><span>50</span><span>25</span><span>1위</span></span></div>
         <figcaption>2026년에 참가한 AI 대회 세 곳의 순위 백분위입니다. 오른쪽에 가까울수록 상위이고, 위가 최신입니다.</figcaption>
@@ -475,6 +496,20 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
         <p class="meta"><span>2026.08</span><span>Team of 3</span><span>Brier Skill Score</span><span>KBO TrackMan</span></p>
         <h3>LG Aimers 9기 — 야구 투구 제구 성공 확률 예측</h3>
         <p class="case-lede">KBO 트랙맨 기반 학습 데이터(약 137만 행)와 2025 시즌 평가 데이터(약 24.6만 행)를 제공받아, 투수가 던진 공이 의도한 코스로 갈 확률을 예측하는 대회입니다. 2,403명·1,082팀이 참가했고 49위(상위 4.53%)로 마쳤습니다.</p>
+        <div class="case-cols">
+        <aside class="case-side" aria-label="LG Aimers 9기 리더보드 비교">
+        <div class="cmp"><p class="cmp-title">리더보드 점수 <span>1위 = 100</span></p><ul class="cmp-rows">
+          <li class="cmp-row" title="운영진 기준 코드 점수 549.51"><span class="cmp-lab">베이스라인</span><span class="cmp-bar"><span class="cmp-fill" style="--v:44.9"></span><span class="cmp-val">549.5</span></span></li>
+          <li class="cmp-row" title="마감 전날 스냅샷 1,053팀 평균"><span class="cmp-lab">전체 평균</span><span class="cmp-bar"><span class="cmp-fill" style="--v:75.1"></span><span class="cmp-val">919.9</span></span></li>
+          <li class="cmp-row me" title="49위 / 1,082팀"><span class="cmp-lab">나</span><span class="cmp-bar"><span class="cmp-fill" style="--v:95.3"></span><span class="cmp-val">1,167.7</span></span></li>
+          <li class="cmp-row" title="최종 1위"><span class="cmp-lab">1위</span><span class="cmp-bar"><span class="cmp-fill" style="--v:100"></span><span class="cmp-val">1,225.2</span></span></li>
+        </ul></div>
+        <div class="cmp"><p class="cmp-title">제출 횟수 <span>상한 140</span></p><ul class="cmp-rows">
+          <li class="cmp-row" title="마감 전날 스냅샷 1,053팀 평균 36.2회"><span class="cmp-lab">전체 평균</span><span class="cmp-bar"><span class="cmp-fill" style="--v:25.7"></span><span class="cmp-val">36회</span></span></li>
+          <li class="cmp-row me" title="4주 · 하루 5회 제한"><span class="cmp-lab">나</span><span class="cmp-bar"><span class="cmp-fill" style="--v:98.6"></span><span class="cmp-val">138회</span></span></li>
+        </ul></div>
+        <p class="cmp-note">평균은 마감 전날 리더보드 스냅샷(1,053팀) 기준</p>
+        </aside>
         <div class="case-body">
           <p><span class="lead-in">지표를 먼저 해석했습니다</span>Brier Score는 누가 더 잘 맞히는지(순위)가 아니라 <b>예측 확률이 실제 빈도와 얼마나 맞는지(보정)</b>를 채점합니다. 실제로 모델들의 판별력(AUC)은 0.53 수준이었고, 점수 차이의 대부분이 보정에서 나온다는 것을 초기에 측정으로 확인했습니다. 그래서 "더 강한 모델 찾기"가 아니라 <b>"여러 모델을 어떻게 결합하고 확률을 어떻게 보정할 것인가"</b>에 4주를 썼습니다.</p>
 
@@ -500,12 +535,27 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
             <a class="ext" href="https://dacon.io/competitions/official/236743/leaderboard" target="_blank" rel="noopener">리더보드</a>
           </p>
         </div>
+        </div>
       </article>
 
       <article class="case">
         <p class="meta"><span>2026.07</span><span>Solo</span><span>Macro-F1</span><span>Multi-agent</span></p>
         <h3>Dacon — AI 코딩 에이전트 행동 예측</h3>
         <p class="case-lede">에이전트의 세션 로그로 다음 행동 14클래스를 예측하는 대회입니다. Baseline 0.43에서 0.7867까지 올려 868명·269팀 중 59위(상위 약 20%)로 마쳤고, 실험 운영은 17개 역할로 나눈 AI 에이전트 하네스를 직접 설계해 맡겼습니다.</p>
+        <div class="case-cols">
+        <aside class="case-side" aria-label="Dacon 에이전트 행동 예측 리더보드 비교">
+        <div class="cmp"><p class="cmp-title">Macro-F1 <span>1위 = 100</span></p><ul class="cmp-rows">
+          <li class="cmp-row" title="초기 베이스라인 약 0.43"><span class="cmp-lab">베이스라인</span><span class="cmp-bar"><span class="cmp-fill" style="--v:53.8"></span><span class="cmp-val">0.43</span></span></li>
+          <li class="cmp-row me" title="59위 / 269팀"><span class="cmp-lab">나</span><span class="cmp-bar"><span class="cmp-fill" style="--v:98.5"></span><span class="cmp-val">0.7867</span></span></li>
+          <li class="cmp-row" title="최종 1위"><span class="cmp-lab">1위</span><span class="cmp-bar"><span class="cmp-fill" style="--v:100"></span><span class="cmp-val">0.7988</span></span></li>
+        </ul></div>
+        <div class="cmp"><p class="cmp-title">제출 횟수 <span>상위 88팀</span></p><ul class="cmp-rows">
+          <li class="cmp-row" title="리더보드 1~88위 평균 66.6회"><span class="cmp-lab">상위 88팀 평균</span><span class="cmp-bar"><span class="cmp-fill" style="--v:60.9"></span><span class="cmp-val">67회</span></span></li>
+          <li class="cmp-row" title="최종 1위 팀"><span class="cmp-lab">1위</span><span class="cmp-bar"><span class="cmp-fill" style="--v:95.5"></span><span class="cmp-val">105회</span></span></li>
+          <li class="cmp-row me" title="개인 참가 · 하루 10회 제한"><span class="cmp-lab">나</span><span class="cmp-bar"><span class="cmp-fill" style="--v:100"></span><span class="cmp-val">110회</span></span></li>
+        </ul></div>
+        <p class="cmp-note">전체 269팀 중 리더보드에 공개된 상위 88팀 기준</p>
+        </aside>
         <div class="case-body">
           <p><span class="lead-in">문제 재정의</span>같은 요청이라도 파일을 읽었는지, 테스트가 통과했는지에 따라 다음 행동이 달라집니다. 단순 문장 분류가 아니라 <b>대화와 도구 사용으로 누적된 작업 상태를 추론하는 문제</b>로 정의하고, 현재 요청과 과거 행동을 잇는 관계형 피처를 설계했습니다. 고전 ML과 Transformer 3종을 확률 블렌드로 앙상블했는데, 개별 점수보다 <b>오류를 보완하는 조합</b>이 성능을 갈랐습니다.</p>
 
@@ -528,11 +578,12 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
             <a class="ext" href="https://dacon.io/competitions/official/236694/leaderboard" target="_blank" rel="noopener">리더보드</a>
           </p>
         </div>
+        </div>
       </article>
 
       <article class="case">
         <p class="meta"><span>2026.01 — 02</span><span>Team of 4</span><span>Lead</span><span>GPTQ W4A16</span></p>
-        <h3>LG Aimers 8기 — LLM 경량화</h3>
+        <h3>LG Aimers 8기 — LLM Quantization 해커톤</h3>
         <p class="case-lede">EXAONE-4.0-1.2B를 4bit로 양자화해 성능과 속도를 함께 겨루는 대회입니다. 1,537명이 참가했고 628팀 중 185위로 마쳤습니다.</p>
         <div class="case-body">
           <p><span class="lead-in">과제</span>점수가 <code>성능 50% + 속도 50%</code>로 매겨져서, 얼마나 줄이느냐가 아니라 <b>어디까지 줄여도 성능이 버티는가</b>를 찾는 문제였습니다. GPTQ 계열(llmcompressor)로 가중치 4bit·활성 16bit 양자화를 적용하되, 어텐션과 MLP의 projection 레이어만 대상으로 하고 임베딩과 출력층은 제외했습니다. pack-quantized로 저장해 제출 용량도 줄였습니다.</p>
