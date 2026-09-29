@@ -19,7 +19,7 @@ img/         프로젝트 스크린샷 (WebP)
 - **모션** — `IntersectionObserver` 기반 1회성 fade-up. 초기 숨김 상태는 `html.js` 게이트 뒤에 두어 JS 실패 시에도 콘텐츠가 보이며, `prefers-reduced-motion: reduce`를 존중
 - **내비게이션** — 뷰포트 중앙 띠(`rootMargin`)로 활성 섹션을 판정하고 `aria-current`로 표시
 - **접근성** — 스킵 링크, 랜드마크·헤딩 구조, `:focus-visible` 링, 본문 대비 4.5:1 이상
-- **성능** — 이미지 전량 WebP(총 192KB), `width`/`height` 명시로 CLS 방지, 외부 의존성·트래커 없음
+- **성능** — 이미지 전량 WebP(총 172KB), `width`/`height` 명시로 CLS 방지, 외부 의존성·트래커 없음
 
 ## 로컬 실행
 
