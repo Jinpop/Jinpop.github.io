@@ -192,6 +192,7 @@ h3{font-size:clamp(1.35rem,1.2rem + .8vw,1.8rem);font-weight:700;letter-spacing:
 .decisions{list-style:none;margin-top:1.25rem;border-top:1px solid var(--border-soft)}
 .decisions li{padding:1.05rem 0;border-bottom:1px solid var(--border-soft);font-size:.98rem}
 .decisions b{font-weight:700}
+.decisions .li-head{display:block;font-size:.88rem;font-weight:700;color:var(--fg);line-height:1.4;margin-bottom:.3rem}
 .decisions .ref{font-size:.85rem;color:var(--accent);white-space:nowrap;margin-left:.35em}
 
 /* screenshots */
@@ -531,15 +532,16 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
 
           <p><span class="lead-in">담당</span></p>
           <ul class="decisions">
-            <li>연구실 A5000 GPU에서는 실행 하나가 step당 1.9초 걸렸고 동시에 4개까지만 돌릴 수 있어, 실험 일정의 병목이었습니다. 팀에 <b>클라우드 GPU(Vast.ai) 사용을 먼저 제안</b>하고, 대여부터 접속⁠·⁠환경 구성까지 담은 사용 가이드를 만들어 팀에 배포했습니다.</li>
-            <li>제 실험은 모델이 작아<span class="nb">(파라미터 4,545개⁠·⁠92개)</span> GPU로는 빨라지지 않는다는 것을 프로파일링으로 확인했습니다. 그래서 GPU 대신 <b>192코어 CPU 인스턴스</b>를 골랐고, 동시 실행 수를 48⁠·⁠96⁠·⁠150개로 바꿔 재 처리량이 가장 큰 96개로 정했습니다. <b>하이퍼파라미터 탐색 104회를 1시간 49분에</b> 끝냈습니다<span class="nb">(48 core-hour)</span>.</li>
-            <li>이 탐색으로 최악 환경 OOD 검증 MSE를 0.09567에서 0.09429로 낮췄습니다. 테스트 세트는 선택을 확정한 뒤 한&nbsp;번만 평가했습니다.</li>
-            <li>학습 코드에서 상태 복사와 중복 계산을 걷어내 <b>step당 0.53초 → 0.29초</b>로 줄였습니다. 개선 전후의 학습 로그와 모델 파라미터가 비트 단위로 같은 것을 확인한 뒤 적용했습니다.</li>
-            <li>6개 방법을 담당자가 나눠 구현하면서 체크포인트를 고르는 기준이 방법마다 달라, 한 표의 숫자를 그대로 비교할 수 없는 상태였습니다. 교수님 피드백을 바탕으로 <b>학습⁠·⁠선택 규칙 통일안</b>을 작성해 팀에 제안했고, 이후 방법별 코드가 이를 따르는지 공용 저장소에서 점검해 어긋난 부분을 담당자에게 짚었습니다. SCOT&nbsp;구현의 역변환 결함도 이 점검에서 찾아 담당자 수정으로 반영됐습니다.</li>
+            <li><span class="li-head">클라우드 도입 제안</span>연구실 A5000 GPU에서는 실행 하나가 step당 1.9초 걸렸고 동시에 4개까지만 돌릴 수 있어, 실험 일정의 병목이었습니다. 팀에 클라우드 GPU(Vast.ai) 사용을 먼저 제안하고, 대여부터 접속⁠·⁠환경 구성까지 담은 사용 가이드를 만들어 팀에 배포했습니다.</li>
+            <li><span class="li-head">작업에 맞는 하드웨어 선택</span>제 실험은 모델이 작아<span class="nb">(파라미터 4,545개⁠·⁠92개)</span> GPU로는 빨라지지 않는다는 것을 프로파일링으로 확인했습니다. 그래서 GPU 대신 <b>192코어 CPU 인스턴스</b>를 골랐고, 동시 실행 수를 48⁠·⁠96⁠·⁠150개로 바꿔 재 처리량이 가장 큰 96개로 정했습니다.</li>
+            <li><span class="li-head">결과가 같은 학습 코드 개선</span>학습 코드에서 상태 복사와 중복 계산을 걷어내 <b>step당 0.53초 → 0.29초</b>로 줄였습니다. 개선 전후의 학습 로그와 모델 파라미터가 비트 단위로 같은 것을 확인한 뒤 적용했습니다.</li>
+            <li><span class="li-head">탐색 시간 약 60배 단축</span>하이퍼파라미터 탐색 104회(총 83만 2천 step)를 <b>1시간 49분</b>에 끝냈습니다<span class="nb">(48 core-hour)</span>. 연구실 A5000 환경(step당 1.9초⁠·⁠4개 병렬)으로 환산하면 약 110시간 걸리는 양으로, <b>약 60배</b> 빨라졌습니다. 코드 개선 몫(서버 기준 약 1.5배)을 빼도 하드웨어 선택만으로 약 40배입니다.</li>
+            <li><span class="li-head">탐색 결과</span>최악 환경 OOD 검증 MSE를 0.09567에서 <b>0.09429</b>로 낮췄습니다. 테스트 세트는 선택을 확정한 뒤 한&nbsp;번만 평가했습니다.</li>
+            <li><span class="li-head">방법 간 비교 조건 통일</span>6개 방법을 담당자가 나눠 구현하면서 체크포인트를 고르는 기준이 방법마다 달라, 한 표의 숫자를 그대로 비교할 수 없는 상태였습니다. 교수님 피드백을 바탕으로 <b>학습⁠·⁠선택 규칙 통일안</b>을 작성해 팀에 제안했고, 이후 방법별 코드가 이를 따르는지 공용 저장소에서 점검해 어긋난 부분을 담당자에게 짚었습니다. SCOT&nbsp;구현의 역변환 결함도 이 점검에서 찾아 담당자 수정으로 반영됐습니다.</li>
           </ul>
 
           <dl class="kmetrics">
-            <div><dt>저자 순서</dt><dd>7 / 8</dd></div>
+            <div><dt>탐색 시간 (A5000 환산 대비)</dt><dd>약 60배</dd></div>
             <div><dt>탐색 104회 소요</dt><dd>1시간 49분</dd></div>
             <div><dt>최악 환경 MSE</dt><dd>0.0943</dd></div>
             <div><dt>step당 시간</dt><dd>−45%</dd></div>
