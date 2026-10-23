@@ -511,8 +511,8 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
             <li>운영 DB와 별개로 <b>3년치 공지 7,857건</b>을 다시 수집해 고정하고, 같은 공지가 여러 게시판에 올라오는 교차 게시 문제도 정리했습니다.</li>
             <li>공지마다 적용 학기와 대상(8분류)을 붙이는 라벨 기준서를 v5까지 다듬고, <b>사람 검수 두 차례(503건⁠·⁠279건)</b>로 확정했습니다. 대상⁠·⁠회차 쌍의 <span class="nb">16%에</span> 게시 시차가 있었습니다.</li>
             <li>질문 날짜 시점의 공지 목록을 재현하는 실험 환경을 운영 코드와 분리해 만들고, <b>날짜가 붙은 평가 질문 1,305개</b>와 비교 방법 6종(BM25, 최신순, 대상 필터, 시점 기반 <span class="nb">거부 등)을</span> 구현했습니다.</li>
+            <li>대상 라벨은 운영 서비스에도 적용했습니다. 효과는 KAU Notice&nbsp;Hub 항목에 적었습니다.</li>
           </ul>
-          <p>대상 라벨은 운영 서비스에도 적용했습니다. 효과는 KAU Notice&nbsp;Hub 항목에 적었습니다.</p>
 
           <dl class="kmetrics">
             <div><dt>연구용 공지</dt><dd>7,857</dd></div>
@@ -602,8 +602,8 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
 
           <p><span class="lead-in">담당</span>3인 팀에서 <b>모델 구조 설계와 학습⁠·⁠앙상블⁠·⁠검증⁠·⁠제출 전략</b>을 맡았습니다. 야구 도메인 지식이 있는 팀원이 피처 가설을 내면, 제가 직교성 분석으로 기존 피처와 겹치는지 걸러 모델 구조와 검증 설계로 옮겼습니다.</p>
 
-          <p>제출 138회는 근거와 결과를 전부 원장으로 남기고, 채택 기준은 결과를 보기 전에 미리 등록했습니다. 배포 모델은 재학습 시 <b>트리 잎값까지 동일하게 재현</b>되는 것을 확인했습니다.</p>
-          <p>모델을 하나 더 얹기보다 <b>무엇으로 결합하고 무엇으로 검증할지</b> 정하는 것이 점수를 갈랐습니다. 도메인을 아는 팀원의 피처는 혼자서는 나오지 않았을 것이라, 역할 분담도 결과의 일부라는 것을 확인했습니다.</p>
+          <p><span class="lead-in">검증 규율</span>제출 138회는 근거와 결과를 전부 원장으로 남기고, 채택 기준은 결과를 보기 전에 미리 등록했습니다. 배포 모델은 재학습 시 <b>트리 잎값까지 동일하게 재현</b>되는 것을 확인했습니다.</p>
+          <p><span class="lead-in">배운 것</span>모델을 하나 더 얹기보다 <b>무엇으로 결합하고 무엇으로 검증할지</b> 정하는 것이 점수를 갈랐습니다. 도메인을 아는 팀원의 피처는 혼자서는 나오지 않았을 것이라, 역할 분담도 결과의 일부라는 것을 확인했습니다.</p>
 
           <dl class="kmetrics">
             <div><dt>1,082팀 중</dt><dd>49위</dd></div>
@@ -648,7 +648,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
             <li><b>역할을 17개 서브에이전트로 분리</b>하고(전략 수립 / 데이터⁠·⁠누수 감사 / 학습 설정 검증 / 실행 / 제출물 검증 / 기록), 각 에이전트에는 <b>맡은 역할에 필요한 최소 정보만</b> 넘겼습니다.</li>
             <li>자연어 보고 대신 <b>산출물로 검증</b>했습니다. <code>effective_config</code>, <span class="nb">코드⁠·⁠데이터</span> SHA 대조, 제출물 자동 검사로 학습 시작 전 결함을 2회 차단했습니다.</li>
           </ul>
-          <p>한 에이전트의 실수가 전체를 통과하기 어려운 구조가 됐고, 에이전트 성능이 모델만이 아니라 역할⁠·⁠컨텍스트⁠·⁠권한⁠·⁠검증 구조 설계에도 달려 있다는 것을 배웠습니다.</p>
+          <p><span class="lead-in">배운 것</span>한 에이전트의 실수가 전체를 통과하기 어려운 구조가 됐고, 에이전트 성능이 모델만이 아니라 역할⁠·⁠컨텍스트⁠·⁠권한⁠·⁠검증 구조 설계에도 달려 있다는 것을 배웠습니다.</p>
           <dl class="kmetrics">
             <div><dt>베이스라인</dt><dd>0.43</dd></div>
             <div><dt>최종 Macro-F1</dt><dd>0.7867</dd></div>
@@ -670,7 +670,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
         <p class="case-lede">EXAONE-4.0-1.2B를 4bit로 양자화해 성능과 속도를 겨루는 대회입니다. 직접 4인 팀을 모아 리드했고, <span class="nb">1,537명⁠·⁠628팀</span> 중 185위로 마쳤습니다.</p>
         <div class="case-body">
           <p><span class="lead-in">분업</span>경량화 기법을 나눠 팀원들은 프루닝과 디스틸레이션을, 저는 양자화를 연구했습니다.</p>
-          <p>점수가 <code>성능 50% + 속도 50%</code>라 "어디까지 줄여도 성능이 버티는가"를 찾는 문제였습니다. GPTQ(llmcompressor)로 W4A16 양자화를 적용하고, <b>캘리브레이션 데이터 구성 다섯 가지를 비교</b>했습니다. 같은 제출물의 점수가 0.1점 이상 흔들리는 것을 보고, <b>측정 자체를 믿을 수 있는지 먼저 따져야 한다</b>는 것을 처음 겪었습니다.</p>
+          <p><span class="lead-in">접근과 배운 것</span>점수가 <code>성능 50% + 속도 50%</code>라 "어디까지 줄여도 성능이 버티는가"를 찾는 문제였습니다. GPTQ(llmcompressor)로 W4A16 양자화를 적용하고, <b>캘리브레이션 데이터 구성 다섯 가지를 비교</b>했습니다. 같은 제출물의 점수가 0.1점 이상 흔들리는 것을 보고, <b>측정 자체를 믿을 수 있는지 먼저 따져야 한다</b>는 것을 처음 겪었습니다.</p>
           <p class="case-links">
             <a class="ext" href="https://github.com/Jinpop/LGAimer-8th-LLM-Quantization" target="_blank" rel="noopener">GitHub</a>
             <a class="ext" href="https://dacon.io/competitions/official/236673/leaderboard" target="_blank" rel="noopener">리더보드</a>
