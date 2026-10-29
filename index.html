@@ -65,7 +65,7 @@ document.documentElement.setAttribute('data-theme',t);})();
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-section{scroll-margin-top:4.5rem}
+section,[id]{scroll-margin-top:5.5rem}
 body{
   background:var(--bg);color:var(--fg);
   font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
@@ -91,6 +91,13 @@ code{font-family:var(--mono);font-size:.88em;background:color-mix(in oklab, var(
 /* external link arrow */
 .ext::after{content:"\2197";display:inline-block;margin-left:.25em;font-size:.85em;color:var(--fg-3);transition:transform .18s,color .18s}
 .ext:hover::after{transform:translate(2px,-2px);color:var(--accent)}
+/* in-page jump link */
+.jump::after{content:"\2193";display:inline-block;margin-left:.2em;font-size:.85em;transition:transform .18s}
+.jump:hover::after{transform:translateY(2px)}
+/* 점프 도착 지점 잠깐 강조 */
+li:target{animation:target-flash 2.4s ease-out}
+@keyframes target-flash{0%,30%{background:var(--accent-weak)}100%{background:transparent}}
+@media (prefers-reduced-motion:reduce){li:target{animation:none;background:var(--accent-weak)}.jump::after{transition:none}}
 
 /* ── header ─────────────────────────────────────────── */
 .site-head{
@@ -367,7 +374,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
   <section class="hero shell" id="top" aria-label="소개">
     <p class="eyebrow">Park Sungjin — Full-stack · AI</p>
     <h1>사용자 문제를<br><span class="ul">제품으로</span> 해결합니다</h1>
-    <p class="lede"><b>실사용자가 있는 RAG 서비스를 직접 만들고 운영하는</b> 풀스택⁠·⁠AI 개발자 박성진입니다.<br class="br-wide"> 운영에서 나온 검색 실패를 <b>연구 문제로 정의하고, 그 결과를 다시 서비스에 적용</b>합니다.<br class="br-wide"> 익숙한 방식도 더 빠른 길이 없는지 먼저 따져 봅니다.<br class="br-wide"> 연구실 GPU 대신 CPU 클라우드를 골라 실험 시간을 <b>약&nbsp;60배</b> 줄인 것도 그렇게 나왔습니다.<br><span class="nb">한국항공대학교 소프트웨어공학</span>, <span class="nb">2027년 2월 졸업 예정.</span></p>
+    <p class="lede"><b>실사용자가 있는 RAG 서비스를 직접 만들고 운영하는</b> 풀스택⁠·⁠AI 개발자 박성진입니다.<br class="br-wide"> 운영에서 나온 검색 실패를 <b>연구 문제로 정의하고, 그 결과를 다시 서비스에 적용</b>합니다.<br class="br-wide"> 익숙한 방식도 더 빠른 길이 없는지 먼저 따져 봅니다.<br class="br-wide"> <span class="nb"><a class="lk jump" href="#exo-speed">실험 시간 약&nbsp;60배 단축</a>,</span> <span class="nb"><a class="lk jump" href="#rostercrawler">근로 업무 자동화</a></span><br><span class="nb">한국항공대학교 소프트웨어공학</span>, <span class="nb">2027년 2월 졸업 예정.</span></p>
     <ul class="stats" role="list">
       <li><b class="num">3개월 <em>1,500+</em></b><span class="lab">교내 공지 서비스 방문자<br>개발⁠·⁠운영 중</span></li>
       <li><b class="num">상위 <em>약 4.5%</em></b><span class="lab">LG Aimers 9기<br>1,082팀 중 49위</span></li>
@@ -486,7 +493,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
       <div class="archive">
         <p class="archive-head">More Projects</p>
         <ul class="rows">
-          <li><span class="row"><span class="y">2026</span><a class="t ext" href="https://github.com/Jinpop/RosterCrawler" target="_blank" rel="noopener">RosterCrawler</a><span class="d">교내 근로 업무(안전교육 관리) 자동화. 좌표 기반 리포트 텍스트를 표로 복원했고, 저장 단위를 바꿔 수집 성능을 높였습니다</span></span></li>
+          <li id="rostercrawler"><span class="row"><span class="y">2026</span><a class="t ext" href="https://github.com/Jinpop/RosterCrawler" target="_blank" rel="noopener">RosterCrawler</a><span class="d">교내 근로 업무(안전교육 관리) 자동화. 좌표 기반 리포트 텍스트를 표로 복원했고, 저장 단위를 바꿔 수집 성능을 높였습니다</span></span></li>
           <li><span class="row"><span class="y">2026</span><a class="t ext" href="https://github.com/Jinpop/NoDupDownload" target="_blank" rel="noopener">NoDupDownload</a><span class="d">파일명⁠·⁠출처 URL로 중복 다운로드를 감지하는 Chrome 확장</span></span></li>
         </ul>
       </div>
@@ -535,7 +542,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
           <ul class="decisions">
             <li><span class="li-head">클라우드 도입 제안</span>연구실 A5000 GPU에서는 step당 1.9초에 동시 4개가 한계여서 실험 일정의 병목이었습니다. 팀에 클라우드 <span class="nb">GPU(Vast.ai)를</span> 먼저 제안하고, 대여부터 환경 구성까지 담은 사용 가이드를 만들어 배포했습니다.</li>
             <li><span class="li-head">결과가 같은 학습 코드 개선</span>상태 복사와 중복 계산을 걷어내 <b>step당 0.53초 → 0.29초</b>로 줄였고, 개선 전후 학습 로그와 모델 파라미터가 비트 단위로 같은 것을 확인했습니다.</li>
-            <li><span class="li-head">하드웨어 선택으로 탐색 시간 약 60배 단축</span>제 실험은 모델이 작아<span class="nb">(파라미터 4,545개⁠·⁠92개)</span> GPU로는 빨라지지 않는다는 것을 프로파일링으로 확인하고, <b>192코어 CPU 인스턴스</b>에서 동시 실행 수를 48⁠·⁠96⁠·⁠150개로 재 처리량이 가장 큰 96개로 돌렸습니다. 하이퍼파라미터 탐색 104회(83만 2천 step)를 <b>1시간 49분</b>에 끝냈습니다<span class="nb">(48 core-hour)</span>. A5000 환경으로 환산하면 약 110시간으로 <b>약&nbsp;60배</b>이고, 코드 개선 몫(약 1.5배)을 빼도 약&nbsp;40배입니다.</li>
+            <li id="exo-speed"><span class="li-head">하드웨어 선택으로 탐색 시간 약 60배 단축</span>제 실험은 모델이 작아<span class="nb">(파라미터 4,545개⁠·⁠92개)</span> GPU로는 빨라지지 않는다는 것을 프로파일링으로 확인하고, <b>192코어 CPU 인스턴스</b>에서 동시 실행 수를 48⁠·⁠96⁠·⁠150개로 재 처리량이 가장 큰 96개로 돌렸습니다. 하이퍼파라미터 탐색 104회(83만 2천 step)를 <b>1시간 49분</b>에 끝냈습니다<span class="nb">(48 core-hour)</span>. A5000 환경으로 환산하면 약 110시간으로 <b>약&nbsp;60배</b>이고, 코드 개선 몫(약 1.5배)을 빼도 약&nbsp;40배입니다.</li>
             <li><span class="li-head">탐색 결과</span>최악 환경 OOD 검증 MSE를 0.09567에서 <b>0.09429</b>로 낮췄습니다. 테스트 세트는 선택을 확정한 뒤 한&nbsp;번만 평가했습니다.</li>
             <li><span class="li-head">비교 조건 문제 제기와 통일안</span>방법 6개를 담당자가 나눠 구현하며 체크포인트 선택 기준이 달라져, 한 표의 숫자를 비교할 수 없다는 문제를 <b>제가 먼저 제기</b>했습니다. 교수님이 best OOD val로 통일하기로 정하신 뒤 <b>학습⁠·⁠선택 규칙 통일안</b>을 작성해 제안했고, 방법별 코드를 공용 저장소에서 점검해 어긋난 부분을 담당자에게 짚었습니다. SCOT&nbsp;구현의 역변환 결함도 이 점검에서 찾아 수정됐습니다.</li>
           </ul>
