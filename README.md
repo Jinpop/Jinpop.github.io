@@ -9,6 +9,7 @@
 ```
 index.html   페이지 전체 (HTML · CSS · JS 인라인)
 og.png       링크 프리뷰용 OG 이미지 (1200×630)
+tools/og.html  og.png 원본 — 수정 후 아래 명령으로 다시 렌더
 img/         프로젝트 스크린샷 (WebP)
 ```
 
@@ -25,4 +26,10 @@ img/         프로젝트 스크린샷 (WebP)
 
 ```bash
 python3 -m http.server 4173
+```
+
+## OG 이미지 다시 만들기
+
+```bash
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --hide-scrollbars --force-device-scale-factor=1 --window-size=1200,630 --virtual-time-budget=8000 --screenshot="$PWD/og.png" "file://$PWD/tools/og.html"
 ```
