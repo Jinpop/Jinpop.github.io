@@ -95,9 +95,9 @@ code{font-family:var(--mono);font-size:.88em;background:color-mix(in oklab, var(
 .jump::after{content:"\2193";display:inline-block;margin-left:.2em;font-size:.85em;transition:transform .18s}
 .jump:hover::after{transform:translateY(2px)}
 /* 점프 도착 지점 잠깐 강조 */
-li:target,p:target{animation:target-flash 2.4s ease-out}
+li:target,p:target,tr:target,article:target>h3{animation:target-flash 2.4s ease-out}
 @keyframes target-flash{0%,30%{background:var(--accent-weak)}100%{background:transparent}}
-@media (prefers-reduced-motion:reduce){li:target,p:target{animation:none;background:var(--accent-weak)}.jump::after{transition:none}}
+@media (prefers-reduced-motion:reduce){li:target,p:target,tr:target,article:target>h3{animation:none;background:var(--accent-weak)}.jump::after{transition:none}}
 
 /* ── header ─────────────────────────────────────────── */
 .site-head{
@@ -144,6 +144,9 @@ h1 .ul{
   font-size:clamp(1.9rem,1.5rem + 1.8vw,2.9rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;
 }
 .stats .num em{font-style:normal;color:var(--accent)}
+.stats a.stat{display:block;color:inherit;border-radius:4px}
+.stats a.stat .lab::after{content:" \2193";color:var(--accent)}
+.stats a.stat:hover .num{opacity:.8}
 .stats .lab{display:block;margin-top:.45rem;font-size:.82rem;color:var(--fg-3);line-height:1.5;max-width:11em}
 .hero-links{margin-top:clamp(2.5rem,2rem + 2.5vw,4rem);display:flex;flex-wrap:wrap;gap:.5rem 1.75rem;font-size:.95rem}
 .hero-links a{color:var(--fg-2);font-weight:600}
@@ -382,10 +385,10 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
       <p><span class="nb">한국항공대학교 소프트웨어공학</span>, <span class="nb">2027년 2월 졸업 예정.</span></p>
     </div>
     <ul class="stats" role="list">
-      <li><b class="num"><em>1,500+</em></b><span class="lab">교내 공지 서비스<br>3개월 방문자</span></li>
-      <li><b class="num">상위 <em>약 4.5%</em></b><span class="lab">LG Aimers 9기<br>1,082팀 중 49위</span></li>
-      <li><b class="num">교내 <em>1위</em></b><span class="lab">TOPCIT 2026<br>Level 4</span></li>
-      <li><b class="num"><em>ICLR</em> 2027</b><span class="lab">투고 논문 공저<br>심사 중</span></li>
+      <li><a class="stat" href="#nh-now"><b class="num"><em>1,500+</em></b><span class="lab">교내 공지 서비스<br>3개월 방문자</span></a></li>
+      <li><a class="stat" href="#aimers9"><b class="num">상위 <em>약 4.5%</em></b><span class="lab">LG Aimers 9기<br>1,082팀 중 49위</span></a></li>
+      <li><a class="stat" href="#award-topcit"><b class="num">교내 <em>1위</em></b><span class="lab">TOPCIT 2026<br>Level 4</span></a></li>
+      <li><a class="stat" href="#exodro"><b class="num"><em>ICLR</em> 2027</b><span class="lab">투고 논문 공저<br>심사 중</span></a></li>
     </ul>
     <p class="hero-links">
       <a class="ext" href="https://github.com/Jinpop" target="_blank" rel="noopener">GitHub</a>
@@ -430,7 +433,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
             <li>비용⁠·⁠어뷰징에 대비해 <b>rate&nbsp;limit⁠·⁠요청 크기⁠·⁠출력 토큰 상한</b>을 걸고, Vercel&nbsp;Analytics로 사용 흐름을 봅니다. <a class="ref ext" href="https://qktjwl123.tistory.com/182" target="_blank" rel="noopener">글: 운영 리스크</a> <a class="ref ext" href="https://qktjwl123.tistory.com/186" target="_blank" rel="noopener">글: 모니터링</a></li>
             <li>질문자와 대상이 다른 공지가 근거에 섞이는 문제가 있었습니다(예: 대학원생의 질문에 학부생용 공지). 논문 작업에서 공지마다 붙인 대상 라벨을 운영에 적용해, <b>사용자가 신분을 고르면 그 대상의 공지만 근거로</b> 쓰게 했습니다. 실제 운영 코드로 질문 날짜 시점을 재현한 평가 99문항에서, 다른 대상 공지가 섞인 비율은 34%&nbsp;→&nbsp;0%, 첫 번째 근거가 정답 공지인 비율은 57%&nbsp;→&nbsp;79%가 됐습니다(1회 실행).</li>
           </ul>
-          <p><span class="lead-in">현재</span>최근 3개월 방문자가 1,500명을 넘고(Vercel&nbsp;Analytics), 유입 대부분이 <span class="nb">교내 커뮤니티(에브리타임)입니다.</span> 운영하며 본 검색 실패는 <a class="lk" href="#research">논문 작업</a>으로 이어가고 있습니다.</p>
+          <p id="nh-now"><span class="lead-in">현재</span>최근 3개월 방문자가 1,500명을 넘고(Vercel&nbsp;Analytics), 유입 대부분이 <span class="nb">교내 커뮤니티(에브리타임)입니다.</span> 운영하며 본 검색 실패는 <a class="lk" href="#research">논문 작업</a>으로 이어가고 있습니다.</p>
 
           <figure class="shot-wide">
             <img src="img/notice-hub-analytics.webp" width="1290" height="730" loading="lazy" decoding="async" alt="Vercel Analytics 대시보드 — 최근 3개월 방문자 1,586명, 페이지뷰 4,699회, 이탈률 51%. 유입 경로 1위는 교내 커뮤니티 everytime.kr 662명">
@@ -537,7 +540,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
       </article>
 
       <!-- exoDRO -->
-      <article class="case">
+      <article class="case" id="exodro">
         <p class="meta"><span>2026.09</span><span class="on">ICLR 2027 Submitted</span><span>Co-author 7/8</span><span>STIL Lab</span><span>DRO</span></p>
         <h3>exoDRO — 인과 구조를 지키는 분포 강건 최적화</h3>
         <p class="case-lede">한국항공대 <a class="lk ext" href="https://sites.google.com/view/stil-lab/home" target="_blank" rel="noopener">STIL Lab</a>의 ICLR 2027 투고 논문 「Structurally Compatible Generative Ambiguity Sets via Exogenous-Space Factorization」에 8명 중 7번째 저자로 참여했습니다(심사 중). 데이터 생성⁠·⁠검증, 제안 <span class="nb">방법(exoDRO)</span> 실험, 실험 환경 구성을 맡았습니다.</p>
@@ -579,7 +582,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
         <figcaption>2026년 참가한 AI 대회 세 곳의 순위 백분위입니다. 오른쪽일수록 상위, 위가 최신입니다.</figcaption>
       </figure>
 
-      <article class="case">
+      <article class="case" id="aimers9">
         <p class="meta"><span>2026.08</span><span>Team of 3</span><span>Brier Skill Score</span><span>KBO TrackMan</span></p>
         <h3>LG Aimers 9기 — 야구 투구 제구 성공 확률 예측</h3>
         <p class="case-lede">LG AI연구원의 AI 교육⁠·⁠해커톤 프로그램 9기 대회입니다. KBO 트랙맨 기반 학습 <span class="nb">데이터(약&nbsp;137만 행)와</span> 2025 시즌 평가 <span class="nb">데이터(약&nbsp;24.6만 행)로</span> 투수가 던진 공이 의도한 코스로 갈 확률을 예측했습니다. <span class="nb">2,403명⁠·⁠1,082팀</span>이 참가한 온라인 예선에서 <span class="nb">49위(상위&nbsp;약&nbsp;4.5%)를</span> 기록했습니다.</p>
@@ -725,7 +728,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
           <h3 style="margin-top:3rem">Awards</h3>
           <table class="awards">
             <tbody>
-              <tr class="top"><td class="y">2026.06</td><td>제25회 TOPCIT 정기평가</td><td class="r">교내 1위</td></tr>
+              <tr class="top" id="award-topcit"><td class="y">2026.06</td><td>제25회 TOPCIT 정기평가</td><td class="r">교내 1위</td></tr>
               <tr class="top"><td class="y">2026.02</td><td>지식 공유 우수작 선발 대회</td><td class="r">1위</td></tr>
               <tr><td class="y">2026.02</td><td>3중 멘토링 뽐내기 공모전</td><td class="r">2위</td></tr>
               <tr><td class="y">2026.02</td><td>3중 멘토링 우수 멘토</td><td class="r">4위</td></tr>
