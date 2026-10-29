@@ -427,7 +427,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
             <li><b>RAGAS 평가 파이프라인</b>으로 근거 충실성⁠·⁠관련성⁠·⁠정확성을 수치로 봅니다. <a class="ref ext" href="https://qktjwl123.tistory.com/181" target="_blank" rel="noopener">글: RAG 평가 도입</a></li>
             <li>공지를 메모리에 전부 올리던 초기 구조에서 <b>OOM</b>이 나, dmesg로 원인을 확인하고 SQLite로 바꾼 뒤 부하 테스트로 검증했습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/179" target="_blank" rel="noopener">글: 인프라 점검</a></li>
             <li>비용⁠·⁠어뷰징에 대비해 <b>rate&nbsp;limit⁠·⁠요청 크기⁠·⁠출력 토큰 상한</b>을 걸고, Vercel&nbsp;Analytics로 사용 흐름을 봅니다. <a class="ref ext" href="https://qktjwl123.tistory.com/182" target="_blank" rel="noopener">글: 운영 리스크</a> <a class="ref ext" href="https://qktjwl123.tistory.com/186" target="_blank" rel="noopener">글: 모니터링</a></li>
-            <li>논문 작업의 대상 라벨을 운영에 붙여, <b>신분을 고르면 해당 대상의 공지만 근거로</b> 쓰게 했습니다. 운영 코드로 질문 날짜 시점을 재현한 평가 99문항에서 1위 근거 정답률이 57%&nbsp;→&nbsp;79%, 다른 대상 공지 혼입이 34%&nbsp;→&nbsp;0%가 됐습니다(1회 실행).</li>
+            <li>질문자와 대상이 다른 공지가 근거에 섞이는 문제가 있었습니다(예: 대학원생의 질문에 학부생용 공지). 논문 작업에서 공지마다 붙인 대상 라벨을 운영에 적용해, <b>사용자가 신분을 고르면 그 대상의 공지만 근거로</b> 쓰게 했습니다. 실제 운영 코드로 질문 날짜 시점을 재현한 평가 99문항에서, 다른 대상 공지가 섞인 비율은 34%&nbsp;→&nbsp;0%, 첫 번째 근거가 정답 공지인 비율은 57%&nbsp;→&nbsp;79%가 됐습니다(1회 실행).</li>
           </ul>
           <p><span class="lead-in">현재</span>최근 3개월 방문자가 1,500명을 넘고(Vercel&nbsp;Analytics), 유입 대부분이 <span class="nb">교내 커뮤니티(에브리타임)입니다.</span> 운영하며 본 검색 실패는 <a class="lk" href="#research">논문 작업</a>으로 이어가고 있습니다.</p>
 
