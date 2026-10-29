@@ -8,11 +8,11 @@
 if(t!=='light'&&t!=='dark'){try{t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}catch(e){t='light';}}
 document.documentElement.setAttribute('data-theme',t);})();
 </script>
-<title>박성진 — 풀스택·AI 개발자</title>
-<meta name="description" content="실사용자가 있는 RAG 서비스를 운영하고, 운영 데이터로 연구하는 풀스택·AI 개발자 박성진. 교내 공지 통합 서비스 KAU Notice Hub 운영(3개월 방문 1,500+), LG Aimers 9기 1,087팀 중 49위, TOPCIT 교내 1위, ICLR 2027 투고 논문 공저.">
+<title>박성진 — AI 엔지니어 (RAG · LLM)</title>
+<meta name="description" content="실사용자가 있는 RAG 서비스를 운영하고, 운영 데이터로 연구하는 AI 엔지니어 박성진. 교내 공지 통합 서비스 KAU Notice Hub 운영(3개월 방문 1,500+), LG Aimers 9기 1,087팀 중 49위, RAG 첫 근거 정답률 57% → 79%, ICLR 2027 투고 논문 공저.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="박성진 — 풀스택·AI 개발자">
-<meta property="og:description" content="교내 공지 RAG 서비스 3개월 방문 1,500+ 운영 · LG Aimers 9기 상위 약 4.5% · TOPCIT 교내 1위 · ICLR 2027 투고 논문 공저">
+<meta property="og:title" content="박성진 — AI 엔지니어 (RAG · LLM)">
+<meta property="og:description" content="교내 공지 RAG 서비스 3개월 방문 1,500+ 운영 · RAG 첫 근거 정답률 57% → 79% · LG Aimers 9기 상위 약 4.5% · ICLR 2027 투고 공저(8인 중 7저자)">
 <meta property="og:url" content="https://jinpop.github.io/">
 <meta property="og:image" content="https://jinpop.github.io/og.png?v=2">
 <meta property="og:locale" content="ko_KR">
@@ -138,12 +138,13 @@ h1 .ul{
 .nb{white-space:nowrap}
 @media (max-width:760px){.br-wide{display:none}}
 
-.stats{margin-top:clamp(2.5rem,2rem + 3vw,4.5rem);list-style:none;display:grid;grid-template-columns:repeat(4,auto);justify-content:start;column-gap:clamp(1.5rem,4vw,4.5rem);row-gap:1.75rem}
+.stats{margin-top:clamp(2.5rem,2rem + 3vw,4.5rem);list-style:none;display:grid;grid-template-columns:repeat(4,auto);justify-content:start;column-gap:clamp(1.5rem,4vw,3.5rem);row-gap:1.75rem}
 .stats .num{
   display:block;font-variant-numeric:tabular-nums;white-space:nowrap;
-  font-size:clamp(1.9rem,1.5rem + 1.8vw,2.9rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;
+  font-size:clamp(1.9rem,1.5rem + 1.8vw,2.7rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;
 }
 .stats .num em{font-style:normal;color:var(--accent)}
+.stats .num .arr{margin:0 .06em;font-weight:500;color:var(--fg-3)}
 .stats a.stat{display:block;color:inherit;border-radius:4px}
 .stats a.stat .lab::after{content:" \2193";color:var(--accent)}
 .stats a.stat:hover .num{opacity:.8}
@@ -320,8 +321,8 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
 }
 
 /* ── responsive ─────────────────────────────────────── */
-@media (max-width:899px){.stats{grid-template-columns:repeat(2,auto)}}
-@media (max-width:360px){.stats .num{font-size:1.7rem}}
+@media (max-width:999px){.stats{grid-template-columns:repeat(2,auto)}}
+@media (max-width:360px){.stats .num{font-size:1.55rem}}
 @media (max-width:860px){
   .about-grid{grid-template-columns:1fr}
   .case-grid{grid-template-columns:1fr}
@@ -377,18 +378,18 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
 
   <!-- ── hero ── -->
   <section class="hero shell" id="top" aria-label="소개">
-    <p class="eyebrow">Park Sungjin — Full-stack · AI</p>
-    <h1>사용자 문제를<br><span class="ul">제품으로</span> 해결합니다</h1>
+    <p class="eyebrow">Park Sungjin — AI Engineer · RAG / LLM</p>
+    <h1>RAG의 실패를<br><span class="ul">연구로</span> 고칩니다</h1>
     <div class="lede">
-      <p><b>실사용자가 있는 RAG 서비스를 직접 만들고 운영하는</b> 풀스택⁠·⁠AI 개발자 박성진입니다.<br class="br-wide"> 운영에서 나온 검색 실패를 <b>연구 문제로 정의하고, 그 결과를 다시 서비스에 적용</b>합니다.</p>
+      <p><b>실사용자가 있는 RAG 서비스를 직접 만들고 운영하는</b> AI 엔지니어 박성진입니다.<br class="br-wide"> 운영에서 나온 검색 실패를 <b>연구 문제로 정의하고, 그 결과를 다시 서비스에 적용</b>합니다.</p>
       <p>익숙한 방식도 더 빠른 길이 없는지 먼저 따져 봅니다.<br class="br-wide"> 실험 운영은 <b>역할별 AI 에이전트로 나눠 맡기고</b>, 전략과 최종 판단은 직접 합니다.<br><span class="nb"><a class="lk jump" href="#exo-speed">탐색 시간 약&nbsp;60배 단축</a>,</span> <span class="nb"><a class="lk jump" href="#rostercrawler">근로 업무 1주일을 5분으로</a>,</span> <span class="nb"><a class="lk jump" href="#dacon-harness">에이전트 하네스 설계</a></span></p>
       <p><span class="nb">한국항공대학교 소프트웨어공학</span>, <span class="nb">2027년 2월 졸업 예정.</span></p>
     </div>
     <ul class="stats" role="list">
       <li><a class="stat" href="#nh-now"><b class="num"><em>1,500+</em></b><span class="lab">교내 공지 서비스<br>3개월 방문자</span></a></li>
       <li><a class="stat" href="#aimers9"><b class="num">상위 <em>약 4.5%</em></b><span class="lab">LG Aimers 9기<br>1,087팀 중 49위</span></a></li>
-      <li><a class="stat" href="#award-topcit"><b class="num">교내 <em>1위</em></b><span class="lab">TOPCIT 2026<br>Level 4</span></a></li>
-      <li><a class="stat" href="#exodro"><b class="num"><em>ICLR</em> 2027</b><span class="lab">투고 논문 공저<br>심사 중</span></a></li>
+      <li><a class="stat" href="#nh-label"><b class="num">57<span class="arr">→</span><em>79%</em></b><span class="lab">RAG 첫 근거 정답률<br>대상 라벨 적용 전후</span></a></li>
+      <li><a class="stat" href="#exodro"><b class="num"><em>ICLR</em> 2027</b><span class="lab">공저 · 8인 중 7저자<br>투고 · 심사 중</span></a></li>
     </ul>
     <p class="hero-links">
       <a class="ext" href="https://github.com/Jinpop" target="_blank" rel="noopener">GitHub</a>
@@ -431,7 +432,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
             <li><b>자동 지표를 그대로 믿지 않았습니다.</b> RAGAS answer_relevancy는 공지에 없는 날짜를 지어내지 않고 "명시되어 있지 않다"고 답한 경우를 0점 처리해<span class="nb">(13건 평균 0.36)</span>, 사람 0/1 판정으로 바꿨습니다. 정답을 임의로 고정하고 운영 경로(분기⁠·⁠재정렬)를 거치지 않던 recall@k⁠·⁠MRR 평가는 지웠습니다. 평가는 기준일을 고정한 데이터 스냅샷에서만 돌려 실행 간 비교가 되게 했습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/181" target="_blank" rel="noopener">글: RAG 평가 도입</a></li>
             <li>공지를 메모리에 전부 올리던 초기 구조에서 <b>OOM</b>이 나, dmesg로 원인을 확인하고 SQLite로 바꾼 뒤 k6 부하 테스트로 검증했습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/179" target="_blank" rel="noopener">글: 인프라 점검</a></li>
             <li>비용⁠·⁠어뷰징에 대비해 <b>rate&nbsp;limit⁠·⁠요청 크기⁠·⁠출력 토큰 상한</b>을 걸고, Vercel&nbsp;Analytics로 사용 흐름을 봅니다. <a class="ref ext" href="https://qktjwl123.tistory.com/182" target="_blank" rel="noopener">글: 운영 리스크</a> <a class="ref ext" href="https://qktjwl123.tistory.com/186" target="_blank" rel="noopener">글: 모니터링</a></li>
-            <li>질문자와 대상이 다른 공지가 근거에 섞이는 문제가 있었습니다(예: 대학원생의 질문에 학부생용 공지). 논문 작업에서 공지마다 붙인 대상 라벨을 운영에 적용해, <b>사용자가 신분을 고르면 그 대상의 공지만 근거로</b> 쓰게 했습니다. 실제 운영 코드로 질문 날짜 시점을 재현한 평가 99문항(1회 실행)에서, 기존 34%였던 다른 대상 공지 혼입을 필터로 구조적으로 없앴고 첫 번째 근거가 정답 공지인 비율은 57%&nbsp;→&nbsp;79%가 됐습니다.</li>
+            <li id="nh-label">질문자와 대상이 다른 공지가 근거에 섞이는 문제가 있었습니다(예: 대학원생의 질문에 학부생용 공지). 논문 작업에서 공지마다 붙인 대상 라벨을 운영에 적용해, <b>사용자가 신분을 고르면 그 대상의 공지만 근거로</b> 쓰게 했습니다. 실제 운영 코드로 질문 날짜 시점을 재현한 평가 99문항(1회 실행)에서, 기존 34%였던 다른 대상 공지 혼입을 필터로 구조적으로 없앴고 첫 번째 근거가 정답 공지인 비율은 57%&nbsp;→&nbsp;79%가 됐습니다.</li>
           </ul>
           <p id="nh-now"><span class="lead-in">현재</span>최근 3개월 방문자가 1,500명을 넘고(Vercel&nbsp;Analytics), 유입 대부분이 <span class="nb">교내 커뮤니티(에브리타임)입니다.</span> 이어지는 연구는 <a class="lk" href="#research">Research</a>에 적었습니다.</p>
 
