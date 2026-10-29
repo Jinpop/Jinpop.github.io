@@ -138,9 +138,9 @@ h1 .ul{
 .nb{white-space:nowrap}
 @media (max-width:760px){.br-wide{display:none}}
 
-.stats{margin-top:clamp(2.5rem,2rem + 3vw,4.5rem);list-style:none;display:grid;grid-template-columns:repeat(4,auto);justify-content:start;column-gap:clamp(2rem,5vw,4.5rem);row-gap:1.75rem}
+.stats{margin-top:clamp(2.5rem,2rem + 3vw,4.5rem);list-style:none;display:grid;grid-template-columns:repeat(4,auto);justify-content:start;column-gap:clamp(1.5rem,4vw,4.5rem);row-gap:1.75rem}
 .stats .num{
-  display:block;font-variant-numeric:tabular-nums;
+  display:block;font-variant-numeric:tabular-nums;white-space:nowrap;
   font-size:clamp(1.9rem,1.5rem + 1.8vw,2.9rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;
 }
 .stats .num em{font-style:normal;color:var(--accent)}
@@ -317,8 +317,9 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
 }
 
 /* ── responsive ─────────────────────────────────────── */
+@media (max-width:899px){.stats{grid-template-columns:repeat(2,auto)}}
+@media (max-width:360px){.stats .num{font-size:1.7rem}}
 @media (max-width:860px){
-  .stats{grid-template-columns:repeat(2,auto)}
   .about-grid{grid-template-columns:1fr}
   .case-grid{grid-template-columns:1fr}
   .case-figure{text-align:left}
