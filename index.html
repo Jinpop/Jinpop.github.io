@@ -95,9 +95,9 @@ code{font-family:var(--mono);font-size:.88em;background:color-mix(in oklab, var(
 .jump::after{content:"\2193";display:inline-block;margin-left:.2em;font-size:.85em;transition:transform .18s}
 .jump:hover::after{transform:translateY(2px)}
 /* 점프 도착 지점 잠깐 강조 */
-li:target{animation:target-flash 2.4s ease-out}
+li:target,p:target{animation:target-flash 2.4s ease-out}
 @keyframes target-flash{0%,30%{background:var(--accent-weak)}100%{background:transparent}}
-@media (prefers-reduced-motion:reduce){li:target{animation:none;background:var(--accent-weak)}.jump::after{transition:none}}
+@media (prefers-reduced-motion:reduce){li:target,p:target{animation:none;background:var(--accent-weak)}.jump::after{transition:none}}
 
 /* ── header ─────────────────────────────────────────── */
 .site-head{
@@ -377,7 +377,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
     <h1>사용자 문제를<br><span class="ul">제품으로</span> 해결합니다</h1>
     <div class="lede">
       <p><b>실사용자가 있는 RAG 서비스를 직접 만들고 운영하는</b> 풀스택⁠·⁠AI 개발자 박성진입니다.<br class="br-wide"> 운영에서 나온 검색 실패를 <b>연구 문제로 정의하고, 그 결과를 다시 서비스에 적용</b>합니다.</p>
-      <p>익숙한 방식도 더 빠른 길이 없는지 먼저 따져 봅니다.<br><span class="nb"><a class="lk jump" href="#exo-speed">실험 시간 약&nbsp;60배 단축</a>,</span> <span class="nb"><a class="lk jump" href="#rostercrawler">근로 업무 자동화</a></span></p>
+      <p>익숙한 방식도 더 빠른 길이 없는지 먼저 따져 봅니다.<br class="br-wide"> 실험 운영은 <b>역할별 AI 에이전트로 나눠 맡기고</b>, 전략과 검증은 직접 합니다.<br><span class="nb"><a class="lk jump" href="#exo-speed">실험 시간 약&nbsp;60배 단축</a>,</span> <span class="nb"><a class="lk jump" href="#rostercrawler">근로 업무 자동화</a>,</span> <span class="nb"><a class="lk jump" href="#dacon-harness">에이전트 하네스 설계</a></span></p>
       <p><span class="nb">한국항공대학교 소프트웨어공학</span>, <span class="nb">2027년 2월 졸업 예정.</span></p>
     </div>
     <ul class="stats" role="list">
@@ -655,7 +655,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
         <div class="case-body">
           <p><span class="lead-in">문제 재정의</span>같은 요청이라도 파일을 읽었는지, 테스트가 통과했는지에 따라 다음 행동이 달라집니다. 그래서 문장 분류가 아니라 <b>누적된 작업 상태를 추론하는 문제</b>로 정의하고, 현재 요청과 과거 행동을 잇는 관계형 피처를 설계했습니다. 고전 ML과 Transformer 3종의 확률 블렌드에서는 개별 점수보다 <b>오류를 보완하는 조합</b>이 성능을 갈랐습니다.</p>
 
-          <p><span class="lead-in">AI Agent 운영 하네스</span>실험 실행은 Claude 에이전트에, 전략⁠·⁠승인⁠·⁠제출은 제가 맡았습니다. 한 에이전트에 전부 맡기자 단계 누락과 정보 혼선이 반복돼, 원인을 모델 능력이 아니라 <b>한 에이전트의 책임과 컨텍스트가 너무 넓은 구조</b>로 보고 다시 설계했습니다.</p>
+          <p id="dacon-harness"><span class="lead-in">AI Agent 운영 하네스</span>실험 실행은 Claude 에이전트에, 전략⁠·⁠승인⁠·⁠제출은 제가 맡았습니다. 한 에이전트에 전부 맡기자 단계 누락과 정보 혼선이 반복돼, 원인을 모델 능력이 아니라 <b>한 에이전트의 책임과 컨텍스트가 너무 넓은 구조</b>로 보고 다시 설계했습니다.</p>
           <ul class="decisions">
             <li><b>역할을 17개 서브에이전트로 분리</b>하고(전략 수립 / 데이터⁠·⁠누수 감사 / 학습 설정 검증 / 실행 / 제출물 검증 / 기록), 각 에이전트에는 <b>맡은 역할에 필요한 최소 정보만</b> 넘겼습니다.</li>
             <li>자연어 보고 대신 <b>산출물로 검증</b>했습니다. <code>effective_config</code>, <span class="nb">코드⁠·⁠데이터</span> SHA 대조, 제출물 자동 검사로 학습 시작 전 결함을 2회 차단했습니다.</li>
