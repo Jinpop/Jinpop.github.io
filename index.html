@@ -201,6 +201,29 @@ h3{font-size:clamp(1.35rem,1.2rem + .8vw,1.8rem);font-weight:700;letter-spacing:
 .flow .node span{font-size:.72rem;color:var(--fg-3);font-family:var(--mono);letter-spacing:.02em;white-space:nowrap}
 .flow li:not(:last-child)::after{content:"\2192";color:var(--fg-3);font-size:.9rem;padding-inline:.15rem}
 
+/* RAG pipeline figure */
+.rag-fig{margin-top:2.25rem;max-width:54rem}
+.rag-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:.25rem 1rem;margin-bottom:.9rem;font-size:.8rem;font-weight:700;color:var(--fg-2)}
+.rag-head span{font-family:var(--mono);font-size:.7rem;font-weight:400;letter-spacing:.04em;color:var(--fg-3)}
+.rag{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:auto auto;grid-auto-flow:column;column-gap:1.5rem}
+.rag-card{position:relative;border:1px solid var(--border);border-radius:8px;padding:.8rem .9rem .85rem;background:var(--surface)}
+.rag-card:nth-child(-n+6)::after{content:"\2192";position:absolute;right:-1.2rem;top:50%;transform:translateY(-50%);color:var(--fg-3);font-size:.9rem}
+.rag-no{display:flex;align-items:center;gap:.45rem;font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;color:var(--fg-3)}
+.rag-tag{font-size:.6rem;letter-spacing:.06em;padding:.02rem .32rem;border-radius:3px;border:1px solid var(--border)}
+.rag-tag.llm{color:var(--accent);border-color:color-mix(in oklab,var(--accent) 45%,transparent)}
+.rag-card b{display:block;margin-top:.5rem;font-size:.92rem;font-weight:700;letter-spacing:-0.01em;line-height:1.35}
+.rag-card code{display:inline-block;margin-top:.3rem;font-family:var(--mono);font-size:.7rem;color:var(--accent)}
+.rag-card p{margin-top:.55rem;font-size:.8rem;line-height:1.55;color:var(--fg-2)}
+.rag-alt{margin-top:.6rem;padding:.1rem 0 .1rem .65rem;border-left:2px dashed var(--border);font-size:.74rem;line-height:1.6;color:var(--fg-3)}
+.rag-alt:empty{border:0}
+.rag-alt b{font-weight:600;color:var(--fg-2)}
+@media (max-width:760px){
+  .rag{grid-template-columns:1fr;grid-template-rows:none;grid-auto-flow:row}
+  .rag-card:not(:first-of-type){margin-top:1.1rem}
+  .rag-card::after{display:none}
+  .rag-alt:empty{display:none}
+}
+
 /* decisions list */
 .decisions{list-style:none;margin-top:1.25rem;border-top:1px solid var(--border-soft)}
 .decisions li{padding:1.05rem 0;border-bottom:1px solid var(--border-soft);font-size:.98rem}
@@ -421,7 +444,21 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
             <li><span class="node"><b>RAGAS</b><span>answer eval</span></span></li>
           </ol>
 
-          <p style="margin-top:1.4rem">Python 크롤러로 수집해 FastAPI⁠·⁠SQLite에 적재하고, Next.js에서 출처⁠·⁠카테고리로 탐색합니다. <b>RAG 챗봇</b>은 LLM 호출을 세 단계로 나눴습니다. 질문을 분기해 검색 키워드를 JSON으로 뽑고, 그 키워드로 공지 본문을 grep해 모은 후보를 다시 골라, 고른 근거로 답합니다<span class="nb">(gpt-4.1-mini)</span>. LLM 호출이 실패하면 질문 원문으로 검색하는 경로로 돌아갑니다. 이미지⁠·⁠HWP로만 올라온 공지는 비전 모델로 본문을 뽑아 검색 대상에 넣었습니다. 백엔드는 AWS Lightsail 단일 서버에 Docker로, 프론트엔드는 Vercel에 배포했습니다.</p>
+          <p style="margin-top:1.4rem">Python 크롤러로 수집해 FastAPI⁠·⁠SQLite에 적재하고, Next.js에서 출처⁠·⁠카테고리로 탐색합니다. <b>RAG 챗봇</b>은 LLM 호출을 세 단계로 나눴고, 어느 호출이 실패해도 답이 끊기지 않게 단계마다 대체 경로를 뒀습니다(아래 그림). 이미지⁠·⁠HWP로만 올라온 공지는 비전 모델로 본문을 뽑아 검색 대상에 넣었습니다. 백엔드는 AWS Lightsail 단일 서버에 Docker로, 프론트엔드는 Vercel에 배포했습니다.</p>
+
+          <figure class="rag-fig" aria-label="RAG 챗봇 처리 순서. 1 분기와 키워드 추출(LLM), 2 키워드 검색과 대상 필터로 후보 15건, 3 재정렬(LLM)로 최대 6건, 4 답변 생성(LLM). 단계마다 실패 시 대체 경로가 있음.">
+            <p class="rag-head">RAG 챗봇 처리 순서<span>입력: 질문 + 신분(선택) · gpt-4.1-mini</span></p>
+            <div class="rag">
+              <div class="rag-card"><span class="rag-no">01<span class="rag-tag llm">LLM</span></span><b>분기⁠·⁠키워드 추출</b><code>{mode, keywords}</code><p>새로 검색할 질문인지 가르고, 검색할 주제 명사를 뽑습니다</p></div>
+              <div class="rag-alt"><b>직전 답변 재가공</b> → 검색 생략<br><b>공지와 무관</b> → 안내 답변<br><b>실패</b> → 질문 원문으로 검색</div>
+              <div class="rag-card"><span class="rag-no">02<span class="rag-tag">LOCAL</span></span><b>키워드 검색</b><code>후보 15건</code><p>공지 본문을 키워드로 grep하고, 신분을 골랐으면 그 대상 공지만 남깁니다</p></div>
+              <div class="rag-alt"></div>
+              <div class="rag-card"><span class="rag-no">03<span class="rag-tag llm">LLM</span></span><b>재정렬</b><code>후보 번호 → 최대 6건</code><p>제목⁠·⁠게시일⁠·⁠본문 앞부분을 보고 질문과 관련 있는 공지만 고릅니다</p></div>
+              <div class="rag-alt"><b>후보 6건 이하</b> → 호출 생략<br><b>실패</b> → 후보 상위 6건 사용</div>
+              <div class="rag-card"><span class="rag-no">04<span class="rag-tag llm">LLM</span></span><b>답변 생성</b><code>근거 공지 → 답변</code><p>고른 공지만 근거로 답합니다</p></div>
+              <div class="rag-alt"><b>실패</b> → 검색 결과 목록만 안내</div>
+            </div>
+          </figure>
 
           <figure class="shot-wide shot-hero" style="margin-top:2.25rem">
             <img src="img/notice-hub-main.webp" width="1400" height="812" loading="lazy" decoding="async" alt="KAU Notice Hub 서비스 화면 — 왼쪽은 대상자·중분류로 좁혀 보는 공지 탐색 목록(총 2,455건), 오른쪽은 진행 중인 공모전을 묻는 질문에 근거 공지를 바탕으로 답한 AI 챗봇 대화">
