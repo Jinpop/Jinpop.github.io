@@ -412,20 +412,21 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
 
         <div class="case-body">
           <p><span class="lead-in">문제</span>학과⁠·⁠부서별 웹사이트에 매년 2,000건 넘는 공지가 흩어져 올라와, 장학금⁠·⁠행사 공지를 놓치는 일이 잦았습니다.</p>
-          <p><span class="lead-in">구현</span>Python 크롤러로 수집해 FastAPI⁠·⁠SQLite에 적재하고, Next.js에서 출처⁠·⁠카테고리로 탐색합니다. <b>RAG 챗봇</b>은 LLM 호출을 세 단계로 나눴습니다. 질문을 분기해 검색 키워드를 JSON으로 뽑고, 그 키워드로 공지 본문을 grep해 모은 후보를 다시 골라, 고른 근거로 답합니다<span class="nb">(gpt-4.1-mini)</span>. LLM 호출이 실패하면 질문 원문으로 검색하는 경로로 돌아갑니다. 이미지⁠·⁠HWP로만 올라온 공지는 비전 모델로 본문을 뽑아 검색 대상에 넣었습니다. 백엔드는 AWS Lightsail 단일 서버에 Docker로, 프론트엔드는 Vercel에 배포했습니다.</p>
-
-          <figure class="shot-wide shot-hero" style="margin-top:2.25rem">
-            <img src="img/notice-hub-main.webp" width="1400" height="812" loading="lazy" decoding="async" alt="KAU Notice Hub 서비스 화면 — 왼쪽은 대상자·중분류로 좁혀 보는 공지 탐색 목록(총 2,455건), 오른쪽은 진행 중인 공모전을 묻는 질문에 근거 공지를 바탕으로 답한 AI 챗봇 대화">
-            <figcaption>실제 서비스 화면 (공지 탐색 · RAG 챗봇)</figcaption>
-          </figure>
-
-          <ol class="flow" aria-label="시스템 구성 흐름" style="margin-top:2.5rem">
+          <p><span class="lead-in">구현</span></p>
+          <ol class="flow" aria-label="시스템 구성 흐름" style="margin-top:.6rem">
             <li><span class="node"><b>약 70개 교내 사이트</b><span>Python crawler</span></span></li>
             <li><span class="node"><b>FastAPI · SQLite</b><span>ingest · search API</span></span></li>
             <li><span class="node"><b>Next.js</b><span>browse UI</span></span></li>
             <li><span class="node"><b>RAG 챗봇</b><span>keyword grep → rerank</span></span></li>
             <li><span class="node"><b>RAGAS</b><span>answer eval</span></span></li>
           </ol>
+
+          <p style="margin-top:1.4rem">Python 크롤러로 수집해 FastAPI⁠·⁠SQLite에 적재하고, Next.js에서 출처⁠·⁠카테고리로 탐색합니다. <b>RAG 챗봇</b>은 LLM 호출을 세 단계로 나눴습니다. 질문을 분기해 검색 키워드를 JSON으로 뽑고, 그 키워드로 공지 본문을 grep해 모은 후보를 다시 골라, 고른 근거로 답합니다<span class="nb">(gpt-4.1-mini)</span>. LLM 호출이 실패하면 질문 원문으로 검색하는 경로로 돌아갑니다. 이미지⁠·⁠HWP로만 올라온 공지는 비전 모델로 본문을 뽑아 검색 대상에 넣었습니다. 백엔드는 AWS Lightsail 단일 서버에 Docker로, 프론트엔드는 Vercel에 배포했습니다.</p>
+
+          <figure class="shot-wide shot-hero" style="margin-top:2.25rem">
+            <img src="img/notice-hub-main.webp" width="1400" height="812" loading="lazy" decoding="async" alt="KAU Notice Hub 서비스 화면 — 왼쪽은 대상자·중분류로 좁혀 보는 공지 탐색 목록(총 2,455건), 오른쪽은 진행 중인 공모전을 묻는 질문에 근거 공지를 바탕으로 답한 AI 챗봇 대화">
+            <figcaption>실제 서비스 화면 (공지 탐색 · RAG 챗봇)</figcaption>
+          </figure>
 
           <p><span class="lead-in">설계 결정과 운영</span>운영하며 생긴 문제를 계측으로 확인하고 고쳤습니다.</p>
           <ul class="decisions">
