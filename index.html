@@ -444,7 +444,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
             <li><span class="node"><b>RAGAS</b><span>answer eval</span></span></li>
           </ol>
 
-          <p style="margin-top:1.4rem">Python 크롤러로 수집해 FastAPI⁠·⁠SQLite에 적재하고, Next.js에서 출처⁠·⁠카테고리로 탐색합니다. <b>RAG 챗봇</b>은 LLM 호출을 세 단계로 나눴고, 어느 호출이 실패해도 답이 끊기지 않게 단계마다 fallback&nbsp;경로를 뒀습니다(아래 그림). 이미지⁠·⁠HWP로만 올라온 공지는 비전 모델로 본문을 뽑아 검색 대상에 넣었습니다. 백엔드는 AWS Lightsail 단일 서버에 Docker로, 프론트엔드는 Vercel에 배포했습니다. 검색⁠·⁠챗봇⁠·⁠평가⁠·⁠배포를 맡았고, 카카오 로그인⁠·⁠북마크 API와 이름 마스킹은 팀원이 구현했습니다.</p>
+          <p style="margin-top:1.4rem">Python 크롤러로 수집해 FastAPI⁠·⁠SQLite에 적재하고, Next.js에서 출처⁠·⁠카테고리로 탐색합니다. <b>RAG 챗봇</b>은 LLM 호출을 세 단계로 나눴고, 어느 호출이 실패해도 답이 끊기지 않게 단계마다 fallback&nbsp;경로를 뒀습니다(아래 그림). 이미지로만 올라온 공지는 비전 모델로, HWP로만 올라온 공지는 로컬 파서로 본문을 뽑아 검색 대상에 넣었습니다. 백엔드는 AWS Lightsail 단일 서버에 Docker로, 프론트엔드는 Vercel에 배포했습니다. 검색⁠·⁠챗봇⁠·⁠평가⁠·⁠배포를 맡았고, 카카오 로그인⁠·⁠북마크 API와 이름 마스킹은 팀원이 구현했습니다.</p>
 
           <figure class="rag-fig" aria-label="RAG 챗봇 처리 순서. 1 query routing과 키워드 추출(LLM), 2 동의어 사전을 포함한 키워드 검색(retrieval)과 대상 필터로 후보 15건, 3 rerank(LLM)로 최대 6건, 4 답변 생성(generation, LLM). 단계마다 실패 시 fallback 경로가 있음.">
             <p class="rag-head">RAG 챗봇 처리 순서<span>입력: 질문 + 신분(선택) · 키워드 추출 gpt-6-luna · 답변 gpt-4.1-mini</span></p>
