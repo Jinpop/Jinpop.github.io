@@ -443,7 +443,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
             <li><span class="node"><b>RAG 챗봇</b><span>keyword search → rerank</span></span></li>
           </ol>
 
-          <p style="margin-top:1.4rem"><b>RAG 챗봇</b>은 LLM 호출을 세 단계로 나눴고, 어느 호출이 실패해도 답이 끊기지 않게 단계마다 fallback&nbsp;경로를 뒀습니다(아래 그림). 이미지로만 올라온 공지는 비전 모델로, HWP로만 올라온 공지는 로컬 파서로 본문을 뽑아 검색 대상에 넣었습니다. 백엔드는 AWS Lightsail 단일 서버에 Docker로, 프론트엔드는 Vercel에 배포했습니다. 검색⁠·⁠챗봇⁠·⁠평가⁠·⁠배포를 맡았고, 카카오 로그인⁠·⁠북마크 API와 이름 마스킹은 팀원이 구현했습니다.</p>
+          <p style="margin-top:1.4rem"><b>RAG 챗봇</b>은 LLM 호출을 세 단계로 나눴고, 어느 호출이 실패해도 답이 끊기지 않게 단계마다 fallback&nbsp;경로를 뒀습니다(아래 그림). 이미지로만 올라온 공지는 비전 모델로, HWP로만 올라온 공지는 로컬 파서로 본문을 뽑아 검색 대상에 넣었습니다. 백엔드는 AWS Lightsail 단일 서버에 Docker로, 프론트엔드는 Vercel에 배포했습니다. 카카오 로그인⁠·⁠북마크 API와 이름 마스킹은 팀원이 구현했고, 나머지는 제가 맡았습니다.</p>
 
           <figure class="rag-fig" aria-label="RAG 챗봇 처리 순서. 1 query routing과 키워드 추출(LLM), 2 동의어 사전을 포함한 키워드 검색(retrieval)과 대상 필터로 후보 15건, 3 rerank(LLM)로 최대 6건, 4 답변 생성(generation, LLM). 단계마다 실패 시 fallback 경로가 있음.">
             <p class="rag-head">RAG 챗봇 처리 순서<span>입력: 질문 + 신분(선택) · 키워드 추출 gpt-6-luna · 답변 gpt-4.1-mini</span></p>
@@ -515,7 +515,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
           <p><span class="lead-in">지금까지 한 일</span></p>
           <ul class="decisions">
             <li>운영 DB와 별개로 <b>3년치 공지 7,857건</b>을 다시 수집해 고정하고, 같은 공지가 여러 게시판에 올라오는 교차 게시 문제도 정리했습니다.</li>
-            <li>공지마다 적용 학기와 대상(8분류)을 붙이는 annotation&nbsp;guideline을 v5까지 다듬고, 별도 검수자의 <b>사람 검수 두 차례(503건⁠·⁠279건)</b>를 거쳐 확정했습니다. 두 번째 검수에서 사람 판정과 대상 라벨이 92% 일치했고, 대상⁠·⁠회차 1,233쌍 중 <span class="nb">193쌍(16%)에</span> 게시 시차가 있었습니다.</li>
+            <li>공지마다 적용 학기와 대상(8분류)을 붙이는 annotation&nbsp;guideline을 v5까지 다듬고, 별도 검수자가 503건을 검수한 뒤 핵심 공지 279건을 2주 뒤 초안 없이 다시 라벨링해 확정했습니다. 대상⁠·⁠회차 1,233쌍 중 <span class="nb">193쌍(16%)에</span> 게시 시차가 있었습니다.</li>
             <li>질문 날짜 시점의 공지 목록을 재현하는 실험 환경을 운영 코드와 분리해 만들고, <b>날짜가 붙은 평가 질문 1,305개</b>와 베이스라인 6종(BM25, 최신순, 대상 필터, 시점 기반 <span class="nb">abstention 등)을</span> 구현했습니다.</li>
             <li>대상 라벨은 운영 서비스에도 적용했습니다. 효과는 KAU Notice&nbsp;Hub 항목에 적었습니다.</li>
           </ul>
@@ -533,7 +533,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
       <article class="case" id="exodro">
         <p class="meta"><span>2026.09</span><span class="on">ICLR 2027 Submitted</span><span>Equal contribution · 8 authors</span><span>STIL Lab</span><span>DRO</span></p>
         <h3>exoDRO — 인과 구조를 지키는 분포 강건 최적화</h3>
-        <p class="case-lede">한국항공대 <a class="lk ext" href="https://sites.google.com/view/stil-lab/home" target="_blank" rel="noopener">STIL Lab</a>의 ICLR 2027 투고 논문 「Structurally Compatible Generative Ambiguity Sets via Exogenous-Space Factorization」에 8명 공동 저자로 참여했습니다(동등 기여, 저자 알파벳순, 심사 중). 데이터 생성⁠·⁠검증, 제안 <span class="nb">방법(exoDRO)</span> 실험, 실험 환경 구성을 맡았습니다.</p>
+        <p class="case-lede">한국항공대 <a class="lk ext" href="https://sites.google.com/view/stil-lab/home" target="_blank" rel="noopener">STIL Lab</a>의 ICLR 2027 투고 논문 「Structurally Compatible Generative Ambiguity Sets via Exogenous-Space Factorization」에 8명 공동 저자로 참여했습니다(동등 기여, 저자 알파벳순, 심사 중). 데이터 검증, 제안 <span class="nb">방법(exoDRO)</span> 실험, 실험 환경 구성을 맡았습니다.</p>
         <div class="case-body">
           <p><span class="lead-in">논문의 문제</span>분포 강건 최적화(DRO)는 데이터가 바뀔 수 있는 범위 안의 최악 분포에 맞춰 모델을 학습합니다. 이 범위를 생성모델로 만들면 인과 구조를 어기는 분포가 섞이고, 인과 구조를 제약으로 걸면 표현력이 줄어듭니다. 논문은 생성모델을 <b>서로 독립인 외생 변수 좌표마다</b> 두고 고정된 구조 맵으로 보내, 인과 구조 호환성과 KL 분해를 함께 얻습니다.</p>
 
@@ -576,7 +576,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
         <p class="meta"><span>2026.08</span><span>Team of 3</span><span>Brier Skill Score</span><span>KBO TrackMan</span></p>
         <h3>LG Aimers 9기 — 야구 투구 제구 성공 확률 예측</h3>
         <p class="case-lede">LG AI연구원의 AI 교육⁠·⁠해커톤 프로그램 9기 대회입니다. KBO TrackMan 기반 학습 <span class="nb">데이터(약&nbsp;137만 행)와</span> 2025 시즌 평가 <span class="nb">데이터(약&nbsp;24.6만 행)로</span> 투수가 던진 공이 의도한 코스로 갈 확률을 예측했습니다. <span class="nb">2,402명⁠·⁠1,087팀</span>이 참가한 온라인 예선에서 <span class="nb">49위(상위&nbsp;약&nbsp;4.5%)를</span> 기록했습니다.</p>
-      <figure class="cmp-strip" aria-label="LG Aimers 9기 리더보드 비교. 베이스라인 549.5, 전체 평균 919.9, 나 1,167.7, 1위 1,225.2. 제출 횟수는 전체 평균 36회, 나 138회.">
+      <figure class="cmp-strip" aria-label="LG Aimers 9기 리더보드 비교. 베이스라인 549.5, 전체 평균 919.9, 나 1,167.7, 1위 1,225.2.">
         <div class="cmp-set">
         <div class="cmp" style="--n:4">
         <p class="cmp-title">리더보드 점수</p>
@@ -585,12 +585,6 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
         <li class="cmp-col" style="--v:75.1" title="마감 전날 스냅샷 1,053팀 평균"><span class="cmp-track"><span class="cmp-val">919.9</span><span class="cmp-fill"></span></span><span class="cmp-lab">전체 평균</span></li>
         <li class="cmp-col me" style="--v:95.3" title="49위 / 1,087팀"><span class="cmp-track"><span class="cmp-val">1,167.7</span><span class="cmp-fill"></span></span><span class="cmp-lab">나</span></li>
         <li class="cmp-col" style="--v:100" title="최종 1위"><span class="cmp-track"><span class="cmp-val">1,225.2</span><span class="cmp-fill"></span></span><span class="cmp-lab">1위</span></li>
-        </ul></div>
-        <div class="cmp" style="--n:2">
-        <p class="cmp-title">제출 횟수 <span>상한 140</span></p>
-        <ul class="cmp-cols">
-        <li class="cmp-col" style="--v:25.7" title="마감 전날 스냅샷 1,053팀 평균 36.2회"><span class="cmp-track"><span class="cmp-val">36회</span><span class="cmp-fill"></span></span><span class="cmp-lab">전체 평균</span></li>
-        <li class="cmp-col me" style="--v:98.6" title="4주 · 하루 5회 제한"><span class="cmp-track"><span class="cmp-val">138회</span><span class="cmp-fill"></span></span><span class="cmp-lab">나</span></li>
         </ul></div>
         </div>
         <figcaption class="cmp-note">점수 = 100,000 × (1 − Brier ÷ 0.2498) · 리더보드는 평가 데이터 전체로 채점(public = private) · 평균은 마감 전날 스냅샷(1,053팀) 기준</figcaption>
@@ -601,12 +595,12 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
           <p><span class="lead-in">접근</span></p>
           <ul class="decisions">
             <li>라벨이 <code>성공 + 반대방향 + 한복판 ≈ 0.90</code>으로 분해된다는 관찰에서 출발해, <b>실패 유형별 부스터의 출력을 스태커가 다시 결합</b>하는 구조를 설계했습니다(CatBoost, 63피처).</li>
-            <li>팀에서 운용한 LightGBM⁠·⁠신경망⁠·⁠EBM 등 5개 모델을 로짓 공간에서 가중 결합하고, 다항식&nbsp;캘리브레이션과 상황별 오프셋 보정을 얹었습니다.</li>
+            <li>팀원의 초기 앙상블에서 온 모델 3개와 제 모델 2개, 총 5개 모델을 로짓 공간에서 가중 결합하고, 다항식&nbsp;캘리브레이션과 상황별 오프셋 보정을 얹었습니다.</li>
             <li>평가 대상이 2025 시즌이라 <b>모든 누적 통계가 그 이전 시즌만 참조</b>하게 했고, 랜덤 K-Fold 대신 "2023년까지 학습 → 2024년 검증" 시간 분할 하나로 비교했습니다.</li>
             <li>하루 5회 제출 제한이라 <b>제출 하나를 측정 1회로</b> 다뤘습니다. 제출 결과로 캘리브레이션&nbsp;강도를 추정하되, 추정에 계통 오차가 있음을 확인한 뒤로는 오차가 2배여도 손해가 없는 보수적 지점을 골랐습니다. 실패한 제출도 직전과의 차이로 원인을 특정했습니다.</li>
           </ul>
 
-          <p><span class="lead-in">담당</span>저는 <b>모델 구조 설계와 학습⁠·⁠앙상블⁠·⁠검증⁠·⁠제출 전략</b>을 맡았고, 야구 도메인 지식이 있는 팀원이 피처 가설을 냈습니다. 팀원의 가설은 제가 직교성 분석으로 기존 피처와 겹치는지 걸러 모델 구조와 검증 설계로 옮겼습니다.</p>
+          <p><span class="lead-in">담당</span>최종 5개 모델 중 3개는 팀원의 초기 앙상블에서 온 모델이고, 2개는 제가 설계하고 학습했습니다. 팀원 모델의 세부 개선과 <b>결합⁠·⁠검증⁠·⁠제출 전략</b>도 제가 맡았습니다. 피처 가설은 야구 도메인 지식이 있는 팀원이 냈고, 제가 직교성 분석으로 기존 피처와 겹치는지 걸러 모델 구조와 검증 설계로 옮겼습니다.</p>
 
           <p><span class="lead-in">검증 규율</span>제출 138회는 근거와 결과를 전부 원장으로 남기고, 채택 기준은 결과를 보기 전에 미리 등록했습니다. 배포 모델은 재학습 시 <b>트리 잎값까지 동일하게 재현</b>되는 것을 확인했습니다.</p>
           <p><span class="lead-in">배운 것</span>모델을 하나 더 얹기보다 <b>무엇으로 결합하고 무엇으로 검증할지</b> 정하는 것이 점수를 갈랐습니다. 도메인을 아는 팀원의 피처는 혼자서는 나오지 않았을 것이라, 역할 분담도 결과의 일부라는 것을 확인했습니다.</p>
@@ -628,7 +622,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
         <p class="meta"><span>2026.07</span><span>Solo</span><span>Macro-F1</span><span>Multi-agent</span></p>
         <h3>Dacon — AI 코딩 에이전트 행동 예측</h3>
         <p class="case-lede">에이전트 세션 로그로 다음 행동 14클래스를 예측하는 대회입니다. 피처 설계와 앙상블로 베이스라인 0.43을 0.78까지 올렸고, 마지막 <span class="nb">단계(0.7809 → 0.7867)는</span> 직접 설계한 AI 에이전트 하네스(최종 17개 역할)로 운영했습니다. <span class="nb">867명⁠·⁠269팀</span> 중 <span class="nb">59위(상위&nbsp;약&nbsp;22%)로</span> 마쳤습니다.</p>
-      <figure class="cmp-strip" aria-label="Dacon 에이전트 행동 예측 리더보드 비교. Macro-F1은 베이스라인 0.43, 나 0.7867, 1위 0.7988. 제출 횟수는 상위 88팀 평균 67회, 1위 105회, 나 110회.">
+      <figure class="cmp-strip" aria-label="Dacon 에이전트 행동 예측 리더보드 비교. Macro-F1은 베이스라인 0.43, 나 0.7867, 1위 0.7988.">
         <div class="cmp-set">
         <div class="cmp" style="--n:3">
         <p class="cmp-title">Macro-F1</p>
@@ -637,15 +631,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
         <li class="cmp-col me" style="--v:98.5" title="59위 / 269팀"><span class="cmp-track"><span class="cmp-val">0.7867</span><span class="cmp-fill"></span></span><span class="cmp-lab">나</span></li>
         <li class="cmp-col" style="--v:100" title="최종 1위"><span class="cmp-track"><span class="cmp-val">0.7988</span><span class="cmp-fill"></span></span><span class="cmp-lab">1위</span></li>
         </ul></div>
-        <div class="cmp" style="--n:3">
-        <p class="cmp-title">제출 횟수 <span>상위 88팀</span></p>
-        <ul class="cmp-cols">
-        <li class="cmp-col" style="--v:60.9" title="리더보드 1~88위 평균 66.6회"><span class="cmp-track"><span class="cmp-val">67회</span><span class="cmp-fill"></span></span><span class="cmp-lab">상위 88팀 평균</span></li>
-        <li class="cmp-col" style="--v:95.5" title="최종 1위 팀"><span class="cmp-track"><span class="cmp-val">105회</span><span class="cmp-fill"></span></span><span class="cmp-lab">1위</span></li>
-        <li class="cmp-col me" style="--v:100" title="개인 참가 · 하루 10회 제한"><span class="cmp-track"><span class="cmp-val">110회</span><span class="cmp-fill"></span></span><span class="cmp-lab">나</span></li>
-        </ul></div>
         </div>
-        <figcaption class="cmp-note">전체 269팀 중 리더보드에 공개된 상위 88팀 기준</figcaption>
       </figure>
         <div class="case-body">
           <p><span class="lead-in">문제 재정의</span>같은 요청이라도 파일을 읽었는지, 테스트가 통과했는지에 따라 다음 행동이 달라집니다. 그래서 문장 분류가 아니라 <b>누적된 작업 상태를 추론하는 문제</b>로 정의하고, 현재 요청과 과거 행동을 잇는 관계형 피처를 설계했습니다. 고전 ML과 Transformer 3개의 확률 블렌드에서는 개별 점수보다 <b>오류를 보완하는 조합</b>이 성능을 갈랐습니다.</p>
@@ -720,12 +706,12 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
           <h3 style="margin-top:3rem">Awards</h3>
           <table class="awards">
             <tbody>
-              <tr class="top"><td class="y">2026.10</td><td>KAUPC 알고리즘 경진대회</td><td class="r">1위</td></tr>
+              <tr class="top"><td class="y">2026.10</td><td>KAUPC 교내 알고리즘 경진대회</td><td class="r">1위</td></tr>
               <tr class="top" id="award-topcit"><td class="y">2026.06</td><td>제25회 TOPCIT 정기평가</td><td class="r">교내 1위</td></tr>
               <tr class="top"><td class="y">2026.02</td><td>지식 공유 우수작 선발 대회<span class="note">개발자 지망 후배를 위한 <span class="nb">학년별 학습 로드맵</span></span></td><td class="r">1위</td></tr>
               <tr><td class="y">2026.02</td><td>3중 멘토링 뽐내기 공모전</td><td class="r">2위</td></tr>
               <tr><td class="y">2026.02</td><td>3중 멘토링 우수 멘토</td><td class="r">4위</td></tr>
-              <tr class="top"><td class="y">2025.09</td><td>KAUPC 알고리즘 경진대회</td><td class="r">2위</td></tr>
+              <tr class="top"><td class="y">2025.09</td><td>KAUPC 교내 알고리즘 경진대회</td><td class="r">2위</td></tr>
               <tr><td class="y">2024.10</td><td>Codeit 프로젝트 교내 쇼케이스</td><td class="r">1위</td></tr>
             </tbody>
           </table>
