@@ -440,20 +440,20 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
             <li><span class="node"><b>약 70개 교내 사이트</b><span>Python crawler</span></span></li>
             <li><span class="node"><b>FastAPI · SQLite</b><span>ingest · search API</span></span></li>
             <li><span class="node"><b>Next.js</b><span>browse UI</span></span></li>
-            <li><span class="node"><b>RAG 챗봇</b><span>keyword grep → rerank</span></span></li>
+            <li><span class="node"><b>RAG 챗봇</b><span>keyword search → rerank</span></span></li>
             <li><span class="node"><b>RAGAS</b><span>answer eval</span></span></li>
           </ol>
 
-          <p style="margin-top:1.4rem">Python 크롤러로 수집해 FastAPI⁠·⁠SQLite에 적재하고, Next.js에서 출처⁠·⁠카테고리로 탐색합니다. <b>RAG 챗봇</b>은 LLM 호출을 세 단계로 나눴고, 어느 호출이 실패해도 답이 끊기지 않게 단계마다 fallback&nbsp;경로를 뒀습니다(아래 그림). 이미지⁠·⁠HWP로만 올라온 공지는 비전 모델로 본문을 뽑아 검색 대상에 넣었습니다. 백엔드는 AWS Lightsail 단일 서버에 Docker로, 프론트엔드는 Vercel에 배포했습니다.</p>
+          <p style="margin-top:1.4rem">Python 크롤러로 수집해 FastAPI⁠·⁠SQLite에 적재하고, Next.js에서 출처⁠·⁠카테고리로 탐색합니다. <b>RAG 챗봇</b>은 LLM 호출을 세 단계로 나눴고, 어느 호출이 실패해도 답이 끊기지 않게 단계마다 fallback&nbsp;경로를 뒀습니다(아래 그림). 이미지⁠·⁠HWP로만 올라온 공지는 비전 모델로 본문을 뽑아 검색 대상에 넣었습니다. 백엔드는 AWS Lightsail 단일 서버에 Docker로, 프론트엔드는 Vercel에 배포했습니다. 검색⁠·⁠챗봇⁠·⁠평가⁠·⁠배포를 맡았고, 카카오 로그인⁠·⁠북마크 API와 이름 마스킹은 팀원이 구현했습니다.</p>
 
-          <figure class="rag-fig" aria-label="RAG 챗봇 처리 순서. 1 query routing과 키워드 추출(LLM), 2 키워드 검색(retrieval)과 대상 필터로 후보 15건, 3 rerank(LLM)로 최대 6건, 4 답변 생성(generation, LLM). 단계마다 실패 시 fallback 경로가 있음.">
-            <p class="rag-head">RAG 챗봇 처리 순서<span>입력: 질문 + 신분(선택) · gpt-4.1-mini</span></p>
+          <figure class="rag-fig" aria-label="RAG 챗봇 처리 순서. 1 query routing과 키워드 추출(LLM), 2 동의어 사전을 포함한 키워드 검색(retrieval)과 대상 필터로 후보 15건, 3 rerank(LLM)로 최대 6건, 4 답변 생성(generation, LLM). 단계마다 실패 시 fallback 경로가 있음.">
+            <p class="rag-head">RAG 챗봇 처리 순서<span>입력: 질문 + 신분(선택) · 키워드 추출 gpt-6-luna · 답변 gpt-4.1-mini</span></p>
             <div class="rag">
               <div class="rag-card"><span class="rag-no">01<span class="rag-tag llm">LLM</span></span><b>Query routing</b><code>{mode, keywords}</code><p>새로 검색할 질문인지 가르고, 검색 키워드를 뽑습니다</p></div>
               <div class="rag-alt"><b>직전 답변 재가공</b> → 검색 생략<br><b>공지와 무관</b> → 안내 답변<br><b>실패</b> → 질문 원문으로 검색</div>
-              <div class="rag-card"><span class="rag-no">02<span class="rag-tag">LOCAL</span></span><b>Retrieval</b><code>후보 15건</code><p>공지 본문을 키워드로 grep하고, 신분을 골랐으면 그 대상 공지만 남깁니다</p></div>
+              <div class="rag-card"><span class="rag-no">02<span class="rag-tag">LOCAL</span></span><b>Retrieval</b><code>후보 15건</code><p>키워드와 동의어 사전으로 공지 본문을 검색하고, 신분을 골랐으면 그 대상 공지만 남깁니다</p></div>
               <div class="rag-alt"></div>
-              <div class="rag-card"><span class="rag-no">03<span class="rag-tag llm">LLM</span></span><b>Rerank</b><code>후보 번호 → 최대 6건</code><p>제목⁠·⁠게시일⁠·⁠본문 앞부분을 보고 질문과 관련 있는 공지만 고릅니다</p></div>
+              <div class="rag-card"><span class="rag-no">03<span class="rag-tag llm">LLM</span></span><b>Rerank</b><code>후보 번호 → 최대 6건</code><p>제목⁠·⁠게시일⁠·⁠본문 앞부분을 보고 질문과 관련 있는 공지만 고릅니다(gpt-4.1-mini). 신분을 골랐으면 대상 라벨까지 보고 관련도 순으로 고릅니다(gpt-6-luna)</p></div>
               <div class="rag-alt"><b>후보 6건 이하</b> → 호출 생략<br><b>실패</b> → 후보 상위 6건 사용</div>
               <div class="rag-card"><span class="rag-no">04<span class="rag-tag llm">LLM</span></span><b>Generation</b><code>근거 공지 → 답변</code><p>고른 공지만 근거로 답합니다</p></div>
               <div class="rag-alt"><b>실패</b> → 검색 결과 목록만 안내</div>
@@ -471,7 +471,10 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
             <li><b>자동 지표를 그대로 믿지 않았습니다.</b> RAGAS answer_relevancy는 공지에 없는 날짜를 지어내지 않고 "명시되어 있지 않다"고 답한 경우를 0점 처리해<span class="nb">(13건 평균 0.36)</span>, human&nbsp;evaluation(0/1 판정)으로 바꿨습니다. 정답을 임의로 고정하고 운영 경로(query routing⁠·⁠rerank)를 거치지 않던 recall@k⁠·⁠MRR 평가는 지웠습니다. 평가는 기준일을 고정한 데이터 스냅샷에서만 돌려 실행 간 비교가 되게 했습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/181" target="_blank" rel="noopener">글: RAG 평가 도입</a></li>
             <li>공지를 메모리에 전부 올리던 초기 구조에서 <b>OOM</b>이 나, dmesg로 원인을 확인하고 SQLite로 바꾼 뒤 k6 부하 테스트로 검증했습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/179" target="_blank" rel="noopener">글: 인프라 점검</a></li>
             <li>비용⁠·⁠어뷰징에 대비해 <b>rate&nbsp;limit⁠·⁠요청 크기⁠·⁠출력 토큰 상한</b>을 걸고, Vercel&nbsp;Analytics로 사용 흐름을 봅니다. <a class="ref ext" href="https://qktjwl123.tistory.com/182" target="_blank" rel="noopener">글: 운영 리스크</a> <a class="ref ext" href="https://qktjwl123.tistory.com/186" target="_blank" rel="noopener">글: 모니터링</a></li>
-            <li id="nh-label">질문자와 대상이 다른 공지가 근거에 섞이는 문제가 있었습니다(예: 대학원생의 질문에 학부생용 공지). 논문 작업에서 공지마다 붙인 대상 라벨을 운영에 적용해, <b>사용자가 신분을 고르면 그 대상의 공지만 근거로</b> 쓰게 했습니다. 실제 운영 코드로 질문 날짜 시점을 재현한 평가 99문항(1회 실행)에서, 기존 34%였던 다른 대상 공지 혼입을 필터로 구조적으로 없앴고 첫 번째 근거가 정답 공지인 비율<span class="nb">(Hit@1)은</span> 57%&nbsp;→&nbsp;79%가 됐습니다.</li>
+            <li id="nh-label">질문자와 대상이 다른 공지가 근거에 섞이는 문제가 있었습니다(예: 대학원생의 질문에 학부생용 공지). 논문 작업에서 공지마다 붙인 대상 라벨을 운영에 적용해, <b>사용자가 신분을 고르면 그 대상의 공지만 근거로</b> 쓰게 했습니다. 새 공지에는 게시판 규칙과 LLM으로 대상 라벨을 붙입니다. 실제 운영 코드로 질문 날짜 시점을 재현한 평가 99문항(1회 실행)에서, 기존 34%였던 다른 대상 공지 혼입을 필터로 구조적으로 없앴고 첫 번째 근거가 정답 공지인 비율<span class="nb">(Hit@1)은</span> 57%&nbsp;→&nbsp;79%가 됐습니다.</li>
+            <li id="nh-rerank"><b>rerank가 순위를 매기지 못하고 있었습니다.</b> 응답이 번호 오름차순으로만 나와(운영 로그 20건 모두) 1위 근거가 사실상 검색 순서였습니다. 신분을 고른 질문은 대상 라벨을 보고 관련도 순으로 고르게 프롬프트를 바꾸고, 모델을 gpt-6-luna로 옮겼습니다. 생성 질문 510문항의 Hit@1이 84%&nbsp;→&nbsp;93%가 됐습니다.</li>
+            <li id="nh-realuser"><b>생성 질문만으로는 실제 성능을 알 수 없었습니다.</b> 반복 공지 10종으로 만든 510문항의 Hit@1은 93.1%였지만, 사람이 쓴 질문 156문항에서는 66.7%였습니다. 510문항의 오답 35개 중 30개는 정답이 rerank 전 후보 15건에 들지 못한 경우였습니다. '졸업식'과 '학위수여식'처럼 학생과 공지의 표현이 달랐기 때문입니다. 동의어 사전을 15묶음에서 28묶음으로 늘리고 키워드 추출 모델과 프롬프트를 바꿔, Hit@1이 156문항에서 80.1%(+13.5%p, 95% 구간 +3.2&nbsp;~&nbsp;+23.8), 510문항에서 97.8%가 됐습니다. 동의어는 평가에서 틀린 질문을 보고 골랐고 156문항의 정답은 아직 사람이 검수하지 않아, 새 질문에서는 효과가 더 작을 수 있습니다.</li>
+            <li id="nh-model">키워드 추출 모델을 gpt-4.1-mini에서 <b>gpt-6-luna</b>로 바꿨습니다. 같은 동의어 사전에서 정확도 차이는 95% 구간이 0을 포함해 확인되지 않았습니다. 입력 단가가 약 1/4이라 골랐고, 응답 시간 중앙값은 0.48초 늘었습니다.</li>
           </ul>
           <p id="nh-now"><span class="lead-in">현재</span>최근 3개월 방문자가 1,500명을 넘고(Vercel&nbsp;Analytics), 유입 대부분이 <span class="nb">교내 커뮤니티(에브리타임)입니다.</span> 이어지는 연구는 <a class="lk" href="#research">Research</a>에 적었습니다.</p>
 
@@ -483,8 +486,8 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
           <dl class="kmetrics">
             <div><dt>3개월 방문자</dt><dd>1,500+</dd></div>
             <div><dt>수집 사이트</dt><dd>약 70</dd></div>
-            <div><dt>누적 수집 공지</dt><dd>2,400+</dd></div>
-            <div><dt>담당</dt><dd>End-to-End</dd></div>
+            <div><dt>누적 수집 공지</dt><dd>2,600+</dd></div>
+            <div><dt>담당</dt><dd>검색⁠·⁠평가⁠·⁠배포</dd></div>
           </dl>
 
           <p class="case-links">
