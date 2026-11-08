@@ -467,15 +467,13 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
 
           <p><span class="lead-in">설계 결정과 운영</span>운영하며 생긴 문제를 계측으로 확인하고 고쳤습니다.</p>
           <ul class="decisions">
-            <li>질문 단어와 공지 단어가 달라('공모전'으로 물었는데 공지는 '해커톤') 단순 키워드 매칭이 놓치는 것을 확인하고, <b>LLM이 검색 키워드를 고르게</b> 바꿨습니다. 공지는 장학금⁠·⁠수강신청처럼 반복되는 핵심 단어가 많고 근거를 설명하기 쉬워, 벡터 임베딩 대신 키워드 검색을 유지했습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/180" target="_blank" rel="noopener">글: RAG 고찰</a></li>
-            <li><b>자동 지표를 그대로 믿지 않았습니다.</b> RAGAS answer_relevancy는 공지에 없는 날짜를 지어내지 않고 "명시되어 있지 않다"고 답한 경우를 0점 처리해<span class="nb">(13건 평균 0.36)</span>, human&nbsp;evaluation(0/1 판정)으로 바꿨습니다. 정답을 임의로 고정하고 운영 경로(query routing⁠·⁠rerank)를 거치지 않던 recall@k⁠·⁠MRR 평가는 지웠습니다. 평가는 기준일을 고정한 데이터 스냅샷에서만 돌려 실행 간 비교가 되게 했습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/181" target="_blank" rel="noopener">글: RAG 평가 도입</a></li>
+            <li>질문은 '공모전', 공지는 '해커톤'처럼 단어가 달라 단순 키워드 매칭이 놓치는 것을 확인하고, <b>LLM이 검색 키워드를 고르게</b> 바꿨습니다. 공지는 장학금⁠·⁠수강신청처럼 반복되는 핵심 단어가 많고 근거를 설명하기 쉬워, 벡터 임베딩 대신 키워드 검색을 유지했습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/180" target="_blank" rel="noopener">글: RAG 고찰</a></li>
+            <li><b>자동 지표를 그대로 믿지 않았습니다.</b> RAGAS answer_relevancy는 13건 평균이 0.36으로 실제 품질보다 낮게 나왔습니다. 공지에 없는 날짜를 지어내지 않고 "명시되어 있지 않다"고 답한 경우도 0점으로 매겼기 때문입니다. 그래서 human&nbsp;evaluation(0/1 판정)으로 바꿨습니다. 정답을 임의로 고정하고 운영 경로(query routing⁠·⁠rerank)를 거치지 않던 recall@k⁠·⁠MRR 평가는 지웠습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/181" target="_blank" rel="noopener">글: RAG 평가 도입</a></li>
             <li>공지를 메모리에 전부 올리던 초기 구조에서 <b>OOM</b>이 나, dmesg로 원인을 확인하고 SQLite로 바꾼 뒤 k6 부하 테스트로 검증했습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/179" target="_blank" rel="noopener">글: 인프라 점검</a></li>
-            <li>비용⁠·⁠어뷰징에 대비해 <b>rate&nbsp;limit⁠·⁠요청 크기⁠·⁠출력 토큰 상한</b>을 걸고, Vercel&nbsp;Analytics로 사용 흐름을 봅니다. <a class="ref ext" href="https://qktjwl123.tistory.com/182" target="_blank" rel="noopener">글: 운영 리스크</a> <a class="ref ext" href="https://qktjwl123.tistory.com/186" target="_blank" rel="noopener">글: 모니터링</a></li>
-            <li id="nh-label">질문자와 대상이 다른 공지가 근거에 섞이는 문제가 있었습니다(예: 대학원생의 질문에 학부생용 공지). 논문 작업에서 공지마다 붙인 대상 라벨을 운영에 적용해, <b>사용자가 신분을 고르면 그 대상의 공지만 근거로</b> 쓰게 했습니다. 새 공지에는 게시판 규칙과 LLM으로 대상 라벨을 붙입니다. 실제 운영 코드로 질문 날짜 시점을 재현한 평가 99문항(1회 실행)에서, 기존 34%였던 다른 대상 공지 혼입을 필터로 구조적으로 없앴고 첫 번째 근거가 정답 공지인 비율<span class="nb">(Hit@1)은</span> 57%&nbsp;→&nbsp;79%가 됐습니다.</li>
-            <li id="nh-rerank"><b>rerank가 순위를 매기지 못하고 있었습니다.</b> 응답이 번호 오름차순으로만 나와(운영 로그 20건 모두) 1위 근거가 사실상 검색 순서였습니다. 신분을 고른 질문은 대상 라벨을 보고 관련도 순으로 고르게 프롬프트를 바꾸고, 모델을 gpt-6-luna로 옮겼습니다. 생성 질문 510문항의 Hit@1이 84%&nbsp;→&nbsp;93%가 됐습니다.</li>
-            <li id="nh-realuser"><b>생성 질문만으로는 실제 성능을 알 수 없었습니다.</b> 반복 공지 10종으로 만든 510문항의 Hit@1은 93.1%였지만, 사람이 쓴 질문 156문항에서는 66.7%였습니다. 510문항의 오답 35개 중 30개는 정답이 rerank 전 후보 15건에 들지 못한 경우였습니다. '졸업식'과 '학위수여식'처럼 학생과 공지의 표현이 달랐기 때문입니다. 동의어 사전을 15묶음에서 28묶음으로 늘리고 키워드 추출 모델과 프롬프트를 바꿔, Hit@1이 156문항에서 80.1%(+13.5%p, 95% 구간 +3.2&nbsp;~&nbsp;+23.8), 510문항에서 97.8%가 됐습니다.</li>
-            <li id="nh-model">키워드 추출 모델을 gpt-4.1-mini에서 <b>gpt-6-luna</b>로 바꿨습니다. 같은 동의어 사전에서 정확도 차이는 95% 구간이 0을 포함해 확인되지 않았습니다. 입력 단가가 약 1/4이라 골랐고, 응답 시간 중앙값은 0.48초 늘었습니다.</li>
-          </ul>
+            <li id="nh-label">대학원생의 질문에 학부생용 공지가 근거로 섞이는 문제가 있었습니다. 공지마다 대상 라벨을 붙여 <b>사용자가 고른 신분의 공지만 근거로</b> 쓰게 했습니다. 질문 날짜 시점을 재현한 99문항 평가(1회 실행)에서 다른 대상 공지 혼입은 34%&nbsp;→&nbsp;0%, Hit@1은 57%&nbsp;→&nbsp;79%가 됐습니다.</li>
+            <li id="nh-rerank"><b>rerank가 순위를 매기지 못하고 있었습니다.</b> 응답이 번호 오름차순으로만 나와(운영 로그 20건 모두) 1위가 사실상 검색 순서였습니다. 신분을 고른 질문은 대상 라벨을 보고 관련도 순으로 고르게 프롬프트와 모델을 바꿔, 생성 질문 510문항의 Hit@1이 84%&nbsp;→&nbsp;93.1%가 됐습니다.</li>
+            <li id="nh-realuser"><b>생성 질문만으로는 실제 성능을 알 수 없었습니다.</b> 510문항에서 93.1%였던 Hit@1이 사람이 쓴 질문 156문항에서는 66.7%였습니다. 510문항의 오답 35개 중 30개는 '졸업식'과 '학위수여식'처럼 표현이 달라 정답이 후보에 들지 못한 경우였습니다. 동의어 사전을 15묶음에서 28묶음으로 늘리고 키워드 추출을 고쳐 156문항에서 80.1%(+13.5%p, 95% 구간 +3.2&nbsp;~&nbsp;+23.8)가 됐습니다. 키워드 모델은 정확도 차이가 확인되지 않아 입력 단가가 약 1/4인 gpt-6-luna를 골랐습니다.</li>
+</ul>
           <p id="nh-now"><span class="lead-in">현재</span>최근 3개월 방문자가 1,500명을 넘고(Vercel&nbsp;Analytics), 유입 대부분이 <span class="nb">교내 커뮤니티(에브리타임)입니다.</span> 이어지는 연구는 <a class="lk" href="#research">Research</a>에 적었습니다.</p>
 
           <figure class="shot-wide">
