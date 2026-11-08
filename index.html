@@ -9,12 +9,12 @@ if(t!=='light'&&t!=='dark'){try{t=matchMedia('(prefers-color-scheme: dark)').mat
 document.documentElement.setAttribute('data-theme',t);})();
 </script>
 <title>박성진 — AI 엔지니어 (RAG · LLM)</title>
-<meta name="description" content="실사용자가 있는 RAG 서비스를 운영하고, 운영 데이터로 연구하는 AI 엔지니어 박성진. 교내 공지 통합 서비스 KAU Notice Hub 운영(3개월 방문 1,500+), LG Aimers 9기 1,087팀 중 49위, RAG Hit@1 57% → 79%, ICLR 2027 투고 논문 공저.">
+<meta name="description" content="실사용자가 있는 RAG 서비스를 운영하고, 운영 데이터로 연구하는 AI 엔지니어 박성진. 교내 공지 통합 서비스 KAU Notice Hub 운영(3개월 방문 1,500+), LG Aimers 9기 1,087팀 중 49위, RAG Hit@1 66.7% → 80.1%(실사용자 질문), ICLR 2027 투고 논문 공저.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="박성진 — AI 엔지니어 (RAG · LLM)">
-<meta property="og:description" content="교내 공지 RAG 서비스 3개월 방문 1,500+ 운영 · RAG Hit@1 57% → 79% · LG Aimers 9기 상위 약 4.5% · ICLR 2027 투고 공저(8인 동등 기여)">
+<meta property="og:description" content="교내 공지 RAG 서비스 3개월 방문 1,500+ 운영 · RAG Hit@1 66.7% → 80.1%(실사용자 질문) · LG Aimers 9기 상위 약 4.5% · ICLR 2027 투고 공저(8인 동등 기여)">
 <meta property="og:url" content="https://jinpop.github.io/">
-<meta property="og:image" content="https://jinpop.github.io/og.png?v=6">
+<meta property="og:image" content="https://jinpop.github.io/og.png?v=7">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://jinpop.github.io/">
@@ -345,8 +345,8 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
 }
 
 /* ── responsive ─────────────────────────────────────── */
-@media (max-width:999px){.stats{grid-template-columns:repeat(2,auto)}}
-@media (max-width:360px){.stats .num{font-size:1.55rem}}
+@media (max-width:1149px){.stats{grid-template-columns:repeat(2,auto)}}
+@media (max-width:640px){.stats .num{font-size:6.2vw}}
 @media (max-width:860px){
   .about-grid{grid-template-columns:1fr}
   .case-grid{grid-template-columns:1fr}
@@ -412,7 +412,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
     <ul class="stats" role="list">
       <li><a class="stat" href="#nh-now"><b class="num"><em>1,500+</em></b><span class="lab">교내 공지 서비스<br>3개월 방문자</span></a></li>
       <li><a class="stat" href="#aimers9"><b class="num">상위 <em>약 4.5%</em></b><span class="lab">LG Aimers 9기<br>1,087팀 중 49위</span></a></li>
-      <li><a class="stat" href="#nh-label"><b class="num">57<span class="arr">→</span><em>79%</em></b><span class="lab">RAG 검색 정확도 개선<br>Hit@1 기준</span></a></li>
+      <li><a class="stat" href="#nh-realuser"><b class="num">66.7<span class="arr">→</span><em>80.1%</em></b><span class="lab">RAG 검색 정확도 개선<br>실사용자 질문 Hit@1</span></a></li>
       <li><a class="stat" href="#exodro"><b class="num"><em>ICLR</em> 2027</b><span class="lab">8인 공저 · 동등 기여<br>투고 · 심사 중</span></a></li>
     </ul>
     <p class="hero-links">
@@ -468,7 +468,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
           <p><span class="lead-in">설계 결정과 운영</span>운영하며 생긴 문제를 계측으로 확인하고 고쳤습니다.</p>
           <ul class="decisions">
             <li>질문은 '공모전', 공지는 '해커톤'처럼 단어가 달라 단순 키워드 매칭이 놓치는 것을 확인하고, <b>LLM이 검색 키워드를 고르게</b> 바꿨습니다. 공지는 장학금⁠·⁠수강신청처럼 반복되는 핵심 단어가 많고 근거를 설명하기 쉬워, 벡터 임베딩 대신 키워드 검색을 유지했습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/180" target="_blank" rel="noopener">글: RAG 고찰</a></li>
-            <li><b>자동 지표를 그대로 믿지 않았습니다.</b> RAGAS answer_relevancy는 13건 평균이 0.36으로 실제 품질보다 낮게 나왔습니다. 공지에 없는 날짜를 지어내지 않고 "명시되어 있지 않다"고 답한 경우도 0점으로 매겼기 때문입니다. 그래서 human&nbsp;evaluation(0/1 판정)으로 바꿨습니다. 정답을 임의로 고정하고 운영 경로(query routing⁠·⁠rerank)를 거치지 않던 recall@k⁠·⁠MRR 평가는 지웠습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/181" target="_blank" rel="noopener">글: RAG 평가 도입</a></li>
+            <li><b>자동 지표를 그대로 믿지 않았습니다.</b> RAGAS answer_relevancy는 13건 평균이 0.36으로 실제 품질보다 낮게 나왔습니다. 공지에 없는 날짜를 지어내지 않고 "명시되어 있지 않다"고 답한 경우도 0점으로 매겼기 때문입니다. 그래서 human&nbsp;evaluation(0/1 판정)으로 바꿨습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/181" target="_blank" rel="noopener">글: RAG 평가 도입</a></li>
             <li>공지를 메모리에 전부 올리던 초기 구조에서 <b>OOM</b>이 나, dmesg로 원인을 확인하고 SQLite로 바꾼 뒤 k6 부하 테스트로 검증했습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/179" target="_blank" rel="noopener">글: 인프라 점검</a></li>
             <li id="nh-label">대학원생의 질문에 학부생용 공지가 근거로 섞이는 문제가 있었습니다. 공지마다 대상 라벨을 붙여 <b>사용자가 고른 신분의 공지만 근거로</b> 쓰게 했습니다. 질문 날짜 시점을 재현한 99문항 평가(1회 실행)에서 다른 대상 공지 혼입은 34%&nbsp;→&nbsp;0%, Hit@1은 57%&nbsp;→&nbsp;79%가 됐습니다.</li>
             <li id="nh-rerank"><b>rerank가 순위를 매기지 못하고 있었습니다.</b> 응답이 번호 오름차순으로만 나와(운영 로그 20건 모두) 1위가 사실상 검색 순서였습니다. 신분을 고른 질문은 대상 라벨을 보고 관련도 순으로 고르게 프롬프트와 모델을 바꿔, 생성 질문 510문항의 Hit@1이 84%&nbsp;→&nbsp;93.1%가 됐습니다.</li>
