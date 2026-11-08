@@ -9,12 +9,12 @@ if(t!=='light'&&t!=='dark'){try{t=matchMedia('(prefers-color-scheme: dark)').mat
 document.documentElement.setAttribute('data-theme',t);})();
 </script>
 <title>박성진 — AI 엔지니어 (RAG · LLM)</title>
-<meta name="description" content="실사용자가 있는 RAG 서비스를 운영하고, 운영 데이터로 연구하는 AI 엔지니어 박성진. 교내 공지 통합 서비스 KAU Notice Hub 운영(2026년 7~9월 방문자 1,500+), LG Aimers 9기 1,087팀 중 49위, RAG Hit@1 66.7% → 80.1%(사람이 쓴 질문), ICLR 2027 투고 논문 공저.">
+<meta name="description" content="실사용자가 있는 RAG 서비스를 운영하고, 운영 데이터로 연구하는 AI 엔지니어 박성진. 교내 공지 통합 서비스 KAU Notice Hub 운영(2026년 7~9월 방문자 1,500+), LG Aimers 9기 온라인 예선 1,087팀 중 49위, RAG Hit@1 66.7% → 80.1%(사람이 쓴 질문), ICLR 2027 투고 논문 공저.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="박성진 — AI 엔지니어 (RAG · LLM)">
-<meta property="og:description" content="교내 공지 서비스 운영(2026년 7~9월 방문자 1,500+) · RAG Hit@1 66.7% → 80.1%(사람이 쓴 질문) · LG Aimers 9기 상위 약 4.5% · ICLR 2027 투고 공저(8인 동등 기여)">
+<meta property="og:description" content="교내 공지 서비스 운영(2026년 7~9월 방문자 1,500+) · RAG Hit@1 66.7% → 80.1%(사람이 쓴 질문) · LG Aimers 9기 온라인 예선 상위 약 4.5% · ICLR 2027 투고 공저(8인 동등 기여)">
 <meta property="og:url" content="https://jinpop.github.io/">
-<meta property="og:image" content="https://jinpop.github.io/og.png?v=9">
+<meta property="og:image" content="https://jinpop.github.io/og.png?v=10">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://jinpop.github.io/">
@@ -411,7 +411,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
     </div>
     <ul class="stats" role="list">
       <li><a class="stat" href="#nh-now"><b class="num"><em>1,500+</em></b><span class="lab">교내 공지 서비스<br>2026.07–09 방문자</span></a></li>
-      <li><a class="stat" href="#aimers9"><b class="num">상위 <em>약 4.5%</em></b><span class="lab">LG Aimers 9기<br>1,087팀 중 49위</span></a></li>
+      <li><a class="stat" href="#aimers9"><b class="num">상위 <em>약 4.5%</em></b><span class="lab">LG Aimers 9기 예선<br>1,087팀 중 49위</span></a></li>
       <li><a class="stat" href="#nh-realuser"><b class="num">66.7<span class="arr">→</span><em>80.1%</em></b><span class="lab">RAG 검색 정확도 개선<br>사람이 쓴 질문 Hit@1</span></a></li>
       <li><a class="stat" href="#exodro"><b class="num"><em>ICLR</em> 2027</b><span class="lab">8인 공저 · 동등 기여<br>투고 · 심사 중</span></a></li>
     </ul>
@@ -514,7 +514,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
 
           <p><span class="lead-in">지금까지 한 일</span></p>
           <ul class="decisions">
-            <li>운영 DB와 별개로 <b>3년치 공지 7,857건</b>을 다시 수집해 고정하고, 같은 공지가 여러 게시판에 올라오는 교차 게시 문제도 정리했습니다.</li>
+            <li>운영 DB와 별개로 <b>3년치 공지 7,857건</b>을 다시 수집해 고정하고, 같은 공지가 여러 게시판에 올라오는 교차 게시 문제는 병합 방향까지 정했습니다.</li>
             <li>공지마다 적용 학기와 대상(8분류)을 붙이는 annotation&nbsp;guideline을 v5까지 다듬고, 별도 검수자가 503건을 검수한 뒤 핵심 공지 279건을 2주 뒤 초안 없이 다시 라벨링해 확정했습니다. 대상⁠·⁠회차 1,233쌍 중 <span class="nb">193쌍(16%)에</span> 게시 시차가 있었습니다.</li>
             <li>질문 날짜 시점의 공지 목록을 재현하는 실험 환경을 운영 코드와 분리해 만들고, <b>날짜가 붙은 평가 질문 1,305개</b>와 베이스라인 6종(BM25, 최신순, 대상 필터, 시점 기반 <span class="nb">abstention 등)을</span> 구현했습니다.</li>
             <li>대상 라벨은 운영 서비스에도 적용했습니다. 효과는 KAU Notice&nbsp;Hub 항목에 적었습니다.</li>
@@ -590,19 +590,19 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
         <figcaption class="cmp-note">점수 = 100,000 × (1 − Brier ÷ 0.2498) · 리더보드는 평가 데이터 전체로 채점(public = private) · 평균은 마감 전날 스냅샷(1,053팀) 기준</figcaption>
       </figure>
         <div class="case-body">
-          <p><span class="lead-in">지표 해석</span>평가 지표인 Brier Skill Score는 순위가 아니라 <b>예측 확률이 실제 빈도와 <span class="nb">맞는지(캘리브레이션)를</span></b> 채점합니다. 모델 판별력(AUC)이 0.53&nbsp;수준이라 점수 차이 대부분이 캘리브레이션에서 나온다는 것을 초기에 측정으로 확인했고, 4주를 <b>"여러 모델을 어떻게 결합하고 캘리브레이션할 것인가"</b>에 썼습니다.</p>
+          <p><span class="lead-in">지표 해석</span>평가 지표인 Brier Skill Score는 AUC처럼 순서만 보지 않고 <b>예측 확률값 자체</b>를 채점합니다. 모델 판별력(AUC)이 0.53&nbsp;수준이라 점수 차이 대부분이 캘리브레이션에서 나온다는 것을 초기에 측정으로 확인했고, 4주를 <b>"여러 모델을 어떻게 결합하고 캘리브레이션할 것인가"</b>에 썼습니다.</p>
 
           <p><span class="lead-in">접근</span></p>
           <ul class="decisions">
             <li>라벨이 <code>성공 + 반대방향 + 한복판 ≈ 0.90</code>으로 분해된다는 관찰에서 출발해, <b>실패 유형별 부스터의 출력을 스태커가 다시 결합</b>하는 구조를 설계했습니다(CatBoost, 63피처).</li>
             <li>팀원의 초기 앙상블에서 온 모델 3개와 제 모델 2개, 총 5개 모델을 로짓 공간에서 가중 결합하고, 다항식&nbsp;캘리브레이션과 상황별 오프셋 보정을 얹었습니다.</li>
             <li>평가 대상이 2025 시즌이라 <b>모든 누적 통계가 그 이전 시즌만 참조</b>하게 했고, 랜덤 K-Fold 대신 "2023년까지 학습 → 2024년 검증" 시간 분할 하나로 비교했습니다.</li>
-            <li>하루 5회 제출 제한이라 <b>제출 하나를 측정 1회로</b> 다뤘습니다. 제출 결과로 캘리브레이션&nbsp;강도를 추정하되, 추정에 계통 오차가 있음을 확인한 뒤로는 오차가 2배여도 손해가 없는 보수적 지점을 골랐습니다. 실패한 제출도 직전과의 차이로 원인을 특정했습니다.</li>
+            <li>하루 5회 제출 제한이라 <b>제출 하나를 측정 1회로</b> 다뤘습니다. 제출 결과로 캘리브레이션&nbsp;강도를 추정하되, 추정에 약 2배의 계통 오차가 있음을 확인한 뒤로는 그 경우에도 손실이 작은 보수적 지점을 골랐습니다. 실패한 제출도 직전과의 차이로 원인을 특정했습니다.</li>
           </ul>
 
           <p><span class="lead-in">담당</span>최종 5개 모델 중 3개는 팀원의 초기 앙상블에서 온 모델이고, 2개는 제가 설계하고 학습했습니다. 팀원 모델의 세부 개선과 <b>결합⁠·⁠검증⁠·⁠제출 전략</b>도 제가 맡았습니다. 피처 가설은 야구 도메인 지식이 있는 팀원이 냈고, 제가 직교성 분석으로 기존 피처와 겹치는지 걸러 모델 구조와 검증 설계로 옮겼습니다.</p>
 
-          <p><span class="lead-in">검증 규율</span>제출 138회는 근거와 결과를 전부 원장으로 남기고, 채택 기준은 결과를 보기 전에 미리 등록했습니다. 배포 모델은 재학습 시 <b>트리 잎값까지 동일하게 재현</b>되는 것을 확인했습니다.</p>
+          <p><span class="lead-in">검증 규율</span>제출 138회는 근거와 결과를 전부 원장으로 남기고, 채택 기준은 결과를 보기 전에 미리 등록했습니다. 제 CatBoost 모델(63피처)은 같은 시드로 재학습했을 때 <b>트리 잎값까지 동일하게 재현</b>되는 것을 확인했습니다.</p>
           <p><span class="lead-in">배운 것</span>모델을 하나 더 얹기보다 <b>무엇으로 결합하고 무엇으로 검증할지</b> 정하는 것이 점수를 갈랐습니다. 도메인을 아는 팀원의 피처는 혼자서는 나오지 않았을 것이라, 역할 분담도 결과의 일부라는 것을 확인했습니다.</p>
 
           <dl class="kmetrics">
@@ -621,7 +621,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
       <article class="case">
         <p class="meta"><span>2026.07</span><span>Solo</span><span>Macro-F1</span><span>Multi-agent</span></p>
         <h3>Dacon — AI 코딩 에이전트 행동 예측</h3>
-        <p class="case-lede">에이전트 세션 로그로 다음 행동 14클래스를 예측하는 대회입니다. 피처 설계와 앙상블로 베이스라인 0.43을 0.78까지 올렸고, 마지막 <span class="nb">단계(0.7809 → 0.7867)는</span> 직접 설계한 AI 에이전트 하네스(최종 17개 역할)로 운영했습니다. <span class="nb">867명⁠·⁠269팀</span> 중 <span class="nb">59위(상위&nbsp;약&nbsp;22%)로</span> 마쳤습니다.</p>
+        <p class="case-lede">에이전트 세션 로그로 다음 행동 14클래스를 예측하는 대회입니다. 피처 설계와 Transformer 앙상블로 베이스라인 0.43을 0.78까지 올렸고, 마지막 <span class="nb">단계(0.7809 → 0.7867)는</span> 직접 설계한 AI 에이전트 하네스(최종 17개 역할)로 운영했습니다. <span class="nb">867명⁠·⁠269팀</span> 중 <span class="nb">59위(상위&nbsp;약&nbsp;22%)로</span> 마쳤습니다.</p>
       <figure class="cmp-strip" aria-label="Dacon 에이전트 행동 예측 리더보드 비교. Macro-F1은 베이스라인 0.43, 나 0.7867, 1위 0.7988.">
         <div class="cmp-set">
         <div class="cmp" style="--n:3">
@@ -638,13 +638,13 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
 
           <p id="dacon-harness"><span class="lead-in">AI Agent 운영 하네스</span>실험 실행은 Claude 에이전트에, 전략⁠·⁠승인⁠·⁠제출은 제가 맡았습니다. 한 에이전트에 전부 맡기자 단계 누락과 정보 혼선이 반복돼, 원인을 모델 능력이 아니라 <b>한 에이전트의 책임과 컨텍스트가 너무 넓은 구조</b>로 보고 다시 설계했습니다.</p>
           <ul class="decisions">
-            <li><b>역할을 17개 서브에이전트로 분리</b>하고(전략 수립 / 데이터⁠·⁠누수 감사 / 학습 설정 검증 / 실행 / 제출물 검증 / 기록), 각 에이전트에는 <b>맡은 역할에 필요한 최소 정보만</b> 넘겼습니다.</li>
-            <li>자연어 보고 대신 <b>산출물로 검증</b>했습니다. <code>effective_config</code>, <span class="nb">코드⁠·⁠데이터</span> SHA 대조, 제출물 자동 검사로 학습 시작 전 결함을 2회 차단했습니다.</li>
+            <li><b>역할을 17개 서브에이전트로 분리</b>하고(실험 설계 / 데이터⁠·⁠누수 감사 / 학습 설정 검증 / 실행 / 제출물 검증 / 기록), 각 에이전트에는 <b>맡은 역할에 필요한 최소 정보만</b> 넘겼습니다.</li>
+            <li>자연어 보고 대신 <b>산출물로 검증</b>했습니다. <code>effective_config</code>, <span class="nb">코드⁠·⁠데이터</span> SHA 대조, 제출물 자동 검사로 실행 전 결함을 2회 차단했습니다.</li>
           </ul>
           <p><span class="lead-in">배운 것</span>한 에이전트의 실수가 전체를 통과하기 어려운 구조가 됐고, 에이전트 성능이 모델만이 아니라 역할⁠·⁠컨텍스트⁠·⁠권한⁠·⁠검증 구조 설계에도 달려 있다는 것을 배웠습니다.</p>
           <dl class="kmetrics">
             <div><dt>서브에이전트</dt><dd>17개</dd></div>
-            <div><dt>사전 차단한 결함</dt><dd>2회</dd></div>
+            <div><dt>실행 전 차단한 결함</dt><dd>2회</dd></div>
             <div><dt>하네스 구간 상승</dt><dd>+0.0058</dd></div>
             <div><dt>제출</dt><dd>110회</dd></div>
           </dl>
@@ -699,7 +699,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
           </table>
           <h3 style="margin-top:3rem">Collaboration &amp; Leadership</h3>
           <ul class="plain">
-            <li><b>교내 멘토링 10회</b>. 알고리즘⁠·⁠자료구조부터 AI&nbsp;에이전트&nbsp;활용법⁠·⁠AI&nbsp;학습법까지 후배들을 가르쳤습니다</li>
+            <li><b>교내 멘토링 프로그램 10회</b>. SW 멘토링⁠·⁠학습 멘토링 등에서 알고리즘⁠·⁠자료구조부터 AI&nbsp;에이전트&nbsp;활용법⁠·⁠AI&nbsp;학습법까지 후배들을 가르쳤습니다</li>
             <li><b>클라이밍 동아리 Hands On Top! 창립</b>. 70명 규모로 운영 중이고, 교내 지원 프로그램에서 100여 팀 중&nbsp;6팀에 선정됐습니다</li>
             <li><b>자라섬 재즈 페스티벌 자원봉사</b>. 해외 아티스트 영어 통역과 현장 운영을 맡았습니다</li>
           </ul>
