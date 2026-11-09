@@ -167,7 +167,7 @@ h3{font-size:clamp(1.35rem,1.2rem + .8vw,1.8rem);font-weight:700;letter-spacing:
 .case + .case{border-top:1px solid var(--border-soft)}
 .meta{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-3);display:flex;flex-wrap:wrap;gap:.35rem 0}
 .meta .on{color:var(--accent)}
-.meta span:not(:last-child)::after{content:", ";margin-inline:.6em;color:var(--fg-3)}
+.meta span:not(:last-child)::after{content:"/";margin-inline:.6em;color:var(--fg-3)}
 .case h3{margin-top:.9rem}
 .case-lede{margin-top:.6rem;font-size:1.125rem;color:var(--fg-2);max-width:40rem}
 .case-grid{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1rem clamp(2rem,5vw,5rem);align-items:start}
@@ -424,7 +424,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
     <h1>RAG의 실패를<br><span class="ul">연구로</span> 고칩니다</h1>
     <div class="lede">
       <p><b>실사용자가 있는 RAG 서비스를 직접 만들고 운영하는</b> AI 엔지니어 박성진입니다.<br class="br-wide"> 운영에서 나온 검색 실패를 <b>연구 문제로 정의하고, 그 결과를 다시 서비스에 적용</b>합니다.</p>
-      <p>익숙한 방식도 더 빠른 길이 없는지 먼저 따져 봅니다.<br class="br-wide"> 실험 운영은 <b>역할별 AI 에이전트로 나눠 맡기고</b>, 전략과 최종 판단은 직접 합니다.<br><a class="lk jump" href="#exo-speed">하이퍼파라미터 탐색 시간 약&nbsp;60배 단축</a>, <span class="nb"><a class="lk jump" href="#rostercrawler">근로 업무 1주일을 5분으로</a>,</span> <span class="nb"><a class="lk jump" href="#dacon-harness">에이전트 하네스 설계</a></span></p>
+      <p>익숙한 방식도 더 빠른 길이 없는지 먼저 따져 봅니다.<br class="br-wide"> 실험 운영은 <b>역할별 AI 에이전트로 나눠 맡기고</b>, 전략과 최종 판단은 직접 합니다.<br><a class="lk jump" href="#exo-speed">하이퍼파라미터 탐색 시간 약&nbsp;60배 단축(환산)</a>, <span class="nb"><a class="lk jump" href="#rostercrawler">근로 업무 1주일을 5분으로</a>,</span> <span class="nb"><a class="lk jump" href="#dacon-harness">에이전트 하네스 설계</a></span></p>
       <p><span class="nb">한국항공대학교 소프트웨어학과</span>, <span class="nb">2027년 2월 졸업 예정.</span></p>
     </div>
     <ul class="stats" role="list">
@@ -488,8 +488,8 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
               <div class="i-b"><p>생성 질문만으로는 실제 성능을 알 수 없었습니다. 510문항에서 93.1%였던 Hit@1이 사용자 기반 질문 156문항에서는 66.7%였습니다. 156문항은 팀원이 사용자 입장에서 만든 질문 35개와 챗봇 로그 기반 질문 23개를 대상별로 나눈 것입니다.</p><p>510문항의 오답 35개 중 30개는 '졸업식'과 '학위수여식'처럼 표현이 달라 정답이 후보에 들지 못한 경우였습니다. 동의어 사전을 15묶음에서 28묶음으로 늘리고 키워드 추출을 고쳐 156문항에서 80.1%(+13.5%p, 95% 구간 +3.2&nbsp;~&nbsp;+23.8)가 됐습니다.</p><p>키워드 모델은 정확도 차이가 확인되지 않아 입력 단가가 약 1/4인 gpt-6-luna를 골랐습니다.</p></div>
             </details>
             <details class="item" id="nh-label">
-              <summary><span class="i-t">질문자 신분에 맞는 공지만 근거로 사용</span><span class="i-r">다른 대상 공지 34% → 0%, Hit@1 57% → 79% (99문항)</span></summary>
-              <div class="i-b"><p>대학원생의 질문에 학부생용 공지가 근거로 섞이는 문제가 있었습니다. 공지마다 대상 라벨을 붙여 사용자가 고른 신분의 공지만 근거로 쓰게 했습니다.</p><p>질문 날짜 시점을 재현한 99문항 평가(1회 실행)의 결과입니다.</p></div>
+              <summary><span class="i-t">질문자 신분에 맞는 공지만 근거로 사용</span><span class="i-r">다른 대상 공지 31% → 0%, Hit@1 66% → 84% (생성 질문 510문항)</span></summary>
+              <div class="i-b"><p>대학원생의 질문에 학부생용 공지가 근거로 섞이는 문제가 있었습니다. 공지마다 대상 라벨을 붙여 사용자가 고른 신분의 공지만 근거로 쓰게 했습니다.</p><p>질문 날짜 시점을 재현한 생성 질문 510문항 평가의 결과입니다.</p></div>
             </details>
             <details class="item" id="nh-rerank">
               <summary><span class="i-t">순위를 매기지 못하던 rerank 개선</span><span class="i-r">Hit@1 84% → 93.1% (생성 질문 510문항)</span></summary>
@@ -504,8 +504,8 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
               <div class="i-b"><p>질문은 '공모전', 공지는 '해커톤'처럼 단어가 달라 단순 키워드 매칭이 놓치는 것을 확인하고, LLM이 검색 키워드를 고르게 바꿨습니다.</p><p>공지는 장학금, 수강신청처럼 반복되는 핵심 단어가 많고 근거를 설명하기 쉬워, 벡터 임베딩 대신 키워드 검색을 유지했습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/180" target="_blank" rel="noopener">글: RAG 고찰</a></p></div>
             </details>
             <details class="item">
-              <summary><span class="i-t">메모리 부족(OOM) 해결</span><span class="i-r">SQLite 전환, k6 부하 테스트로 검증</span></summary>
-              <div class="i-b"><p>공지를 메모리에 전부 올리던 초기 구조에서 OOM이 나, dmesg로 원인을 확인하고 SQLite로 바꾼 뒤 k6 부하 테스트로 검증했습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/179" target="_blank" rel="noopener">글: 인프라 점검</a></p></div>
+              <summary><span class="i-t">메모리 부족(OOM) 해결</span><span class="i-r">SQLite 전환, k6로 재발 확인 후 메모리 증설</span></summary>
+              <div class="i-b"><p>공지를 메모리에 전부 올리던 초기 구조에서 OOM이 나, dmesg로 원인을 확인하고 SQLite로 바꿨습니다. k6 동시 100명 테스트에서 서버가 다시 종료돼 swap과 메모리 증설, 워커 조정을 더했고, 이후 100명까지 종료가 없었습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/179" target="_blank" rel="noopener">글: 인프라 점검</a></p></div>
             </details>
             <details class="item">
               <summary><span class="i-t">RAG 단계별 동작과 fallback</span><span class="i-r">어느 LLM 호출이 실패해도 답이 끊기지 않는 구조</span></summary>
@@ -543,9 +543,9 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
       <div class="archive">
         <p class="archive-head">More Projects</p>
         <ul class="rows">
-          <li id="rostercrawler"><span class="row"><span class="y">2026</span><a class="t ext" href="https://github.com/Jinpop/RosterCrawler" target="_blank" rel="noopener">RosterCrawler</a><span class="d">교내 근로 업무(안전교육 관리) 자동화. 근로 직원이 1주일 내내 하던 작업을 <b>5분</b>으로 줄였습니다<details class="row-more"><summary>자세히</summary><p><b>Python, Selenium</b>으로 로그인부터 엑셀 저장<span class="nb">(pandas, openpyxl)까지</span> 무인화하고, 좌표 기반 리포트 텍스트를 표로 복원했습니다. 엑셀 저장 단위를 수강생 1명에서 페이지로 바꿔 수집 속도를 높였습니다.</p></details></span></span></li>
+          <li id="rostercrawler"><span class="row"><span class="y">2026</span><a class="t ext" href="https://github.com/Jinpop/RosterCrawler" target="_blank" rel="noopener">RosterCrawler</a><span class="d">교내 근로 업무(안전교육 관리)를 자동화해 근로 직원이 1주일 내내 하던 작업을 <b>5분</b>으로 줄였습니다<details class="row-more"><summary>자세히</summary><p><b>Python, Selenium</b>으로 로그인부터 엑셀 저장<span class="nb">(pandas, openpyxl)까지</span> 무인화하고, 좌표 기반 리포트 텍스트를 표로 복원했습니다. 엑셀 저장 단위를 수강생 1명에서 페이지로 바꿔 수집 속도를 높였습니다.</p></details></span></span></li>
           <li><span class="row"><span class="y">2026</span><a class="t ext" href="https://github.com/Jinpop/NoDupDownload" target="_blank" rel="noopener">NoDupDownload</a><span class="d">파일명, 출처 URL로 중복 다운로드를 감지하는 Chrome 확장</span></span></li>
-          <li id="weband"><span class="row"><span class="y">2025</span><a class="t ext" href="https://github.com/We-Band/WBF" target="_blank" rel="noopener">WeBand</a><span class="d">가입 없이 링크 하나로 팀 일정을 조율하는 웹&nbsp;앱. 출시 첫&nbsp;달에 600명이 방문했고, 3인 팀을 리드했습니다. <a class="lk ext nb" href="https://we-band.vercel.app/lite" target="_blank" rel="noopener">서비스 열어보기</a><details class="row-more"><summary>자세히</summary><p>첫 버전은 일정 전체를 URL에 인코딩해 서버 없이 공유했습니다. 디자이너, 백엔드 개발자를 직접 모았고, 기획과 <span class="nb">프론트엔드(React, TypeScript)를</span> 맡았습니다.</p></details></span></span></li>
+          <li id="weband"><span class="row"><span class="y">2025</span><a class="t ext" href="https://github.com/We-Band/WBF" target="_blank" rel="noopener">WeBand</a><span class="d">가입 없이 링크 하나로 팀 일정을 조율하는 웹&nbsp;앱으로, 3인 팀을 리드해 출시 첫&nbsp;달에 600명이 방문했습니다. <a class="lk ext nb" href="https://we-band.vercel.app/lite" target="_blank" rel="noopener">서비스 열어보기</a><details class="row-more"><summary>자세히</summary><p>첫 버전은 일정 전체를 URL에 인코딩해 서버 없이 공유했습니다. 디자이너, 백엔드 개발자를 직접 모았고, 기획과 <span class="nb">프론트엔드(React, TypeScript)를</span> 맡았습니다.</p></details></span></span></li>
         </ul>
       </div>
     </div>
@@ -613,7 +613,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
           <div class="more">
             <p class="more-head">담당<span>눌러서 자세히 보기</span></p>
             <details class="item" id="exo-speed">
-              <summary><span class="i-t">하드웨어 선택과 코드 개선</span><span class="i-r">하이퍼파라미터 탐색 시간 약 60배 단축</span></summary>
+              <summary><span class="i-t">하드웨어 선택과 코드 개선</span><span class="i-r">하이퍼파라미터 탐색 시간 환산 약 60배 단축</span></summary>
               <div class="i-b"><p>제 실험은 모델이 작아(파라미터 예측기 4,545개, 생성기 92개) GPU로는 빨라지지 않는다는 것을 프로파일링으로 확인하고, 192코어 CPU 인스턴스에서 동시 실행 수를 48, 96, 150개로 측정해 처리량이 가장 큰 96개를 상한으로 잡았습니다.</p><p>하이퍼파라미터 탐색 104회(83만 2천 step)를 1시간 49분에 끝냈습니다(실행당 1코어, 합계 48 core-hour). A5000 환경(step당 1.9초, 동시 4개)으로 환산하면 약 110시간이 걸리는 양으로 약&nbsp;60배이고, 코드 개선 몫(서버 기준 약 1.5배)을 빼도 약&nbsp;40배입니다.</p></div>
             </details>
             <details class="item">
@@ -686,7 +686,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
             <div><dt>제출(전부 원장 기록)</dt><dd>138회</dd></div>
           </dl>
 
-          <p><span class="lead-in">역할</span>최종 5개 모델 중 3개는 팀원의 초기 앙상블에서 온 모델이고, 2개는 제가 설계하고 학습했습니다. 팀원 모델의 세부 개선과 <b>결합, 검증, 제출 전략</b>도 제가 맡았습니다. 피처 가설은 야구 도메인 지식이 있는 팀원이 냈고, 제가 직교성 분석으로 기존 피처와 겹치는지 걸러 모델 구조와 검증 설계로 옮겼습니다.</p>
+          <p><span class="lead-in">역할</span>최종 5개 모델 중 3개는 팀원 모델이고, 2개는 제가 설계하고 학습했습니다. 팀원 모델의 세부 개선과 <b>결합, 검증, 제출 전략</b>도 제가 맡았고, 후처리 일부는 팀원이 설계했습니다. 피처 가설은 야구 도메인 지식이 있는 팀원이 냈고, 제가 직교성 분석으로 기존 피처와 겹치는지 걸러 모델 구조와 검증 설계로 옮겼습니다.</p>
 
           <div class="more">
             <p class="more-head">접근<span>눌러서 자세히 보기</span></p>
@@ -700,7 +700,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
             </details>
             <details class="item">
               <summary><span class="i-t">5개 모델 결합과 캘리브레이션</span><span class="i-r">로짓 공간 가중 결합</span></summary>
-              <div class="i-b"><p>팀원의 초기 앙상블에서 온 모델 3개와 제 모델 2개, 총 5개 모델을 로짓 공간에서 가중 결합하고, 다항식&nbsp;캘리브레이션과 상황별 오프셋 보정을 얹었습니다.</p></div>
+              <div class="i-b"><p>팀원 모델 3개와 제 모델 2개, 총 5개 모델을 로짓 공간에서 가중 결합하고, 다항식&nbsp;캘리브레이션과 상황별 오프셋 보정을 얹었습니다.</p></div>
             </details>
             <details class="item">
               <summary><span class="i-t">시간 분할 검증</span><span class="i-r">2023년까지 학습 → 2024년 검증</span></summary>
