@@ -680,7 +680,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
       </figure>
         <div class="case-body">
           <dl class="kmetrics">
-            <div><dt>판별력(AUC)</dt><dd>0.53</dd></div>
+            <div><dt>초기 검증 AUC</dt><dd>0.53~0.54</dd></div>
             <div><dt>결합 모델</dt><dd>5개</dd></div>
             <div><dt>피처</dt><dd>63개</dd></div>
             <div><dt>제출(전부 원장 기록)</dt><dd>138회</dd></div>
@@ -691,8 +691,8 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
           <div class="more">
             <p class="more-head">접근<span>눌러서 자세히 보기</span></p>
             <details class="item">
-              <summary><span class="i-t">지표 해석</span><span class="i-r">AUC 0.53, 점수 차이 대부분이 캘리브레이션에서 발생</span></summary>
-              <div class="i-b"><p>평가 지표인 Brier Skill Score는 AUC처럼 순서만 보지 않고 예측 확률값 자체를 채점합니다. 모델 판별력(AUC)이 0.53&nbsp;수준이라 점수 차이 대부분이 캘리브레이션에서 나온다는 것을 초기에 측정으로 확인했고, 4주를 "여러 모델을 어떻게 결합하고 캘리브레이션할 것인가"에 썼습니다.</p></div>
+              <summary><span class="i-t">지표 해석</span><span class="i-r">초기 검증 AUC 0.53~0.54대, 판별 신호가 약하다고 판단</span></summary>
+              <div class="i-b"><p>평가 지표인 Brier Skill Score는 AUC처럼 순서만 보지 않고 예측 확률값 자체를 채점합니다. 초기 검증 AUC가 0.53~0.54대로 판별 신호가 약하다고 판단해, 피처 실험과 함께 모델 결합과 캘리브레이션으로 점수를 올리기로 했습니다. 최종 1위의 Brier 개선 폭도 기준값 대비 약 1.2%에 그쳐 이 판단과 맞았습니다.</p></div>
             </details>
             <details class="item">
               <summary><span class="i-t">실패 유형별 부스터 + 스태커 구조</span><span class="i-r">라벨 분해 관찰에서 출발 (CatBoost, 63피처)</span></summary>
