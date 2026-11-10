@@ -9,10 +9,10 @@ if(t!=='light'&&t!=='dark'){try{t=matchMedia('(prefers-color-scheme: dark)').mat
 document.documentElement.setAttribute('data-theme',t);})();
 </script>
 <title>박성진 — AI 엔지니어 (RAG, LLM)</title>
-<meta name="description" content="실사용자가 있는 RAG 서비스를 운영하고, 운영 데이터로 연구하는 AI 엔지니어 박성진. 교내 공지 통합 서비스 KAU Notice Hub 운영(2026년 7~9월 방문자 1,500+), LG Aimers 9기 온라인 예선 1,087팀 중 49위, RAG Hit@1 66.7% → 80.1%(사용자 기반 질문), ICLR 2027 투고 논문 공저.">
+<meta name="description" content="실사용자가 있는 RAG 서비스를 운영하고, 운영 데이터로 연구하는 AI 엔지니어 박성진. 교내 공지 통합 서비스 KAU Notice Hub 운영(누적 방문자 2,000+), LG Aimers 9기 온라인 예선 1,087팀 중 49위, RAG Hit@1 66.7% → 80.1%(사용자 기반 질문), ICLR 2027 투고 논문 공저.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="박성진 — AI 엔지니어 (RAG, LLM)">
-<meta property="og:description" content="교내 공지 서비스 운영(2026년 7~9월 방문자 1,500+), RAG Hit@1 66.7% → 80.1%(사용자 기반 질문), LG Aimers 9기 온라인 예선 상위 약 4.5%, ICLR 2027 투고 공저(8인 동등 기여)">
+<meta property="og:description" content="교내 공지 서비스 운영(누적 방문자 2,000+), RAG Hit@1 66.7% → 80.1%(사용자 기반 질문), LG Aimers 9기 온라인 예선 상위 약 4.5%, ICLR 2027 투고 공저(8인 동등 기여)">
 <meta property="og:url" content="https://jinpop.github.io/">
 <meta property="og:image" content="https://jinpop.github.io/og.png?v=13">
 <meta property="og:locale" content="ko_KR">
@@ -428,7 +428,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
       <p><span class="nb">한국항공대학교 소프트웨어학과</span>, <span class="nb">2027년 2월 졸업 예정.</span></p>
     </div>
     <ul class="stats" role="list">
-      <li><a class="stat" href="#nh-now"><b class="num"><em>1,500+</em></b><span class="lab">교내 공지 서비스<br>2026.07–09 방문자</span></a></li>
+      <li><a class="stat" href="#nh-now"><b class="num"><em>2,000+</em></b><span class="lab">교내 공지 서비스<br>누적 방문자</span></a></li>
       <li><a class="stat" href="#aimers9"><b class="num">상위 <em>약 4.5%</em></b><span class="lab">LG Aimers 9기 예선<br>1,087팀 중 49위</span></a></li>
       <li><a class="stat" href="#nh-realuser"><b class="num">66.7<span class="arr">→</span><em>80.1%</em></b><span class="lab">RAG 검색 정확도 개선<br>사용자 기반 질문 Hit@1</span></a></li>
       <li><a class="stat" href="#exodro"><b class="num"><em>ICLR</em> 2027</b><span class="lab">8인 공저, 동등 기여<br>투고, 심사 중</span></a></li>
@@ -462,14 +462,14 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
           </figure>
 
           <dl class="kmetrics">
-            <div><dt>2026.07–09 방문자</dt><dd>1,500+</dd></div>
+            <div><dt>누적 방문자</dt><dd>2,000+</dd></div>
             <div><dt>사용자 기반 질문 Hit@1 <span class="nb">(기존 66.7%)</span></dt><dd>80.1%</dd></div>
             <div><dt>수집 사이트</dt><dd>약 70</dd></div>
             <div><dt>누적 수집 공지</dt><dd>2,600+</dd></div>
           </dl>
 
           <p><span class="lead-in">문제</span>학과, 부서별 웹사이트에 매년 2,000건 넘는 공지가 흩어져 올라와, 장학금, 행사 공지를 놓치는 일이 잦았습니다.</p>
-          <p><span class="lead-in">역할</span>카카오 로그인, 북마크 API와 이름 마스킹은 팀원이 구현했고, 나머지는 제가 맡았습니다.</p>
+          <p><span class="lead-in">역할</span>팀장으로 기획부터 맡았습니다. 카카오 로그인, 북마크 API와 이름 마스킹은 팀원이 구현했고, 나머지는 제가 맡았습니다.</p>
 
           <figure class="rag-fig" aria-label="RAG 챗봇 처리 순서. 1 query routing(LLM), 2 retrieval로 후보 15건, 3 rerank(LLM)로 최대 6건, 4 generation(LLM).">
             <p class="rag-head">RAG 챗봇 처리 순서<span>입력: 질문 + 신분(선택)</span></p>
@@ -527,12 +527,12 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
               <p>이미지로만 올라온 공지는 비전 모델로, HWP로만 올라온 공지는 로컬 파서로 본문을 뽑아 검색 대상에 넣었습니다. 백엔드는 AWS Lightsail 단일 서버에 Docker로, 프론트엔드는 Vercel에 배포했습니다.</p></div>
             </details>
             <details class="item" id="nh-now">
-              <summary><span class="i-t">운영 현황</span><span class="i-r">2026.07–09 방문자 1,500+</span></summary>
-              <div class="i-b"><p>2026년 7~9월 방문자가 1,500명을 넘었습니다(Vercel&nbsp;Analytics).</p>
+              <summary><span class="i-t">운영 현황</span><span class="i-r">누적 방문자 2,000+</span></summary>
+              <div class="i-b"><p>서비스 공개 이후 누적 방문자가 2,000명을 넘었습니다(Vercel&nbsp;Analytics, 2026.11&nbsp;기준).</p>
               <p>운영 중 본 검색 실패를 논문 주제로 이어 가, 3년치 공지 7,857건과 평가 질문 1,305개를 <span class="nb">구축했습니다. <a class="lk jump" href="#research">Research</a></span></p>
               <figure class="shot-wide">
-                <img src="img/notice-hub-analytics.webp" width="1290" height="730" loading="lazy" decoding="async" alt="Vercel Analytics 대시보드 — 2026년 7~9월 방문자 1,586명, 페이지뷰 4,699회, 이탈률 51%. 유입 경로 1위는 교내 커뮤니티 everytime.kr 662명">
-                <figcaption>Vercel Analytics, 2026.07–09</figcaption>
+                <img src="img/notice-hub-analytics.webp" width="1677" height="538" loading="lazy" decoding="async" alt="Vercel Analytics 대시보드 — 최근 12개월 방문자 2,007명, 페이지뷰 5,843회. 2026년 7월에 가장 많았고 이후 월 200명대로 이어짐">
+                <figcaption>Vercel Analytics, 2025.11–2026.11</figcaption>
               </figure></div>
             </details>
           </div>
