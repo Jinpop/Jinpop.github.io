@@ -493,7 +493,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
             </details>
             <details class="item" id="nh-rerank">
               <summary><span class="i-t">순위를 매기지 못하던 rerank 개선</span><span class="i-r">Hit@1 84% → 93.1% (생성 질문 510문항)</span></summary>
-              <div class="i-b"><p>rerank 응답이 번호 오름차순으로만 나와(운영 로그 20건 모두) 1위가 사실상 검색 순서였습니다. 신분을 고른 질문은 대상 라벨을 보고 관련도 순으로 고르게 프롬프트와 모델을 바꿨습니다.</p></div>
+              <div class="i-b"><p>기존 rerank에는 정렬 로직이 없어 1위가 사실상 검색 순서였습니다. 신분을 고른 질문은 대상 라벨을 보고 관련도 순으로 고르게 프롬프트와 모델을 바꿨습니다.</p></div>
             </details>
             <details class="item">
               <summary><span class="i-t">RAGAS 자동 지표를 human&nbsp;evaluation으로 교체</span><span class="i-r">answer_relevancy 평균 0.36의 원인 확인</span></summary>
