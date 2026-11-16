@@ -167,6 +167,7 @@ h3{font-size:clamp(1.35rem,1.2rem + .8vw,1.8rem);font-weight:700;letter-spacing:
 .case + .case{border-top:1px solid var(--border-soft)}
 .meta{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-3);display:flex;flex-wrap:wrap;gap:.35rem 0}
 .meta .on{color:var(--accent)}
+.meta .role{color:var(--fg)}
 .meta span:not(:last-child)::after{content:"/";margin-inline:.6em;color:var(--fg-3)}
 .case h3{margin-top:.9rem}
 .case-lede{margin-top:.6rem;font-size:1.125rem;color:var(--fg-2);max-width:40rem}
@@ -558,7 +559,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
 
       <!-- Notice Hub 논문 -->
       <article class="case">
-        <p class="meta"><span>2026.09 — Now</span><span class="on">In progress</span><span>Lead</span><span>RAG</span><span>Temporal retrieval</span></p>
+        <p class="meta"><span>2026.09 — Now</span><span class="on">In progress</span><span class="role">Lead</span><span>RAG</span><span>Temporal retrieval</span></p>
         <h3>최신 공지가 정답이 아닐 때 — 반복 게시 공지의 대상별 미게시 판단</h3>
         <p class="case-lede">KAU Notice&nbsp;Hub 운영 중 본 검색 실패에서 출발한 논문 작업으로, 문제 정의부터 <b>3년치 공지 데이터셋과 평가 질문 구축</b>까지 직접 진행했습니다.</p>
         <div class="case-body">
@@ -596,7 +597,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
 
       <!-- exoDRO -->
       <article class="case" id="exodro">
-        <p class="meta"><span>2026.09</span><span class="on">ICLR 2027 Submitted</span><span>Equal contribution, 8 authors</span><span>STIL Lab</span><span>DRO</span></p>
+        <p class="meta"><span>2026.09</span><span class="on">ICLR 2027 Submitted</span><span class="role">Equal contribution, 8 authors</span><span>STIL Lab</span><span>DRO</span></p>
         <h3>exoDRO — 인과 구조를 지키는 분포 강건 최적화</h3>
         <p class="case-lede">한국항공대 <a class="lk ext" href="https://sites.google.com/view/stil-lab/home" target="_blank" rel="noopener">STIL Lab</a>의 ICLR 2027 투고 논문 「Structurally Compatible Generative Ambiguity Sets via Exogenous-Space Factorization」에 8명 공동 저자로 참여했습니다(동등 기여, 저자 알파벳순, 심사 중). 데이터 검증, 제안 <span class="nb">방법(exoDRO)</span> 실험, 실험 환경 구성을 맡았습니다.</p>
         <p class="case-links">
@@ -658,7 +659,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
       </figure>
 
       <article class="case" id="aimers9">
-        <p class="meta"><span>2026.08</span><span>Team of 3</span><span>Lead</span><span>Brier Skill Score</span><span>KBO TrackMan</span></p>
+        <p class="meta"><span>2026.08</span><span class="role">Team of 3</span><span class="role">Lead</span><span>Brier Skill Score</span><span>KBO TrackMan</span></p>
         <h3>LG Aimers 9기 — 야구 투구 제구 성공 확률 예측</h3>
         <p class="case-lede">LG AI연구원의 AI 교육 및 해커톤 프로그램 9기 대회입니다. KBO TrackMan 기반 학습 <span class="nb">데이터(약&nbsp;137만 행)와</span> 2025 시즌 평가 <span class="nb">데이터(약&nbsp;24.6만 행)로</span> 투수가 던진 공이 의도한 코스로 갈 확률을 예측했습니다. <span class="nb">2,402명, 1,087팀</span>이 참가한 온라인 예선에서 <span class="nb">49위(상위&nbsp;약&nbsp;4.5%)를</span> 기록했습니다.</p>
         <p class="case-links">
@@ -723,7 +724,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
       </article>
 
       <article class="case">
-        <p class="meta"><span>2026.07</span><span>Solo</span><span>Macro-F1</span><span>Multi-agent</span></p>
+        <p class="meta"><span>2026.07</span><span class="role">Solo</span><span>Macro-F1</span><span>Multi-agent</span></p>
         <h3>Dacon — AI 코딩 에이전트 행동 예측</h3>
         <p class="case-lede">에이전트 세션 로그로 다음 행동 14클래스를 예측하는 대회입니다. 피처 설계와 Transformer 앙상블로 베이스라인 0.43을 0.78까지 올렸고, 마지막 <span class="nb">단계(0.7809 → 0.7867)는</span> 직접 설계한 AI 에이전트 하네스(최종 17개 역할)로 운영했습니다. <span class="nb">867명, 269팀</span> 중 <span class="nb">59위(상위&nbsp;약&nbsp;22%)로</span> 마쳤습니다.</p>
         <p class="case-links">
@@ -774,7 +775,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
       </article>
 
       <article class="case">
-        <p class="meta"><span>2026.01 — 02</span><span>Team of 4</span><span>Lead</span><span>GPTQ W4A16</span></p>
+        <p class="meta"><span>2026.01 — 02</span><span class="role">Team of 4</span><span class="role">Lead</span><span>GPTQ W4A16</span></p>
         <h3>LG Aimers 8기 — LLM&nbsp;Quantization 해커톤</h3>
         <p class="case-lede">EXAONE-4.0-1.2B를 4bit로 양자화해 성능과 속도를 겨루는 대회입니다. 직접 4인 팀을 모아 리드했고, <span class="nb">1,535명, 628팀</span> 중 185위로 마쳤습니다.</p>
         <p class="case-links">
