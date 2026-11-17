@@ -347,6 +347,9 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
 .skills .sub{display:block;margin-top:.2rem;font-size:.82rem;color:var(--fg-3)}
 .aw-cap{margin:-.6rem 0 .6rem;font-size:.82rem;color:var(--fg-3)}
 .aw-more{margin-top:.7rem}
+.use-list{list-style:none;margin-top:.4rem;font-size:.86rem;color:var(--fg-2)}
+.use-list li{padding:.25rem 0}
+.use-list b{color:var(--fg);font-weight:600;margin-right:.35em}
 .aw-more .awards{margin-top:.4rem}
 .about-col .awards + .plain{margin-top:1.25rem}
 .awards .note{display:block;margin-top:.2rem;font-size:.8rem;color:var(--fg-3);line-height:1.45}
@@ -774,9 +777,10 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
           <table class="awards">
             <tbody>
               <tr><td class="y">2027.02</td><td>한국항공대학교 소프트웨어학과</td><td class="r">졸업 예정</td></tr>
+              <tr><td class="y">2014 — 2018</td><td>중국 톈진 국제학교</td><td class="r">재학</td></tr>
             </tbody>
           </table>
-          <h3 style="margin-top:3rem">Experience</h3>
+          <h3 style="margin-top:3rem">Research Experience</h3>
           <table class="awards">
             <tbody>
               <tr><td class="y">2026.09 —</td><td><a class="lk ext" href="https://sites.google.com/view/stil-lab/home" target="_blank" rel="noopener">STIL Lab</a>, 한국항공대 AI융합대학</td><td class="r">학부연구생</td></tr>
@@ -784,13 +788,23 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
           </table>
           <h3 style="margin-top:3rem">Technical Skills</h3>
           <dl class="skills">
-            <div><dt>언어</dt><dd><b>Python, TypeScript, C++</b><span class="sub">제품은 Python과 TypeScript, 알고리즘 대회는 C++</span></dd></div>
-            <div><dt>ML, LLM</dt><dd><b>PyTorch, CatBoost, Hugging Face Transformers, OpenAI API</b><span class="sub">exoDRO, LG Aimers 9기, Dacon, KAU Notice&nbsp;Hub</span></dd></div>
-            <div><dt>AI 시스템</dt><dd><b>키워드 검색 기반 RAG, RAGAS, human&nbsp;evaluation, 멀티 에이전트 실험 운영</b><span class="sub">KAU Notice&nbsp;Hub, Dacon</span></dd></div>
-            <div><dt>Backend, Infra</dt><dd><b>FastAPI, SQLite, Docker, AWS Lightsail, Vercel, pytest, GitHub Actions</b><span class="sub">KAU Notice&nbsp;Hub</span></dd></div>
-            <div><dt>Frontend</dt><dd><b>Next.js, React</b><span class="sub">KAU Notice&nbsp;Hub, WeBand</span></dd></div>
+            <div><dt>언어</dt><dd><b>Python, TypeScript, C++</b></dd></div>
+            <div><dt>ML, LLM</dt><dd><b>PyTorch, CatBoost, Hugging Face Transformers, OpenAI API</b></dd></div>
+            <div><dt>AI 시스템</dt><dd><b>키워드 검색 기반 RAG, RAGAS, human&nbsp;evaluation, 멀티 에이전트 실험 운영</b></dd></div>
+            <div><dt>Backend, Infra</dt><dd><b>FastAPI, SQLite, Docker, AWS Lightsail, Vercel, pytest, GitHub Actions</b></dd></div>
+            <div><dt>Frontend</dt><dd><b>Next.js, React</b></dd></div>
             <div><dt>협업, 도구</dt><dd><b>Git/GitHub, Figma, Notion, Jira, Slack, Claude Code, Codex</b></dd></div>
           </dl>
+          <details class="row-more aw-more">
+            <summary>기술별 사용처</summary>
+            <ul class="use-list">
+              <li><b>언어</b> 제품은 Python과 TypeScript, 알고리즘 대회는 C++</li>
+              <li><b>ML, LLM</b> exoDRO, LG Aimers 9기, Dacon, KAU Notice&nbsp;Hub</li>
+              <li><b>AI 시스템</b> KAU Notice&nbsp;Hub, Dacon</li>
+              <li><b>Backend, Infra</b> KAU Notice&nbsp;Hub</li>
+              <li><b>Frontend</b> KAU Notice&nbsp;Hub, WeBand</li>
+            </ul>
+          </details>
         </div>
         <div class="about-col">
           <h3>Awards</h3>
@@ -821,13 +835,14 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
               <tr><td class="y">2023.11</td><td>SW 코딩자격</td><td class="r">1급</td></tr>
             </tbody>
           </table>
-          <h3 style="margin-top:3rem">Language &amp; Leadership</h3>
+          <h3 style="margin-top:3rem">Languages</h3>
           <table class="awards">
             <tbody>
               <tr><td class="y">2026.02</td><td>TOEIC</td><td class="r">890</td></tr>
-              <tr><td class="y">2014 — 2018</td><td>중국 톈진 국제학교 재학</td><td class="r">영어 회화</td></tr>
+              <tr><td class="y"></td><td>영어 회화</td><td class="r">국제학교 4년 영어 수업</td></tr>
             </tbody>
           </table>
+          <h3 style="margin-top:3rem">Leadership &amp; Activities</h3>
           <ul class="plain">
             <li><b>교내 멘토링 프로그램 10회</b><span class="sub">알고리즘, 자료구조, AI&nbsp;에이전트&nbsp;활용법, <span class="nb">AI로 공부하는 법,</span> <span class="nb">진로 상담 등</span></span></li>
             <li><b>클라이밍 동아리 Hands On Top! 창립</b><span class="sub">70명 규모, 교내 지원 프로그램 100여 팀 중&nbsp;6팀 선정</span></li>
