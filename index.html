@@ -210,6 +210,7 @@ h3{font-size:clamp(1.35rem,1.2rem + .8vw,1.8rem);font-weight:700;letter-spacing:
 .rag-card:nth-child(-n+3)::after{content:"\2192";position:absolute;right:-1.2rem;top:50%;transform:translateY(-50%);color:var(--fg-3);font-size:.9rem}
 .rag-no{display:flex;align-items:center;gap:.45rem;font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;color:var(--fg-3)}
 .rag-tag{font-size:.6rem;letter-spacing:.06em;padding:.02rem .32rem;border-radius:3px;border:1px solid var(--border)}
+.rag-cap{margin-top:.75rem;font-size:.82rem;color:var(--fg-3);max-width:60ch}
 .rag-tag.llm{color:var(--accent);border-color:color-mix(in oklab,var(--accent) 45%,transparent)}
 .rag-card b{display:block;margin-top:.45rem;font-size:.92rem;font-weight:700;letter-spacing:-0.01em;line-height:1.35}
 .rag-card code{display:inline-block;margin-top:.25rem;font-family:var(--mono);font-size:.7rem;color:var(--accent)}
@@ -480,56 +481,34 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
               <div class="rag-card"><span class="rag-no">03<span class="rag-tag llm">LLM</span></span><b>Rerank</b><code>최대 6건</code></div>
               <div class="rag-card"><span class="rag-no">04<span class="rag-tag llm">LLM</span></span><b>Generation</b><code>근거 공지 → 답변</code></div>
             </div>
+            <figcaption class="rag-cap">단계마다 fallback을 뒀습니다. Query routing이 실패하면 질문 원문으로 검색하고, rerank가 실패하면 후보 상위 6건을 쓰고, 답변 생성이 실패하면 검색 결과 목록만 안내합니다.</figcaption>
           </figure>
 
           <div class="more">
             <p class="more-head">주요 작업<span>눌러서 자세히 보기</span></p>
             <details class="item" id="nh-realuser">
-              <summary><span class="i-t">사용자 기반 질문으로 실제 성능 확인</span><span class="i-r">Hit@1 66.7% → 80.1% (156문항)</span></summary>
-              <div class="i-b"><p>생성 질문만으로는 실제 성능을 알 수 없었습니다. 510문항에서 93.1%였던 Hit@1이 사용자 기반 질문 156문항에서는 66.7%였습니다. 156문항은 팀원이 사용자 입장에서 만든 질문 35개와 챗봇 로그 기반 질문 23개를 대상별로 나눈 것입니다.</p><p>510문항의 오답 35개 중 30개는 '졸업식'과 '학위수여식'처럼 표현이 달라 정답이 후보에 들지 못한 경우였습니다. 동의어 사전을 15묶음에서 28묶음으로 늘리고 키워드 추출을 고쳐 156문항에서 80.1%(+13.5%p, 95% 구간 +3.2&nbsp;~&nbsp;+23.8)가 됐습니다.</p><p>키워드 모델은 정확도 차이가 확인되지 않아 입력 단가가 약 1/4인 gpt-6-luna를 골랐습니다.</p></div>
-            </details>
-            <details class="item" id="nh-label">
-              <summary><span class="i-t">질문자 신분에 맞는 공지만 근거로 사용</span><span class="i-r">다른 대상 공지 31% → 0%, Hit@1 66% → 84% (생성 질문 510문항)</span></summary>
-              <div class="i-b"><p>대학원생의 질문에 학부생용 공지가 근거로 섞이는 문제가 있었습니다. 공지마다 대상 라벨을 붙여 사용자가 고른 신분의 공지만 근거로 쓰게 했습니다.</p><p>질문 날짜 시점을 재현한 생성 질문 510문항 평가의 결과입니다.</p></div>
-            </details>
-            <details class="item" id="nh-rerank">
-              <summary><span class="i-t">순위를 매기지 못하던 rerank 개선</span><span class="i-r">Hit@1 84% → 93.1% (생성 질문 510문항)</span></summary>
-              <div class="i-b"><p>기존 rerank에는 정렬 로직이 없어 1위가 사실상 검색 순서였습니다. 신분을 고른 질문은 대상 라벨을 보고 관련도 순으로 고르게 프롬프트와 모델을 바꿨습니다.</p></div>
+              <summary><span class="i-t">검색 품질 개선과 사용자 기반 질문 평가</span><span class="i-r">Hit@1 66.7% → 80.1% (사용자 기반 질문 156문항)</span></summary>
+              <div class="i-b"><p>생성 질문 510문항의 검색 실패 35건 중 30건은 정답이 rerank 전 후보에 들지 못한 경우였고, 주로 '졸업식'과 '학위수여식'처럼 표현이 다른 경우였습니다.</p><p>이를 바탕으로 동의어 사전을 15묶음에서 28묶음으로 늘리고 LLM 키워드 추출을 고쳤습니다. 별도로 구성한 사용자 기반 질문 156문항에서 Hit@1이 66.7%에서 80.1%로 올랐습니다(+13.5%p, 95% 구간 +3.2&nbsp;~&nbsp;+23.8). 같은 설정이 생성 질문에서는 93.1%였습니다. 156문항은 팀원이 사용자 입장에서 만든 질문 35개와 챗봇 로그 기반 질문 23개를 대상별로 나눈 것입니다.</p><p>공지는 장학금, 수강신청처럼 반복되는 핵심 단어가 많고 근거를 설명하기 쉬워, 벡터 임베딩 대신 키워드 검색을 유지했습니다. 키워드 모델은 정확도 차이가 확인되지 않아 입력 단가가 약 1/4인 gpt-6-luna를 골랐습니다. 자동 지표인 RAGAS answer_relevancy는 "명시되어 있지 않다"는 답도 0점으로 매겨, 답변 평가는 human&nbsp;evaluation(0/1 판정)으로 바꿨습니다.<a class="ref ext" href="https://qktjwl123.tistory.com/180" target="_blank" rel="noopener">글: RAG 고찰</a><a class="ref ext" href="https://qktjwl123.tistory.com/181" target="_blank" rel="noopener">글: RAG 평가 도입</a></p></div>
             </details>
             <details class="item">
-              <summary><span class="i-t">RAGAS 자동 지표를 human&nbsp;evaluation으로 교체</span><span class="i-r">answer_relevancy 평균 0.36의 원인 확인</span></summary>
-              <div class="i-b"><p>RAGAS answer_relevancy는 13건 평균이 0.36으로 실제 품질보다 낮게 나왔습니다. 공지에 없는 날짜를 지어내지 않고 "명시되어 있지 않다"고 답한 경우도 0점으로 매겼기 때문입니다. 그래서 human&nbsp;evaluation(0/1 판정)으로 바꿨습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/181" target="_blank" rel="noopener">글: RAG 평가 도입</a></p></div>
-            </details>
-            <details class="item">
-              <summary><span class="i-t">LLM 키워드 추출 + 키워드 검색 유지</span><span class="i-r">'공모전'과 '해커톤'처럼 단어가 다른 질문 대응</span></summary>
-              <div class="i-b"><p>질문은 '공모전', 공지는 '해커톤'처럼 단어가 달라 단순 키워드 매칭이 놓치는 것을 확인하고, LLM이 검색 키워드를 고르게 바꿨습니다.</p><p>공지는 장학금, 수강신청처럼 반복되는 핵심 단어가 많고 근거를 설명하기 쉬워, 벡터 임베딩 대신 키워드 검색을 유지했습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/180" target="_blank" rel="noopener">글: RAG 고찰</a></p></div>
+              <summary><span class="i-t">신분별 공지 필터와 rerank 개선</span><span class="i-r">Hit@1 66% → 84% → 93.1%, 다른 대상 공지 31% → 0% (생성 질문 510문항)</span></summary>
+              <div class="i-b"><p id="nh-label">대학원생의 질문에 학부생용 공지가 근거로 섞이는 문제가 있었습니다. 공지마다 대상 라벨을 붙여 사용자가 고른 신분의 공지만 근거로 쓰게 해, Hit@1이 66%에서 84%로 오르고 다른 대상 공지 비율은 31%에서 0%가 됐습니다.</p><p id="nh-rerank">기존 rerank에는 정렬 로직이 없어 1위가 사실상 검색 순서였습니다. 신분을 고른 질문은 대상 라벨을 보고 관련도 순으로 고르게 프롬프트와 모델을 바꿔 Hit@1이 84%에서 93.1%가 됐습니다.</p><p>두 결과 모두 질문 날짜 시점을 재현한 생성 질문 510문항 평가입니다.</p></div>
             </details>
             <details class="item">
               <summary><span class="i-t">메모리 부족(OOM) 해결</span><span class="i-r">SQLite 전환, k6로 재발 확인 후 메모리 증설</span></summary>
               <div class="i-b"><p>공지를 메모리에 전부 올리던 초기 구조에서 OOM이 나, dmesg로 원인을 확인하고 SQLite로 바꿨습니다. k6 동시 100명 테스트에서 서버가 다시 종료돼 swap과 메모리 증설, 워커 조정을 더했고, 이후 100명까지 종료가 없었습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/179" target="_blank" rel="noopener">글: 인프라 점검</a></p></div>
             </details>
-            <details class="item">
-              <summary><span class="i-t">RAG 단계별 동작과 fallback</span><span class="i-r">어느 LLM 호출이 실패해도 답이 끊기지 않는 구조</span></summary>
-              <div class="i-b"><ol class="steps">
-                <li><b>Query routing</b> 새로 검색할 질문인지 가르고, 검색 키워드를 뽑습니다(gpt-6-luna). 직전 답변 재가공이면 검색을 생략하고, 공지와 무관하면 안내 답변을 합니다. <i>실패 → 질문 원문으로 검색</i></li>
-                <li><b>Retrieval</b> 키워드와 동의어 사전으로 공지 본문을 검색하고, 신분을 골랐으면 그 대상 공지만 남겨 후보 15건을 만듭니다.</li>
-                <li><b>Rerank</b> 제목, 게시일, 본문 앞부분을 보고 질문과 관련 있는 공지만 최대 6건 고릅니다(gpt-4.1-mini). 신분을 골랐으면 대상 라벨까지 보고 관련도 순으로 고릅니다(gpt-6-luna). 후보가 6건 이하면 호출을 생략합니다. <i>실패 → 후보 상위 6건 사용</i></li>
-                <li><b>Generation</b> 고른 공지만 근거로 답합니다(gpt-4.1-mini). <i>실패 → 검색 결과 목록만 안내</i></li>
-              </ol></div>
-            </details>
-            <details class="item">
-              <summary><span class="i-t">시스템 구성과 배포</span><span class="i-r">Lightsail, Docker, Vercel</span></summary>
-              <div class="i-b"><ol class="flow" aria-label="시스템 구성 흐름">
+            <details class="item" id="nh-now">
+              <summary><span class="i-t">시스템 구성과 운영</span><span class="i-r">Lightsail, Docker, Vercel, 누적 방문자 2,000+</span></summary>
+              <div class="i-b">
+              <ol class="flow" aria-label="시스템 구성 흐름">
                 <li><span class="node"><b>약 70개 교내 사이트</b><span>Python crawler</span></span></li>
                 <li><span class="node"><b>FastAPI, SQLite</b><span>ingest, search API</span></span></li>
                 <li><span class="node"><b>Next.js</b><span>browse UI</span></span></li>
                 <li><span class="node"><b>RAG 챗봇</b><span>keyword search → rerank</span></span></li>
               </ol>
-              <p>이미지로만 올라온 공지는 비전 모델로, HWP로만 올라온 공지는 로컬 파서로 본문을 뽑아 검색 대상에 넣었습니다. 백엔드는 AWS Lightsail 단일 서버에 Docker로, 프론트엔드는 Vercel에 배포했습니다.</p></div>
-            </details>
-            <details class="item" id="nh-now">
-              <summary><span class="i-t">운영 현황</span><span class="i-r">누적 방문자 2,000+</span></summary>
-              <div class="i-b"><p>서비스 공개 이후 누적 방문자가 2,000명을 넘었습니다(Vercel&nbsp;Analytics, 2026.11&nbsp;기준).</p>
+              <p>이미지로만 올라온 공지는 비전 모델로, HWP로만 올라온 공지는 로컬 파서로 본문을 뽑아 검색 대상에 넣었습니다. 백엔드는 AWS Lightsail 단일 서버에 Docker로, 프론트엔드는 Vercel에 배포했습니다.</p>
+              <p>서비스 공개 이후 누적 방문자가 2,000명을 넘었습니다(Vercel&nbsp;Analytics, 2026.11&nbsp;기준).</p>
               <p>운영 중 본 검색 실패를 논문 주제로 이어 가, 3년치 공지 7,857건과 평가 질문 1,305개를 <span class="nb">구축했습니다. <a class="lk jump" href="#research">Research</a></span></p>
               <figure class="shot-wide">
                 <img src="img/notice-hub-analytics.webp" width="1677" height="538" loading="lazy" decoding="async" alt="Vercel Analytics 대시보드 — 최근 12개월 방문자 2,007명, 페이지뷰 5,843회. 2026년 7월에 가장 많았고 이후 월 200명대로 이어짐">
