@@ -583,7 +583,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
         </p>
         <div class="case-body">
           <dl class="kmetrics">
-            <div><dt>탐색 시간 (A5000 환산)</dt><dd>약 60배</dd></div>
+            <div><dt>탐색 처리량 (A5000 환산)</dt><dd>약 60배</dd></div>
             <div><dt>탐색 104회 소요</dt><dd>1시간 49분</dd></div>
             <div><dt>최악 환경 MSE (기존 0.0957)</dt><dd>0.0943</dd></div>
             <div><dt>step당 시간</dt><dd>−45%</dd></div>
@@ -592,23 +592,15 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
           <div class="more">
             <p class="more-head">담당<span>눌러서 자세히 보기</span></p>
             <details class="item" id="exo-speed">
-              <summary><span class="i-t">하드웨어 선택과 코드 개선</span><span class="i-r">하이퍼파라미터 탐색 시간 환산 약 60배 단축</span></summary>
-              <div class="i-b"><p>제 실험은 모델이 작아(파라미터 예측기 4,545개, 생성기 92개) GPU로는 빨라지지 않는다는 것을 프로파일링으로 확인하고, 192코어 CPU 인스턴스에서 동시 실행 수를 48, 96, 150개로 측정해 처리량이 가장 큰 96개를 상한으로 잡았습니다.</p><p>하이퍼파라미터 탐색 104회(83만 2천 step)를 1시간 49분에 끝냈습니다(실행당 1코어, 합계 48 core-hour). A5000 환경(step당 1.9초, 동시 4개)으로 환산하면 약 110시간이 걸리는 양으로 약&nbsp;60배이고, 코드 개선 몫(서버 기준 약 1.5배)을 빼도 약&nbsp;40배입니다.</p></div>
+              <summary><span class="i-t">실험 처리량 최적화</span><span class="i-r">탐색 104회를 1시간 49분에 완료 (A5000 처리량 환산 약 60배)</span></summary>
+              <div class="i-b"><p>연구실 A5000 GPU는 step당 1.9초에 동시 4개가 한계여서 실험 일정의 병목이었습니다. 팀에 클라우드 GPU(Vast.ai)를 먼저 제안하고, 대여부터 환경 구성까지 담은 사용 가이드를 만들어 배포했습니다.</p><p>제 실험은 모델이 작아 GPU로는 빨라지지 않는다는 것을 프로파일링으로 확인하고, 192코어 CPU 인스턴스에서 처리량이 가장 큰 동시 실행 수(96개)를 측정으로 골랐습니다. 학습 코드의 상태 복사와 중복 계산을 걷어내고 스레드를 1개로 고정해 step당 시간도 0.53초에서 0.29초로 줄였습니다(노트북 CPU 기준).</p><p>그 결과 하이퍼파라미터 탐색 104회를 1시간 49분에 끝냈습니다. 기존 A5000 환경의 측정 처리량으로 환산한 예상 소요 시간(약 110시간) 대비 약&nbsp;60배이고, 코드 개선 몫을 빼도 약&nbsp;40배입니다.</p></div>
             </details>
             <details class="item">
-              <summary><span class="i-t">클라우드 도입 제안과 사용 가이드 배포</span><span class="i-r">연구실 GPU가 실험 일정의 병목</span></summary>
-              <div class="i-b"><p>연구실 A5000 GPU에서는 step당 1.9초에 동시 4개가 한계여서 실험 일정의 병목이었습니다. 팀에 클라우드 GPU(Vast.ai)를 먼저 제안하고, 대여부터 환경 구성까지 담은 사용 가이드를 만들어 배포했습니다.</p></div>
+              <summary><span class="i-t">재현성 확보</span><span class="i-r">개선 전후 결과 비트 단위 동일, 테스트 세트는 한 번만 평가</span></summary>
+              <div class="i-b"><p>코드를 고친 뒤 개선 전후 학습 로그와 모델 파라미터가 비트 단위로 같은 것을 확인했습니다. 탐색으로 최악 환경 OOD 검증 MSE를 0.09567에서 0.09429로 낮췄고, 테스트 세트는 선택을 확정한 뒤 한&nbsp;번만 평가했습니다.</p></div>
             </details>
             <details class="item">
-              <summary><span class="i-t">결과가 같은 학습 코드 개선</span><span class="i-r">step당 0.53초 → 0.29초, 전후 결과 비트 단위 동일</span></summary>
-              <div class="i-b"><p>상태 복사와 중복 계산을 걷어내고 스레드를 1개로 고정해 step당 0.53초 → 0.29초로 줄였고(노트북 CPU 기준), 개선 전후 학습 로그와 모델 파라미터가 비트 단위로 같은 것을 확인했습니다.</p></div>
-            </details>
-            <details class="item">
-              <summary><span class="i-t">탐색 결과</span><span class="i-r">최악 환경 OOD 검증 MSE 0.09567 → 0.09429</span></summary>
-              <div class="i-b"><p>최악 환경 OOD 검증 MSE를 0.09567에서 0.09429로 낮췄습니다. 테스트 세트는 선택을 확정한 뒤 한&nbsp;번만 평가했습니다.</p></div>
-            </details>
-            <details class="item">
-              <summary><span class="i-t">비교 조건 문제 제기와 통일안</span><span class="i-r">방법 6개의 학습과 선택 규칙 통일, SCOT 구현 결함 발견</span></summary>
+              <summary><span class="i-t">비교 실험 신뢰도 개선</span><span class="i-r">방법 6개의 선택 규칙 통일안 작성, SCOT 구현 결함 발견</span></summary>
               <div class="i-b"><p>방법 6개를 담당자가 나눠 구현하며 체크포인트 선택 기준이 달라져, 한 표의 숫자를 비교할 수 없다는 문제를 제가 먼저 제기했습니다.</p><p>교수님이 best OOD val로 통일하기로 정하신 뒤 학습과 선택 규칙 통일안을 작성해 제안했고, 방법별 코드를 공용 저장소에서 점검해 어긋난 부분을 담당자에게 짚었습니다. 이 점검에서 SCOT&nbsp;구현의 역변환 결함도 제가 찾아 담당자가 수정했습니다.</p></div>
             </details>
             <details class="item">
