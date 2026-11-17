@@ -524,14 +524,6 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
       </article>
 
       <!-- archive -->
-      <div class="archive">
-        <p class="archive-head">More Projects</p>
-        <ul class="rows">
-          <li id="ieobom"><span class="row"><span class="y">2026</span><a class="t ext" href="https://github.com/ieobom/ieobom" target="_blank" rel="noopener">이어봄</a><span class="d">교내 창업아이디어 경진대회에서 <b>2위</b>를 받은 가족 SNS 앱으로, 가족이 올린 근황과 답을 LLM이 다음 통화에서 꺼낼 질문으로 바꿔 줍니다. 3인 팀을 리드해 기획부터 UI/UX 디자인, 구현, 발표까지 맡았습니다. <a class="lk ext nb" href="https://ieobom-demo-web.vercel.app" target="_blank" rel="noopener">데모 열어보기</a><details class="row-more"><summary>자세히</summary><p>데모는 음성 인식과 LLM이 실제로 동작하고, AI 호출이 실패하면 정해 둔 문장으로 fallback합니다. 프롬프트로 조언과 건강 진단을 막고, 응답은 JSON으로 받아 형식을 검사합니다. 출시용 앱은 <b>Expo, Supabase</b>로 개발 중이며, 표마다 접근 규칙(RLS)을 두고 <span class="nb">pgTAP 테스트로</span> 검증합니다.</p></details></span></span></li>
-          <li id="rostercrawler"><span class="row"><span class="y">2026</span><a class="t ext" href="https://github.com/Jinpop/RosterCrawler" target="_blank" rel="noopener">RosterCrawler</a><span class="d">교내 근로 업무(안전교육 관리)를 자동화해 근로 직원이 1주일 내내 하던 작업을 <b>5분</b>으로 줄였습니다<details class="row-more"><summary>자세히</summary><p><b>Python, Selenium</b>으로 로그인부터 엑셀 저장<span class="nb">(pandas, openpyxl)까지</span> 무인화하고, 좌표 기반 리포트 텍스트를 표로 복원했습니다. 엑셀 저장 단위를 수강생 1명에서 페이지로 바꿔 수집 속도를 높였습니다.</p></details></span></span></li>
-          <li id="weband"><span class="row"><span class="y">2025</span><a class="t ext" href="https://github.com/We-Band/WBF" target="_blank" rel="noopener">WeBand</a><span class="d">가입 없이 링크 하나로 팀 일정을 조율하는 웹&nbsp;앱으로, 디자이너와 백엔드 개발자를 포함한 3인 팀을 리드해 출시 첫&nbsp;달에 600명이 방문했습니다. <a class="lk ext nb" href="https://we-band.vercel.app/lite" target="_blank" rel="noopener">서비스 열어보기</a><details class="row-more"><summary>자세히</summary><p>첫 버전은 일정 전체를 URL에 인코딩해 서버 없이 공유했습니다. 팀원은 직접 모았고, 기획과 프론트엔드(<span class="nb">React, TypeScript)를</span> 맡았습니다.</p></details></span></span></li>
-        </ul>
-      </div>
     </div>
   </section>
 
@@ -544,7 +536,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
       <article class="case">
         <p class="meta"><span>2026.09 — Now</span><span class="on">In progress</span><span class="role">Lead</span><span>RAG</span><span>Temporal retrieval</span></p>
         <h3>최신 공지가 정답이 아닐 때 — 반복 게시 공지의 대상별 미게시 판단</h3>
-        <p class="case-lede">KAU Notice&nbsp;Hub 운영 중 본 검색 실패에서 출발한 논문 작업으로, 문제 정의부터 <b>3년치 공지 데이터셋과 평가 질문 구축</b>까지 직접 진행했습니다.</p>
+        <p class="case-lede">KAU Notice&nbsp;Hub 운영 중 본 검색 실패에서 출발한 논문 작업으로, 문제 정의부터 <b>3년치 공지 데이터셋과 평가 질문 구축</b>까지 직접 진행했습니다. 대상 라벨은 <a class="lk jump" href="#nh-label">KAU Notice&nbsp;Hub</a>에도 적용했습니다.</p>
         <div class="case-body">
           <dl class="kmetrics">
             <div><dt>연구용 공지</dt><dd>7,857</dd></div>
@@ -559,20 +551,12 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
               <div class="i-b"><p>대학 공지는 같은 내용이 학기마다, 대상별로 다시 올라와 가장 최근 공지가 질문한 사람에게 맞는 답이라는 보장이 없습니다.</p><p>2026학년도 1학기 수강신청 공지는 학부용이 일반대학원용보다 13일 먼저 올라왔고, 학부 공지에 대학원 일정은 없었습니다. 그 사이 일반대학원생이 물으면 최신순 검색은 학부 공지로, 대상 필터 검색은 지난 학기 대학원 공지로 답합니다.</p><p>그래서 게시 여부를 (시리즈, 회차, 대상) 단위로 판단하는 문제로 정의했습니다. 맞는 공지가 아직 없으면 "아직 게시되지 않았다"고 답해야 합니다.</p></div>
             </details>
             <details class="item">
-              <summary><span class="i-t">3년치 공지 데이터셋 구축</span><span class="i-r">7,857건 고정, 교차 게시 병합 방향 결정</span></summary>
-              <div class="i-b"><p>운영 DB와 별개로 3년치 공지 7,857건을 다시 수집해 고정하고, 같은 공지가 여러 게시판에 올라오는 교차 게시 문제는 병합 방향까지 정했습니다.</p></div>
-            </details>
-            <details class="item">
-              <summary><span class="i-t">annotation&nbsp;guideline과 라벨 확정</span><span class="i-r">guideline v5, 503건 검수, 핵심 279건 재라벨링</span></summary>
-              <div class="i-b"><p>공지마다 적용 학기와 대상(8분류)을 붙이는 annotation&nbsp;guideline을 v5까지 다듬고, 별도 검수자가 503건을 검수한 뒤 핵심 공지 279건을 2주 뒤 초안 없이 다시 라벨링해 확정했습니다. 대상과 회차 조합 1,233쌍 중 193쌍(16%)에 게시 시차가 있었습니다.</p></div>
+              <summary><span class="i-t">3년치 공지 데이터셋과 라벨 확정</span><span class="i-r">7,857건 고정, guideline v5, 503건 검수, 핵심 279건 재라벨링</span></summary>
+              <div class="i-b"><p>운영 DB와 별개로 3년치 공지 7,857건을 다시 수집해 고정하고, 같은 공지가 여러 게시판에 올라오는 교차 게시 문제는 병합 방향까지 정했습니다.</p><p>공지마다 적용 학기와 대상(8분류)을 붙이는 annotation&nbsp;guideline을 v5까지 다듬고, 별도 검수자가 503건을 검수한 뒤 핵심 공지 279건을 2주 뒤 초안 없이 다시 라벨링해 확정했습니다. 대상과 회차 조합 1,233쌍 중 193쌍(16%)에 게시 시차가 있었습니다.</p></div>
             </details>
             <details class="item">
               <summary><span class="i-t">시점 재현 실험 환경과 평가 질문</span><span class="i-r">날짜가 붙은 평가 질문 1,305개</span></summary>
               <div class="i-b"><p>질문 날짜 시점의 공지 목록을 재현하는 실험 환경을 운영 코드와 분리해 구축하고, 날짜가 붙은 평가 질문 1,305개를 만들었습니다.</p></div>
-            </details>
-            <details class="item">
-              <summary><span class="i-t">운영 서비스 적용</span><span class="i-r">대상 라벨을 KAU Notice&nbsp;Hub에 적용</span></summary>
-              <div class="i-b"><p>대상 라벨은 운영 서비스에도 적용했습니다. 효과는 <a class="lk jump" href="#nh-label">KAU Notice&nbsp;Hub 항목</a>에 적었습니다.</p></div>
             </details>
           </div>
         </div>
@@ -764,6 +748,19 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
           </div>
         </div>
       </article>
+    </div>
+  </section>
+  <!-- ── 04 other projects ── -->
+  <section class="sec" id="other">
+    <div class="shell">
+      <div class="sec-head"><h2>Other Projects</h2></div>
+      <div class="archive" style="margin-top:0">
+        <ul class="rows">
+          <li id="ieobom"><span class="row"><span class="y">2026</span><a class="t ext" href="https://github.com/ieobom/ieobom" target="_blank" rel="noopener">이어봄</a><span class="d">교내 창업아이디어 경진대회에서 <b>2위</b>를 받은 가족 SNS 앱으로, 가족이 올린 근황과 답을 LLM이 다음 통화에서 꺼낼 질문으로 바꿔 줍니다. 3인 팀을 리드해 기획부터 UI/UX 디자인, 구현, 발표까지 맡았습니다. <a class="lk ext nb" href="https://ieobom-demo-web.vercel.app" target="_blank" rel="noopener">데모 열어보기</a><details class="row-more"><summary>자세히</summary><p>데모는 음성 인식과 LLM이 실제로 동작하고, AI 호출이 실패하면 정해 둔 문장으로 fallback합니다. 프롬프트로 조언과 건강 진단을 막고, 응답은 JSON으로 받아 형식을 검사합니다. 출시용 앱은 <b>Expo, Supabase</b>로 개발 중이며, 표마다 접근 규칙(RLS)을 두고 <span class="nb">pgTAP 테스트로</span> 검증합니다.</p></details></span></span></li>
+          <li id="rostercrawler"><span class="row"><span class="y">2026</span><a class="t ext" href="https://github.com/Jinpop/RosterCrawler" target="_blank" rel="noopener">RosterCrawler</a><span class="d">교내 근로 업무(안전교육 관리)를 자동화해 근로 직원이 1주일 내내 하던 작업을 <b>5분</b>으로 줄였습니다<details class="row-more"><summary>자세히</summary><p><b>Python, Selenium</b>으로 로그인부터 엑셀 저장<span class="nb">(pandas, openpyxl)까지</span> 무인화하고, 좌표 기반 리포트 텍스트를 표로 복원했습니다. 엑셀 저장 단위를 수강생 1명에서 페이지로 바꿔 수집 속도를 높였습니다.</p></details></span></span></li>
+          <li id="weband"><span class="row"><span class="y">2025</span><a class="t ext" href="https://github.com/We-Band/WBF" target="_blank" rel="noopener">WeBand</a><span class="d">가입 없이 링크 하나로 팀 일정을 조율하는 웹&nbsp;앱으로, 디자이너와 백엔드 개발자를 포함한 3인 팀을 리드해 출시 첫&nbsp;달에 600명이 방문했습니다. <a class="lk ext nb" href="https://we-band.vercel.app/lite" target="_blank" rel="noopener">서비스 열어보기</a><details class="row-more"><summary>자세히</summary><p>첫 버전은 일정 전체를 URL에 인코딩해 서버 없이 공유했습니다. 팀원은 직접 모았고, 기획과 프론트엔드(<span class="nb">React, TypeScript)를</span> 맡았습니다.</p></details></span></span></li>
+        </ul>
+      </div>
     </div>
   </section>
   <!-- ── 04 about ── -->
