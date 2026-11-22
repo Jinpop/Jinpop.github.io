@@ -9,12 +9,12 @@ if(t!=='light'&&t!=='dark'){try{t=matchMedia('(prefers-color-scheme: dark)').mat
 document.documentElement.setAttribute('data-theme',t);})();
 </script>
 <title>박성진 — AI 엔지니어 (RAG, LLM)</title>
-<meta name="description" content="실사용자가 있는 RAG 서비스를 운영하고, 운영 데이터로 연구하는 AI 엔지니어 박성진. 교내 공지 통합 서비스 KAU Notice Hub 운영(누적 방문자 2,000+), LG Aimers 9기 온라인 예선 1,087팀 중 49위, RAG Hit@1 45.5% → 80.1%(사용자 기반 질문), ICLR 2027 투고 논문 공저.">
+<meta name="description" content="실사용자가 있는 RAG 서비스를 운영하고, 운영 데이터로 연구하는 AI 엔지니어 박성진. 교내 공지 통합 서비스 KAU Notice Hub 운영(누적 방문자 2,000+), LG Aimers 9기 온라인 예선 1,087팀 중 49위, RAG Hit@1 61.1% → 93.7%(평가 질문 666문항), ICLR 2027 투고 논문 공저.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="박성진 — AI 엔지니어 (RAG, LLM)">
-<meta property="og:description" content="교내 공지 서비스 운영(누적 방문자 2,000+), RAG Hit@1 45.5% → 80.1%(사용자 기반 질문), LG Aimers 9기 온라인 예선 상위 약 4.5%, ICLR 2027 투고 공저(8인 동등 기여)">
+<meta property="og:description" content="교내 공지 서비스 운영(누적 방문자 2,000+), RAG Hit@1 61.1% → 93.7%(평가 질문 666문항), LG Aimers 9기 온라인 예선 상위 약 4.5%, ICLR 2027 투고 공저(8인 동등 기여)">
 <meta property="og:url" content="https://jinpop.github.io/">
-<meta property="og:image" content="https://jinpop.github.io/og.png?v=15">
+<meta property="og:image" content="https://jinpop.github.io/og.png?v=16">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://jinpop.github.io/">
@@ -438,7 +438,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
     </div>
     <ul class="stats" role="list">
       <li><a class="stat" href="#nh-now"><b class="num"><em>2,000+</em></b><span class="lab">교내 공지 서비스<br>누적 방문자</span></a></li>
-      <li><a class="stat" href="#nh-realuser"><b class="num">45.5<span class="arr">→</span><em>80.1%</em></b><span class="lab">RAG 검색 정확도 개선<br>사용자 기반 질문 Hit@1</span></a></li>
+      <li><a class="stat" href="#nh-realuser"><b class="num">61.1<span class="arr">→</span><em>93.7%</em></b><span class="lab">RAG 검색 정확도 개선<br>Hit@1 (평가 질문 666문항)</span></a></li>
       <li><a class="stat" href="#aimers9"><b class="num">상위 <em>약 4.5%</em></b><span class="lab">LG Aimers 9기 예선<br>1,087팀 중 49위</span></a></li>
     </ul>
     <p class="hero-links">
@@ -471,7 +471,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
 
           <dl class="kmetrics">
             <div><dt>누적 방문자</dt><dd>2,000+</dd></div>
-            <div><dt>사용자 기반 질문 Hit@1 <span class="nb">(개선 전 45.5%)</span></dt><dd>80.1%</dd></div>
+            <div><dt>검색 Hit@1 <span class="nb">(개선 전 61.1%)</span></dt><dd>93.7%</dd></div>
             <div><dt>수집 사이트</dt><dd>약 70</dd></div>
             <div><dt>누적 수집 공지</dt><dd>2,600+</dd></div>
           </dl>
@@ -493,12 +493,16 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
           <div class="more">
             <p class="more-head">주요 작업<span>눌러서 자세히 보기</span></p>
             <details class="item" id="nh-realuser">
-              <summary><span class="i-t">검색 품질 개선</span><span class="i-r">Hit@1 45.5% → 80.1% (사용자 기반 질문 156문항)</span></summary>
+              <summary><span class="i-t">검색 품질 개선</span><span class="i-r">Hit@1 61.1% → 93.7% (생성 510 + 사용자 기반 156문항)</span></summary>
               <div class="i-b"><p id="nh-label"><span class="lead-in">신분별 공지 필터</span> 공지마다 대상 라벨을 붙여, 사용자가 고른 신분의 공지만 근거로 쓰게 했습니다.</p><p id="nh-rerank"><span class="lead-in">rerank 개선</span> 정렬 로직이 없어 1위가 검색 순서 그대로였던 rerank를, 대상 라벨을 보고 관련도 순으로 고르게 프롬프트와 모델을 바꿨습니다.</p><p><span class="lead-in">동의어 사전과 키워드 추출</span> 검색 실패 대부분이 '졸업식'과 '학위수여식'처럼 표현이 달라 후보에 들지 못한 경우여서, 동의어 사전을 15묶음에서 28묶음으로 늘리고 키워드 추출 프롬프트와 모델을 바꿨습니다.</p><p><a class="ref ext" href="https://qktjwl123.tistory.com/180" target="_blank" rel="noopener">글: RAG 고찰</a><a class="ref ext" href="https://qktjwl123.tistory.com/181" target="_blank" rel="noopener">글: RAG 평가 도입</a></p></div>
             </details>
             <details class="item">
               <summary><span class="i-t">메모리 부족(OOM) 해결</span><span class="i-r">SQLite 전환, k6로 재발 확인 후 메모리 증설</span></summary>
               <div class="i-b"><p>공지를 메모리에 전부 올리던 초기 구조에서 OOM이 나, dmesg로 원인을 확인하고 SQLite로 바꿨습니다. k6 동시 100명 테스트에서 서버가 다시 종료돼 swap과 메모리 증설, 워커 조정을 더했고, 이후 100명까지 종료가 없었습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/179" target="_blank" rel="noopener">글: 인프라 점검</a></p></div>
+            </details>
+            <details class="item" id="nh-defense">
+              <summary><span class="i-t">운영 중 찾은 결함과 방어</span><span class="i-r">요청 크기·비용·접근 경로 제한, 검색 결함 3건 수정</span></summary>
+              <div class="i-b"><p><span class="lead-in">비용과 어뷰징</span>Caddy에서 요청 본문을 1MB로 막고, 채팅 API에 IP별 분당 15회 제한과 출력 토큰 2,000 상한을 뒀습니다. 실제 IP는 Caddy가 덮어써 클라이언트가 속일 수 없게 했습니다.</p><p><span class="lead-in">접근 경로</span>API 포트를 서버 내부(127.0.0.1)에만 열어 외부 요청은 Caddy를 거쳐서만 들어오게 했습니다.</p><p><span class="lead-in">검색 결함</span>검색어의 %·_가 SQL 와일드카드로 동작해 오래된 정답 공지가 후보에서 빠지던 문제, 달력에 없는 날짜가 검색과 챗봇을 500 오류로 멈추던 문제, 결과가 500건을 넘으면 뒤쪽 페이지가 비던 문제를 고치고 재현 테스트를 붙였습니다.</p></div>
             </details>
             <details class="item" id="nh-now">
               <summary><span class="i-t">시스템 구성과 운영</span><span class="i-r">Lightsail, Docker, Vercel, 누적 방문자 2,000+</span></summary>
