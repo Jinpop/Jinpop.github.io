@@ -505,8 +505,8 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
               <div class="i-b"><p><span class="lead-in">비용과 어뷰징</span>Caddy에서 요청 본문을 1MB로 막고, 채팅 API에 IP별 분당 15회 제한과 출력 토큰 2,000 상한을 뒀습니다. 실제 IP는 Caddy가 덮어써 클라이언트가 속일 수 없게 했습니다.</p><p><span class="lead-in">접근 경로</span>API 포트를 서버 내부(127.0.0.1)에만 열어 외부 요청은 Caddy를 거쳐서만 들어오게 했습니다.</p><p><span class="lead-in">검색 결함</span>검색어의 %·_가 SQL 와일드카드로 동작해 오래된 정답 공지가 후보에서 빠지던 문제, 달력에 없는 날짜가 검색과 챗봇을 500 오류로 멈추던 문제, 결과가 500건을 넘으면 뒤쪽 페이지가 비던 문제를 고치고 재현 테스트를 붙였습니다.</p></div>
             </details>
             <details class="item" id="nh-timeline">
-              <summary><span class="i-t">개발 과정</span><span class="i-r">수집·탐색 MVP 배포 후 운영하며 단계적으로 개선</span></summary>
-              <div class="i-b"><p><span class="lead-in">MVP (4/16~5/2, 작업일 10일)</span>범위를 공지 수집과 탐색으로 좁히고 Claude Code와 Codex로 구현해 배포했습니다.</p><p><span class="lead-in">기능 (5월)</span>키워드 검색 기반 RAG 챗봇을 붙였습니다.</p><p><span class="lead-in">안정성 (5~6월)</span>OOM이 나 SQLite로 전환하고, 요청 크기·횟수·출력 토큰 제한을 더했습니다.</p><p><span class="lead-in">품질 (6~11월)</span>rerank 도입, 질문 로그와 평가셋 구축, 대상 라벨과 동의어 사전으로 Hit@1 61.1% → 93.7%.</p></div>
+              <summary><span class="i-t">개발 과정</span><span class="i-r">AI 도구로 MVP를 빠르게 만들고, 테스트와 평가로 확인하며 개선</span></summary>
+              <div class="i-b"><p><span class="lead-in">MVP (4/16~5/2, 작업일 10일)</span>Claude Code와 Codex로 수집·탐색 기능을 구현했습니다. 생성된 코드는 테스트 56개와 push마다 도는 CI(pytest)를 통과시킨 뒤 배포했습니다.</p><p><span class="lead-in">검색 (5월)</span>"공모전 알려줘"는 6건인데 "공모전 정보 알려줘"는 0건이라는 신고에서 키워드를 AND로 묶던 원인을 찾았습니다. 검색 평가 케이스 10개를 만들어 고친 뒤 recall@5 0.30 → 0.85, 기존 테스트 136개 회귀 없음을 확인했습니다.</p><p><span class="lead-in">안정성 (5~6월)</span>OOM은 dmesg로 원인을 확인해 SQLite로 바꾸고, k6 동시 100명 테스트로 재발 여부를 확인했습니다. 요청 크기·횟수·출력 토큰 제한도 더했습니다.</p><p><span class="lead-in">품질 (6~11월)</span>평가 질문 666문항을 만들어 rerank, 대상 라벨, 동의어 사전을 바꿀 때마다 다시 재며 Hit@1을 61.1%에서 93.7%로 올렸습니다. 결함은 재현 테스트를 먼저 붙이고 고쳤고, 테스트는 563개로 늘었습니다.</p></div>
             </details>
             <details class="item" id="nh-now">
               <summary><span class="i-t">시스템 구성과 운영</span><span class="i-r">Lightsail, Docker, Vercel, 누적 방문자 2,000+</span></summary>
