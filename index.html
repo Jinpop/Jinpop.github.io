@@ -504,6 +504,10 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
               <summary><span class="i-t">운영 중 찾은 결함과 방어</span><span class="i-r">요청 크기·비용·접근 경로 제한, 검색 결함 3건 수정</span></summary>
               <div class="i-b"><p><span class="lead-in">비용과 어뷰징</span>Caddy에서 요청 본문을 1MB로 막고, 채팅 API에 IP별 분당 15회 제한과 출력 토큰 2,000 상한을 뒀습니다. 실제 IP는 Caddy가 덮어써 클라이언트가 속일 수 없게 했습니다.</p><p><span class="lead-in">접근 경로</span>API 포트를 서버 내부(127.0.0.1)에만 열어 외부 요청은 Caddy를 거쳐서만 들어오게 했습니다.</p><p><span class="lead-in">검색 결함</span>검색어의 %·_가 SQL 와일드카드로 동작해 오래된 정답 공지가 후보에서 빠지던 문제, 달력에 없는 날짜가 검색과 챗봇을 500 오류로 멈추던 문제, 결과가 500건을 넘으면 뒤쪽 페이지가 비던 문제를 고치고 재현 테스트를 붙였습니다.</p></div>
             </details>
+            <details class="item" id="nh-timeline">
+              <summary><span class="i-t">개발 과정</span><span class="i-r">수집·탐색 MVP 배포 후 운영하며 단계적으로 개선</span></summary>
+              <div class="i-b"><p><span class="lead-in">MVP (4/16~5/2, 작업일 10일)</span>범위를 공지 수집과 탐색으로 좁히고 Claude Code와 Codex로 구현해 배포했습니다.</p><p><span class="lead-in">기능 (5월)</span>키워드 검색 기반 RAG 챗봇을 붙였습니다.</p><p><span class="lead-in">안정성 (5~6월)</span>OOM이 나 SQLite로 전환하고, 요청 크기·횟수·출력 토큰 제한을 더했습니다.</p><p><span class="lead-in">품질 (6~11월)</span>rerank 도입, 질문 로그와 평가셋 구축, 대상 라벨과 동의어 사전으로 Hit@1 61.1% → 93.7%.</p></div>
+            </details>
             <details class="item" id="nh-now">
               <summary><span class="i-t">시스템 구성과 운영</span><span class="i-r">Lightsail, Docker, Vercel, 누적 방문자 2,000+</span></summary>
               <div class="i-b">
