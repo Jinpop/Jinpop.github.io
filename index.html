@@ -192,25 +192,6 @@ h3{font-size:clamp(1.35rem,1.2rem + .8vw,1.8rem);font-weight:700;letter-spacing:
 }
 .big-num-lab{display:block;font-size:.78rem;color:var(--fg-3);margin-top:.5rem;font-family:var(--mono);letter-spacing:.08em}
 
-/* 서비스 아키텍처 (실제 텍스트 — 접근성 무료) */
-.arch{margin:.35rem 0 1.1rem;border-top:1px solid var(--border-soft)}
-.arch-tier{padding:.8rem 0 .9rem;border-bottom:1px solid var(--border-soft)}
-.arch-lab{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-3);margin-bottom:.55rem}
-.arch-nodes{list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .45rem}
-.arch-node{border:1px solid var(--border);border-radius:6px;padding:.45rem .7rem .5rem;background:var(--surface);display:flex;flex-direction:column;gap:.1rem}
-.arch-node b{font-size:.84rem;font-weight:700;letter-spacing:-0.01em;color:var(--fg);line-height:1.35}
-.arch-node span{font-size:.72rem;line-height:1.45;color:var(--fg-3)}
-.arch-srv .arch-node span{max-width:9.5em}
-.arch-srv .arch-node.wide span{max-width:13em}
-.arch-arr{color:var(--fg-3);font-size:.85rem;line-height:1}
-.arch-link{font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;color:var(--fg-3);padding:.4rem 0 0}
-.arch-link + .arch-tier{padding-top:.45rem}
-.arch-cap{margin-top:.6rem;font-size:.8rem;color:var(--fg-3)}
-@media (max-width:760px){
-  .arch-nodes{flex-direction:column;align-items:stretch}
-  .arch-srv .arch-node span,.arch-srv .arch-node.wide span{max-width:none}
-  .arch-arr{align-self:flex-start;margin-left:1rem;transform:rotate(90deg)}
-}
 
 /* RAG pipeline figure */
 .rag-fig{margin-top:2.25rem;max-width:54rem}
@@ -243,7 +224,7 @@ h3{font-size:clamp(1.35rem,1.2rem + .8vw,1.8rem);font-weight:700;letter-spacing:
 .i-t{font-size:.98rem;font-weight:600;color:var(--fg);transition:color .15s}
 .i-r{display:block;margin-top:.1rem;font-size:.86rem;line-height:1.5;color:var(--fg-2)}
 .i-b{padding:.1rem 0 1.15rem 1.6rem;max-width:44rem;font-size:.95rem;color:var(--fg-2)}
-.i-b p+p,.i-b .arch+p{margin-top:.7rem}
+.i-b p+p,.i-b .shot-wide+p{margin-top:.7rem}
 .i-b .shot-wide{margin-top:1rem}
 .i-b .ref{font-size:.85rem;color:var(--accent);white-space:nowrap;margin-left:.35em}
 .steps{padding-left:1.15rem}
@@ -514,45 +495,9 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
             <details class="item" id="nh-now">
               <summary><span class="i-t">시스템 구성과 운영</span><span class="i-r">Lightsail, Docker, Vercel, 누적 방문자 2,000+</span></summary>
               <div class="i-b">
-              <figure class="arch" aria-label="KAU Notice Hub 서비스 아키텍처">
-                <div class="arch-tier">
-                  <p class="arch-lab">Client</p>
-                  <ul class="arch-nodes">
-                    <li class="arch-node"><b>웹 브라우저</b><span>PC · 휴대폰</span></li>
-                    <li class="arch-node"><b>모바일 앱</b><span>BFF 없이 Caddy로 바로 연결</span></li>
-                  </ul>
-                </div>
-                <p class="arch-link" aria-hidden="true">&#8595; HTTPS</p>
-                <div class="arch-tier">
-                  <p class="arch-lab">Frontend · Vercel</p>
-                  <ul class="arch-nodes">
-                    <li class="arch-node"><b>Next.js</b><span>웹 화면 (App Router)</span></li>
-                    <li class="arch-node"><b>BFF /api/*</b><span>백엔드 중계, 실제 IP 전달</span></li>
-                  </ul>
-                </div>
-                <p class="arch-link" aria-hidden="true">&#8595; HTTPS</p>
-                <div class="arch-tier">
-                  <p class="arch-lab">Server · AWS Lightsail 2GB · Docker Compose</p>
-                  <ul class="arch-nodes arch-srv">
-                    <li class="arch-node"><b>Caddy</b><span>HTTPS, 요청 본문 1MB 제한</span></li>
-                    <li class="arch-arr" aria-hidden="true">&#8594;</li>
-                    <li class="arch-node wide"><b>FastAPI</b><span>공지·검색 API, RAG 챗봇(스트리밍), 로그인·북마크 API, IP별 요청 제한</span></li>
-                    <li class="arch-arr" aria-hidden="true">&#8594;</li>
-                    <li class="arch-node"><b>SQLite</b><span>공지·대상 라벨, 대화 기록, 사용자·북마크</span></li>
-                    <li class="arch-arr" aria-hidden="true">&#8592;</li>
-                    <li class="arch-node"><b>수집 스케줄러</b><span>3시간마다 새 공지 수집</span></li>
-                  </ul>
-                </div>
-                <p class="arch-link" aria-hidden="true">&#8595; API 호출 · 게시판 수집</p>
-                <div class="arch-tier">
-                  <p class="arch-lab">External</p>
-                  <ul class="arch-nodes">
-                    <li class="arch-node"><b>OpenAI API</b><span>GPT-6 luna, gpt-4.1-mini</span></li>
-                    <li class="arch-node"><b>카카오 로그인</b><span>OAuth</span></li>
-                    <li class="arch-node"><b>학교 사이트</b><span>22개 사이트, 69개 게시판</span></li>
-                  </ul>
-                </div>
-                <figcaption class="arch-cap">배포: main에 머지하면 GitHub Actions가 서버에서 Docker를 다시 빌드하고, 웹은 Vercel이 자동 배포합니다.</figcaption>
+              <figure class="shot-wide" style="margin-top:.25rem">
+                <a href="img/notice-hub-architecture.webp" target="_blank" rel="noopener" aria-label="서비스 아키텍처 크게 보기"><img src="img/notice-hub-architecture.webp" width="1800" height="728" loading="lazy" decoding="async" alt="KAU Notice Hub 서비스 아키텍처 — 웹 브라우저는 Vercel의 Next.js와 BFF를 거쳐, 모바일 앱은 바로 AWS Lightsail(2GB, Docker Compose)의 Caddy로 들어온다. Caddy 뒤 FastAPI가 공지 목록·검색, RAG 챗봇(스트리밍), 카카오 로그인·북마크 API와 요청 수 제한을 맡고 SQLite(공지·대상 라벨, 대화 기록, 사용자·북마크)에 저장한다. 3시간마다 도는 공지 수집 스케줄러가 학교 사이트 22곳 69개 게시판을 수집해 SQLite에 넣고, FastAPI는 OpenAI API(GPT-6 luna, gpt-4.1-mini)와 카카오 로그인을 호출한다."></a>
+                <figcaption>서비스 아키텍처. main에 머지하면 GitHub Actions가 서버에서 Docker를 다시 빌드하고, 웹은 Vercel이 자동 배포합니다.</figcaption>
               </figure>
               <p>Claude Code와 Codex로 작업일 10일 만에 수집·탐색 MVP를 만들고, 테스트 56개와 push마다 도는 CI(pytest)를 통과시킨 뒤 5/2 서버에 첫 배포했습니다. 5/18에는 키워드 검색 기반 RAG 챗봇을 배포했습니다.</p>
               <p>서비스 공개 이후 누적 방문자가 2,000명을 넘었습니다(Vercel&nbsp;Analytics, 2026.11&nbsp;기준).</p>
