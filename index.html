@@ -508,12 +508,8 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
               <div class="i-b"><p>공지를 메모리에 전부 올리던 초기 구조에서 OOM이 나, dmesg로 원인을 확인하고 SQLite로 바꿨습니다. k6 동시 100명 테스트에서 서버가 다시 종료돼 swap과 메모리 증설, 워커 조정을 더했고, 이후 100명까지 종료가 없었습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/179" target="_blank" rel="noopener">글: 인프라 점검</a></p></div>
             </details>
             <details class="item" id="nh-defense">
-              <summary><span class="i-t">운영 중 찾은 결함과 방어</span><span class="i-r">요청 크기·비용·접근 경로 제한, 검색 결함 3건 수정</span></summary>
-              <div class="i-b"><p><span class="lead-in">비용과 어뷰징</span>Caddy에서 요청 본문을 1MB로 막고, 채팅 API에 IP별 분당 15회 제한과 출력 토큰 2,000 상한을 뒀습니다. 실제 IP는 Caddy가 덮어써 클라이언트가 속일 수 없게 했습니다.</p><p><span class="lead-in">접근 경로</span>API 포트를 서버 내부(127.0.0.1)에만 열어 외부 요청은 Caddy를 거쳐서만 들어오게 했습니다.</p><p><span class="lead-in">검색 결함</span>검색어의 %·_가 SQL 와일드카드로 동작해 오래된 정답 공지가 후보에서 빠지던 문제, 달력에 없는 날짜가 검색과 챗봇을 500 오류로 멈추던 문제, 결과가 500건을 넘으면 뒤쪽 페이지가 비던 문제를 고치고 재현 테스트를 붙였습니다.</p></div>
-            </details>
-            <details class="item" id="nh-timeline">
-              <summary><span class="i-t">개발 과정</span><span class="i-r">AI 도구로 MVP를 빠르게 만들고, 테스트와 평가로 확인하며 개선</span></summary>
-              <div class="i-b"><p><span class="lead-in">MVP (4/16~5/2, 작업일 10일)</span>Claude Code와 Codex로 수집·탐색 기능을 구현했습니다. 생성된 코드는 테스트 56개와 push마다 도는 CI(pytest)를 통과시킨 뒤 5/2 서버에 첫 배포했습니다.</p><p><span class="lead-in">챗봇과 검색 (5월)</span>5/18 키워드 검색 기반 RAG 챗봇을 배포했습니다. 질문 키워드가 두 개 이상이면 결과가 0건이 된다는 사용자 신고에서 키워드를 AND로 묶던 원인을 찾았습니다. 검색 평가 케이스 10개를 만들어 고친 뒤 recall@5 0.30 → 0.85, 기존 테스트 136개 회귀 없음을 확인했습니다.</p><p><span class="lead-in">안정성 (5~6월)</span>OOM은 dmesg로 원인을 확인해 SQLite로 바꾸고, k6 동시 100명 테스트로 재발 여부를 확인했습니다. 요청 크기·횟수·출력 토큰 제한도 더했습니다.</p><p><span class="lead-in">품질 (6~11월)</span>평가 질문 666문항을 만들어 rerank, 대상 라벨, 동의어 사전을 바꿀 때마다 다시 재며 Hit@1을 61.1%에서 93.7%로 올렸습니다. 결함은 재현 테스트를 먼저 붙이고 고쳤고, 테스트는 563개로 늘었습니다.</p></div>
+              <summary><span class="i-t">운영 중 찾은 결함과 방어</span><span class="i-r">요청 크기·비용·접근 경로 제한, 검색 결함 4건 수정</span></summary>
+              <div class="i-b"><p><span class="lead-in">비용과 어뷰징</span>Caddy에서 요청 본문을 1MB로 막고, 채팅 API에 IP별 분당 15회 제한과 출력 토큰 2,000 상한을 뒀습니다. 실제 IP는 Caddy가 덮어써 클라이언트가 속일 수 없게 했습니다.</p><p><span class="lead-in">접근 경로</span>API 포트를 서버 내부(127.0.0.1)에만 열어 외부 요청은 Caddy를 거쳐서만 들어오게 했습니다.</p><p><span class="lead-in">검색 결함</span>키워드를 AND로 묶어 질문 키워드가 두 개 이상이면 결과가 0건이 되던 문제, 검색어의 %·_가 SQL 와일드카드로 동작해 오래된 정답 공지가 후보에서 빠지던 문제, 달력에 없는 날짜가 검색과 챗봇을 500 오류로 멈추던 문제, 결과가 500건을 넘으면 뒤쪽 페이지가 비던 문제를 고치고 재현 테스트를 붙였습니다. 첫 번째는 검색 평가 케이스 10개로 recall@5 0.30 → 0.85를 확인했고, 테스트는 563개로 늘었습니다.</p></div>
             </details>
             <details class="item" id="nh-now">
               <summary><span class="i-t">시스템 구성과 운영</span><span class="i-r">Lightsail, Docker, Vercel, 누적 방문자 2,000+</span></summary>
@@ -524,6 +520,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
                 <li><span class="node"><b>Next.js</b><span>browse UI</span></span></li>
                 <li><span class="node"><b>RAG 챗봇</b><span>keyword search → rerank</span></span></li>
               </ol>
+              <p>Claude Code와 Codex로 작업일 10일 만에 수집·탐색 MVP를 만들고, 테스트 56개와 push마다 도는 CI(pytest)를 통과시킨 뒤 5/2 서버에 첫 배포했습니다. 5/18에는 키워드 검색 기반 RAG 챗봇을 배포했습니다.</p>
               <p>이미지로만 올라온 공지는 비전 모델로, HWP로만 올라온 공지는 로컬 파서로 본문을 뽑아 검색 대상에 넣었습니다. 백엔드는 AWS Lightsail 단일 서버에 Docker로, 프론트엔드는 Vercel에 배포했습니다.</p>
               <p>서비스 공개 이후 누적 방문자가 2,000명을 넘었습니다(Vercel&nbsp;Analytics, 2026.11&nbsp;기준).</p>
               <p>에브리타임 첫 홍보 글로 하루 만에 256명이 방문했고, 이후 꾸준히 유입됐습니다. 11월 초에는 교내에 포스터를 붙여, 2주간 방문자가 340명으로 직전 2주보다 115% 늘었습니다(Vercel&nbsp;Analytics). 이렇게 모인 사용자의 챗봇 로그가 검색 실패 분석의 출발점이 됐습니다.</p>
