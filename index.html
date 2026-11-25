@@ -94,6 +94,8 @@ code{font-family:var(--mono);font-size:.88em;background:color-mix(in oklab, var(
 /* in-page jump link */
 .jump::after{content:"\2193";display:inline-block;margin-left:.2em;font-size:.85em;transition:transform .18s}
 .jump:hover::after{transform:translateY(2px)}
+.jump.up::after{content:"\2191"}
+.jump.up:hover::after{transform:translateY(-2px)}
 /* 점프 도착 지점 잠깐 강조 */
 li:target,p:target,tr:target,article:target>h3,details:target>summary{animation:target-flash 2.4s ease-out}
 @keyframes target-flash{0%,30%{background:var(--accent-weak)}100%{background:transparent}}
@@ -224,14 +226,14 @@ h3{font-size:clamp(1.35rem,1.2rem + .8vw,1.8rem);font-weight:700;letter-spacing:
 .more-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem .6rem;padding-bottom:.6rem;border-bottom:1px solid var(--border-soft);font-size:.8rem;font-weight:700;line-height:1.4;color:var(--accent)}
 .more-head span{font-size:.74rem;font-weight:400;color:var(--fg-3)}
 .item{border-bottom:1px solid var(--border-soft)}
-.item>summary{display:block;position:relative;padding:.8rem 0 .8rem 1.35rem;cursor:pointer;list-style:none;border-radius:4px}
+.item>summary{display:block;position:relative;padding:.8rem 0 .8rem 1.6rem;cursor:pointer;list-style:none;border-radius:4px}
 .item>summary::-webkit-details-marker{display:none}
-.item>summary::before{content:"\25B8";position:absolute;left:.1rem;top:.82rem;color:var(--accent);font-size:.85rem;transition:transform .15s}
-.item[open]>summary::before{transform:rotate(90deg)}
+.item>summary::before{content:"";position:absolute;left:.2rem;top:1.28rem;width:.5rem;height:.5rem;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(-45deg);transition:transform .15s}
+.item[open]>summary::before{transform:rotate(45deg)}
 .item>summary:hover .i-t{color:var(--accent)}
 .i-t{font-size:.98rem;font-weight:600;color:var(--fg);transition:color .15s}
 .i-r{display:block;margin-top:.1rem;font-size:.86rem;line-height:1.5;color:var(--fg-2)}
-.i-b{padding:.1rem 0 1.15rem 1.35rem;max-width:44rem;font-size:.95rem;color:var(--fg-2)}
+.i-b{padding:.1rem 0 1.15rem 1.6rem;max-width:44rem;font-size:.95rem;color:var(--fg-2)}
 .i-b p+p,.i-b .flow+p{margin-top:.7rem}
 .i-b .flow{margin-top:.25rem}
 .i-b .shot-wide{margin-top:1rem}
@@ -548,7 +550,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
       <article class="case">
         <p class="meta"><span>2026.09 — Now</span><span class="on">In progress</span><span class="role">Lead</span><span>RAG</span><span>Temporal retrieval</span></p>
         <h3>최신 공지가 정답이 아닐 때 — 반복 게시 공지의 대상별 미게시 판단</h3>
-        <p class="case-lede">KAU Notice&nbsp;Hub 운영 중 본 검색 실패에서 출발한 논문 작업으로, 문제 정의부터 <b>3년치 공지 데이터셋과 평가 질문 구축</b>까지 직접 진행했습니다. 대상 라벨은 <a class="lk jump" href="#nh-label">KAU Notice&nbsp;Hub</a>에도 적용했습니다.</p>
+        <p class="case-lede">KAU Notice&nbsp;Hub 운영 중 본 검색 실패에서 출발한 논문 작업으로, 문제 정의부터 <b>3년치 공지 데이터셋과 평가 질문 구축</b>까지 직접 진행했습니다. 대상 라벨은 <a class="lk jump up" href="#nh-label">KAU Notice&nbsp;Hub</a>에도 적용했습니다.</p>
         <div class="case-body">
           <dl class="kmetrics">
             <div><dt>연구용 공지</dt><dd>7,857</dd></div>
@@ -801,10 +803,10 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
         </div>
         <div class="about-col">
           <h3>Awards</h3>
-          <p class="aw-cap">모두 교내 수상입니다. 전국 규모 대회 성적은 <a class="lk jump" href="#ai">AI &amp; Competitions</a>에 있습니다.</p>
+          <p class="aw-cap">모두 교내 수상입니다. 전국 규모 대회 성적은 <a class="lk jump up" href="#ai">AI &amp; Competitions</a>에 있습니다.</p>
           <table class="awards">
             <tbody>
-              <tr class="top"><td class="y">2026.11</td><td>교내 창업아이디어 경진대회<span class="note">가족 SNS 앱 <a class="lk jump" href="#ieobom">이어봄</a></span></td><td class="r">2위</td></tr>
+              <tr class="top"><td class="y">2026.11</td><td>교내 창업아이디어 경진대회<span class="note">가족 SNS 앱 <a class="lk jump up" href="#ieobom">이어봄</a></span></td><td class="r">2위</td></tr>
               <tr class="top" id="award-topcit"><td class="y">2026.11<span class="y2">2026.06</span></td><td>TOPCIT 정기평가 <span class="nb">(SW 역량 평가)</span><span class="note">1학기(제25회), 2학기(제26회) 연속</span></td><td class="r">교내 1위</td></tr>
               <tr class="top"><td class="y">2026.11</td><td>KAUPC 교내 알고리즘 경진대회</td><td class="r">1위</td></tr>
               <tr class="top"><td class="y">2026.02</td><td>교내 지식 공유 우수작 선발 대회<span class="note">개발자 지망 후배를 위한 <span class="nb">학년별 학습 로드맵</span></span></td><td class="r">1위</td></tr>
