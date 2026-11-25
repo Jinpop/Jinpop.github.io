@@ -508,7 +508,7 @@ figcaption{margin-top:.85rem;font-size:.85rem;color:var(--fg-3);max-width:52ch}
               <div class="i-b"><p>공지를 메모리에 전부 올리던 초기 구조에서 OOM이 나, dmesg로 원인을 확인하고 SQLite로 바꿨습니다. k6 동시 100명 테스트에서 서버가 다시 종료돼 swap과 메모리 증설, 워커 조정을 더했고, 이후 100명까지 종료가 없었습니다. <a class="ref ext" href="https://qktjwl123.tistory.com/179" target="_blank" rel="noopener">글: 인프라 점검</a></p></div>
             </details>
             <details class="item" id="nh-defense">
-              <summary><span class="i-t">결함 및 방어</span><span class="i-r">요청 크기·비용·접근 경로 제한, 검색 결함 4건 수정</span></summary>
+              <summary><span class="i-t">운영 중 찾은 결함 및 방어</span><span class="i-r">요청 크기·비용·접근 경로 제한, 검색 결함 4건 수정</span></summary>
               <div class="i-b"><p><span class="lead-in">비용과 어뷰징</span>Caddy에서 요청 본문을 1MB로 막고, 채팅 API에 IP별 분당 15회 제한과 출력 토큰 2,000 상한을 뒀습니다. 실제 IP는 Caddy가 덮어써 클라이언트가 속일 수 없게 했습니다.</p><p><span class="lead-in">접근 경로</span>API 포트를 서버 내부(127.0.0.1)에만 열어 외부 요청은 Caddy를 거쳐서만 들어오게 했습니다.</p><p><span class="lead-in">검색 결함</span>키워드를 AND로 묶어 질문 키워드가 두 개 이상이면 결과가 0건이 되던 문제, 검색어의 %·_가 SQL 와일드카드로 동작해 오래된 정답 공지가 후보에서 빠지던 문제, 달력에 없는 날짜가 검색과 챗봇을 500 오류로 멈추던 문제, 결과가 500건을 넘으면 뒤쪽 페이지가 비던 문제를 고치고 재현 테스트를 붙였습니다. 첫 번째는 검색 평가 케이스 10개로 recall@5 0.30 → 0.85를 확인했고, 테스트는 563개로 늘었습니다.</p></div>
             </details>
             <details class="item" id="nh-now">
